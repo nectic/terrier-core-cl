@@ -1,37 +1,167 @@
-Terrier IR Platform - Terabyte Retriever v4.4
------------------------------------
-[![Build Status](https://api.travis-ci.org/terrier-org/terrier-core.svg?branch=4.4)](https://travis-ci.org/terrier-org/terrier-core)
+#clir terrier-core
 
-[Terrier](http://terrier.org) is a highly flexible, efficient, and effective open source search engine, readily deployable on large-scale collections of documents. Terrier implements state-of-the-art indexing and retrieval functionalities, and provides an ideal platform for the rapid development and evaluation of large-scale retrieval applications.
 
-Terrier is open source, and is a comprehensive, flexible and transparent platform for research and experimentation in text retrieval. [Research can easily be carried out](http://terrier.org/docs/current/bibliography.html) on standard [TREC](http://trec.nist.gov/) and [CLEF](http://www.clef-initiative.eu/) test collections.
+bin/trec_terrier.sh --initScore --srcWE=/Volumes/SDEXT/these/vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt --trgWE=/Volumes/SDEXT/these/vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt -Dtrec.topics=share/vaswani_npl/query-text.trec
 
-Terrier is written in Java, and is developed at the School of Computing Science, [University of Glasgow](http://www.gla.ac.uk/).
+bin/trec_terrier.sh --initScore --srcWE=/Volumes/SDEXT/these/vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt --trgWE=/Volumes/SDEXT/these/vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt -Dtrec.topics=share/clef/query_title_en.trec -Dclir.score.file=/Volumes/SDEXT/these/score_en_en_vectors_ap8889_skipgram.ser
 
-The latest version of Terrier can be found at https://github.com/terrier-org/terrier-core/
 
-### Open Source Licence
 
-Terrier is subject to the terms detailed in the Mozilla Public License Version 1.1. The Mozilla Public License can be found in the file
-[LICENSE.txt](LICENSE.txt) or at the URL http://www.mozilla.org/MPL/MPL-1.1.html. By using this software, you have agreed to the licence.
+bin/trec_terrier.sh --initScore --srcWE=/home/mrim/doumbise/data/wiki.multi.fr.vec --trgWE=/home/mrim/doumbise/data/wiki.multi.en.vec -Dtrec.topics=share/clef/query_title_fr.trec -Dclir.score.file=/home/mrim/doumbise/data/score_fr_en_eeb1.ser
 
-### Citation Licence
+bin/trec_terrier.sh -r -Dtrec.topics=share/clef/query_title_en.trec -Dclir.score.file=/home/mrim/doumbise/data/score.ser
 
-The source and binary forms of Terrier are subject to the following citation license: 
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -Dtrec.topics=share/clef/query_title_fr.trec -Dclir.method=WeCLIR -Dclir.score.file=/home/mrim/doumbise/data/score_fr_en_eeb2.ser -Dclir.number_of_top_translation_terms=1
 
-By downloading Terrier, you agree to cite at least one of [these four papers](http://terrier.org/docs/current/bibliography.html) describing Terrier in any kind of material you produce where Terrier was used to conduct search or experimentation, whether be it a research paper, dissertation, article, poster, presentation, or documentation. For more information on publications concerning Terrier, see the Terrier Bibliography [here](http://terrier.org/docs/current/bibliography.html). By using this software, you have agreed to the
-citation licence.
+bin/trec_terrier.sh -r -c 500.0 -Dtrec.model=DirichletLM -Dtrec.topics=share/clef/query_title_fr.trec -Dclir.method=WeCLIRTLM -Dclir.score.file=/home/mrim/doumbise/data/score_fr_en_eeb1.ser -Dclir.number_of_top_translation_terms=1
 
-### Getting Started
+bin/trec_terrier.sh -r -c 500.0 -Dtrec.model=DirichletLM -Dtrec.topics=share/clef/query_title_fr.trec -Dclir.method=WeCLIRTLM2 -Dclir.score.file=/home/mrim/doumbise/scores/score_fr_en_eeb1.ser -Dclir.number_of_top_translation_terms=1
 
-In order to start [experimenting with Terrier](http://terrier.org/docs/current/quickstart_experiments.html) or [developing new applications with Terrier](http://terrier.org/docs/current/quickstart-integratedsearch.html), we recommend starting from the [quickstart documentation](http://terrier.org/docs/current/index.html). 
+-Dclir.src.we=/Volumes/SDEXT/these/
+-Dclir.trg.we=/Volumes/SDEXT/these/
+-Dclir.score.file=/Volumes/SDEXT/these/score_fr_en_EEB1_2.ser
 
-### Other Resources
-* The full documentation of Terrier can also be found on the offical [website](http://terrier.org/). 
-* [Terrier Forum](http://terrier.org/forum/) is a place where you can ask questions.
-* Bug reports or requests for new features can be posted on the [issue tracker](http://terrier.org/issues/browse/TR). 
 
-------------------------
-> Webpage: <http://terrier.org>  
-> Contact: [School of Computing Science](http://www.dcs.gla.ac.uk/)  
-> Copyright (C) 2004-2018 [University of Glasgow](http://www.gla.ac.uk/). All Rights Reserved. 
+bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
+
+
+git add .
+git commit -m "clir"
+git push -u origin master
+
+git pull origin master
+mvn package -DskipTests
+
+EEB1 :
+Terms founds in src word2vec: 154
+Terms founds in trg word2vec: 122530
+
+EEB2 :
+Terms founds in src word2vec: 164
+Terms founds in trg word2vec: 325487
+
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/nectic/terrier-core-cl.git
+git push -u origin master
+
+
+
+
+bin/trec_setup.sh share/
+
+
+bin/trec_terrier.sh -i
+
+bin/trec_terrier.sh --printstats
+
+bin/trec_terrier.sh -r -Dtrec.topics=share/
+
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/
+
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/clef/query_title_en.trec
+
+share/clef/query_title_en.trec
+
+bin/trec_terrier.sh -r -Dtrec.model=Hiemstra_LM -c 0.4 -Dtrec.topics=share/clef/clef2003_query_en.txt
+
+bin/trec_terrier.sh -r -Dtrec.model=TF_IDF -c 0.4 -Dtrec.topics=share/clef/clef2003_query_en.txt
+
+bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
+
+
+LOAD DATA LOCAL INFILE '/Users/seydoudoumbia/these/expe/terrier-core/we_english_mono_vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt' INTO TABLE vectors_en_mono_ap8889_skipgram FIELDS TERMINATED BY ";" LINES TERMINATED BY "\n";
+
+LOAD DATA LOCAL INFILE '/Volumes/SDEXT/these/wiki.fr.mapped.vec.txt' INTO TABLE clwe_fr_artexte_2018_2  FIELDS TERMINATED BY ";" LINES TERMINATED BY "\n";
+
+LOAD DATA LOCAL INFILE '/Volumes/SDEXT/these/wiki.en.mapped.vec.txt' INTO TABLE clwe_en_artexte_2018_2 FIELDS TERMINATED BY ";" LINES TERMINATED BY "\n";
+
+LOAD DATA LOCAL INFILE '/Volumes/SDEXT/these/load_data_1.txt' INTO TABLE clwe_en_artexte_2018_2 CHARACTER SET latin1 FIELDS TERMINATED BY "|||" LINES TERMINATED BY "\n";
+
+LOAD DATA LOCAL INFILE '/Users/seydoudoumbia/these/expe/word_embedding/wiki.en.mapped.vec.txt' INTO TABLE clwe_en_artexte_2018_2 FIELDS TERMINATED BY ";" LINES TERMINATED BY "\n";
+
+
+LOAD DATA LOCAL INFILE '/Users/seydoudoumbia/these/expe/terrier-core/terms_scores.txt' INTO TABLE  terms_similarity_mono_ap8889 FIELDS TERMINATED BY " " LINES TERMINATED BY "\n";
+
+
+Translations for enfant
+	  0.1782122373980286: mother
+	  0.19406661901677397: toddler
+	  0.1946631716384313: children
+	  0.18947237663796765: infant
+	  0.2435855953087984: child
+
+
+
+/Users/seydoudoumbia/projets/weclir2
+/Users/seydoudoumbia/projets/weclir2/var/index
+/Users/seydoudoumbia/projets/weclir2/clef/clef2003_query_en.txt
+/Users/seydoudoumbia/softwares/terrier-core-4.2/var/results/trec
+vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt
+vectors_ap8889_cbow_s1000_w10_neg20_hs0_sam1e-4_iter5.txt
+10
+500
+
+
+/Users/seydoudoumbia/projets/weclir2
+/Users/seydoudoumbia/softwares/terrier-core-4.2/var/index
+/Users/seydoudoumbia/projets/weclir2/clef/clef2003_query_en.txt
+/Users/seydoudoumbia/softwares/terrier-core-4.2/var/results/trec
+wiki.multi.fr.vec
+wiki.multi.en.vec
+10
+500
+
+
+/Users/seydoudoumbia/these/expe/terrier-core
+index
+share/clef/query_all_fr.txt
+/Users/seydoudoumbia/these/expe/terrier-core/var/results/trec
+wiki.multi.fr.vec
+wiki.multi.en.vec
+1
+500
+vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt
+vectors_ap8889_cbow_s1000_w10_neg20_hs0_sam1e-4_iter5.txt
+wiki.multi.fr.vec
+wiki.multi.en.vec
+
+
+query: liberté parole internet
+
+Translations for liberté
+  0.595720276139199: freedom
+  0.40427972386080113: motherland
+
+
+Translations for parole
+	  0.5008338457316482: speech
+	  0.4991661542683518: spokesperson
+
+Translations for internet
+	  0.47698486917975813: web
+	  0.5230151308202418: internet
+
+
+new query: freedom motherland speech spokesperson web internet
+
+
+-Dterrier.home=/Users/seydoudoumbia/these/expe/workspace_phd_1/terrier-core-4.4
+-Dtrec.topics=/Users/seydoudoumbia/these/expe/workspace_phd_1/terrier-core-4.4/share/clef/query_title_fr.trec
+-Dtrec.model= BM25
+
+
+
+/Volumes/SDEXT/these/vectors_ap8889_skipgram_s1000_w10_neg20_hs0_sam1e-4_iter5.txt
+/Volumes/SDEXT/these/vectors_ap8889_cbow_s1000_w10_neg20_hs0_sam1e-4_iter5.txt
+/Volumes/SDEXT/these/wiki.multi.fr.vec
+/Volumes/SDEXT/these/wiki.multi.en.vec
+1
+500
+
+tokeniser=UTFTokeniser
+
+-Dterrier.home=/Users/seydoudoumbia/these/expe/workspace_php_test/terrier-core-4.4
+-Dtrec.topics=/Users/seydoudoumbia/these/expe/workspace_php_test/terrier-core-4.4/share/clef/query_title_fr.trec

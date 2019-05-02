@@ -486,16 +486,27 @@ public class TranslationLMManager extends Manager{
 
 				String[] input = line.split(" ");
 				String term = input[0];
-				LexiconEntry lEntry = this.lex.getLexiconEntry(term);
+				
+				
+				String termPipelined = tpa.pipelineTerm(term);
+				if(termPipelined==null) {
+					//System.err.println("Term delected after pipeline: "+term);
+					continue;
+				}
+
+
+				LexiconEntry lEntry = this.lex.getLexiconEntry(termPipelined);
 				//screen the term for out of vacabulary and not in the threshold range
-				if (lEntry==null)
-				{
+				if (lEntry==null) {
 					//System.err.println("W2V Term Not Found: "+term);
 					continue;
 				}
+				
+				/*
 				if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 						|| lEntry.getDocumentFrequency()>this.topthreshold || term.matches(".*\\d+.*"))
 					continue;
+				*/
 
 				foundterms++;
 				int dimension=0;
@@ -1493,10 +1504,13 @@ public class TranslationLMManager extends Manager{
 
 			IterablePosting ip = this.invertedIndex.getPostings(lEntry);
 
-			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency());
+			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency()+")");
+			
+			/*
 			if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 					|| lEntry.getDocumentFrequency()>this.topthreshold || w.matches(".*\\d+.*"))
 				System.out.println("Term " + w + " matches the conditions for not beeing considered by w2v (cf, docf<" + this.rarethreshold + " || docf>" + this.topthreshold);
+				*/
 
 
 			//HashMap<String, Double> top_translations_of_w = getTopW2VTranslations(w); // <- this is the line to change if we want other transltions
@@ -2684,6 +2698,9 @@ public class TranslationLMManager extends Manager{
 			break; 
 		case "w2v_self_cl":
 			dir_t_w2v_self_cl();
+			break; 
+		case "w2v_full":
+			dir_t_w2v_full();
 			break; 
 		case "w2v_full_cl":
 			dir_t_w2v_full_cl();
