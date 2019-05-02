@@ -29,6 +29,7 @@ import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.terrier.applications.batchquerying.TRECQuerying;
+import org.terrier.clir.ClirQuerying;
 import org.terrier.evaluation.AdhocEvaluation;
 import org.terrier.evaluation.Evaluation;
 import org.terrier.evaluation.TrecEvalEvaluation;
@@ -40,6 +41,7 @@ import org.terrier.structures.indexing.singlepass.Inverted2DirectIndexBuilder;
 import org.terrier.structures.indexing.singlepass.hadoop.Inv2DirectMultiReduce;
 import org.terrier.structures.outputformat.TRECDocidOutputFormat;
 import org.terrier.utility.ApplicationSetup;
+
 /**
  * The text-based application that handles querying
  * with Terrier, for TREC-like test collections.
@@ -131,6 +133,8 @@ public class TrecTerrier {
 
 	/** whether to print the meta index */
 	protected boolean printmeta;
+	
+	protected boolean clir;
 
 	/**
 	  * Specifies whether to perform trec_eval like evaluation,
@@ -293,6 +297,8 @@ public class TrecTerrier {
 				printstats = true;
 			else if (args[pos].equals("--printmeta"))
 				printmeta = true;
+			else if (args[pos].equals("--clir"))
+				clir = true;
 			else if (args[pos].equals("-e") || args[pos].equals("--evaluate")){
 				evaluation = true;
 			}
@@ -534,6 +540,11 @@ public class TrecTerrier {
 		} else if (inverted2direct) {
 			String[] builderCommand = {};
 			Inverted2DirectIndexBuilder.main(builderCommand);
+			
+		} else if (clir) {
+			
+			ClirQuerying clirQuerying = new ClirQuerying();
+			clirQuerying.processQueries();
 		}
 
 		long endTime = System.currentTimeMillis();
