@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="mysql8-16a5179dd3d-e5db48d94872c33" provider="mysql" driver="mysql8" name="MySQL 8+ - wyqk6x041tfxg39e.chr7pe7iynqr.eu-west-1" save-password="true" read-only="false">
+		<connection host="wyqk6x041tfxg39e.chr7pe7iynqr.eu-west-1.rds.amazonaws.com" port="3306" server="" database="" url="jdbc:mysql://wyqk6x041tfxg39e.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/" user="rq356xs70up6usw0" password="AAAEOhdCHBRWA1MqEA5JU0b2" type="dev"/>
+	</data-source>
+	<filters/>
+</data-sources>

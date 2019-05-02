@@ -1,0 +1,5 @@
+/doc/javadoc/*
+/classes/
+/target/
+/logs/
+/target/
