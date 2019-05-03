@@ -141,7 +141,7 @@ public class TuneSkipgramSelf {
 			double mu = muvalues[i];
 			tlm_w2v_skipgram.setDirMu(mu);
 			TRECDocnoOutputFormat TRECoutput_w2v_skipgram = new TRECDocnoOutputFormat(index);
-			PrintWriter pt_w2v_skipgram = new PrintWriter(new File("var/results/res_dir_w2v_skipgram_self" + String.valueOf(mu) + ".res"));
+			PrintWriter pt_w2v_skipgram = new PrintWriter(new File("var/results/res_dir_w2v_skipgram_self_" + String.valueOf(mu) + ".res"));
 			QuerySource querySource = getQueryParser();
 			// iterating through the queries
 			while (querySource.hasNext()) {
