@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import org.terrier.applications.batchquerying.TRECQuerying;
 import org.terrier.clir.ClirQuerying;
 import org.terrier.clir.TuneSkipGram;
+import org.terrier.clir.TuneSkipgramSelf;
 import org.terrier.evaluation.AdhocEvaluation;
 import org.terrier.evaluation.Evaluation;
 import org.terrier.evaluation.TrecEvalEvaluation;
@@ -138,6 +139,8 @@ public class TrecTerrier {
 	protected boolean clir;
 
 	protected boolean tuneskipgram;
+	
+	protected boolean tuneskipgramself;
 
 	/**
 	 * Specifies whether to perform trec_eval like evaluation,
@@ -304,6 +307,8 @@ public class TrecTerrier {
 				clir = true;
 			else if (args[pos].equals("--tuneskipgram"))
 				tuneskipgram = true;
+			else if (args[pos].equals("--tuneskipgramself"))
+				tuneskipgramself = true;
 			else if (args[pos].equals("-e") || args[pos].equals("--evaluate")){
 				evaluation = true;
 			}
@@ -554,7 +559,12 @@ public class TrecTerrier {
 
 			TuneSkipGram tuneskipgram = new TuneSkipGram();
 			tuneskipgram.processQueries();
-		} 
+		} else if (tuneskipgramself) {
+
+			TuneSkipgramSelf tuneskipgramself = new TuneSkipgramSelf();
+			tuneskipgramself.processQueries();
+		}
+		
 
 		long endTime = System.currentTimeMillis();
 		System.err.println("Time elapsed: " + (endTime-startTime)/1000.0d + " seconds.");
