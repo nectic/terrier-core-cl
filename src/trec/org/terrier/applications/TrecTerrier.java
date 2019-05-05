@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import org.terrier.applications.batchquerying.TRECQuerying;
 import org.terrier.clir.ClirQuerying;
 import org.terrier.clir.TuneSkipGram;
+import org.terrier.clir.TuneSkipgramNotNormalised;
 import org.terrier.clir.TuneSkipgramSelf;
 import org.terrier.evaluation.AdhocEvaluation;
 import org.terrier.evaluation.Evaluation;
@@ -141,6 +142,8 @@ public class TrecTerrier {
 	protected boolean tuneskipgram;
 	
 	protected boolean tuneskipgramself;
+	
+	protected boolean tuneskipgramnotnorm;
 
 	/**
 	 * Specifies whether to perform trec_eval like evaluation,
@@ -309,6 +312,11 @@ public class TrecTerrier {
 				tuneskipgram = true;
 			else if (args[pos].equals("--tuneskipgramself"))
 				tuneskipgramself = true;
+			
+			else if (args[pos].equals("--tuneskipgramnotnorm"))
+				tuneskipgramnotnorm = true;
+			
+			
 			else if (args[pos].equals("-e") || args[pos].equals("--evaluate")){
 				evaluation = true;
 			}
@@ -563,6 +571,10 @@ public class TrecTerrier {
 
 			TuneSkipgramSelf tuneskipgramself = new TuneSkipgramSelf();
 			tuneskipgramself.processQueries();
+		} else if (tuneskipgramnotnorm) {
+
+			TuneSkipgramNotNormalised tuneskipgramnotnorm = new TuneSkipgramNotNormalised();
+			tuneskipgramnotnorm.processQueries();
 		}
 		
 
