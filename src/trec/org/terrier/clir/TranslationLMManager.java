@@ -2690,6 +2690,9 @@ public class TranslationLMManager extends Manager{
 		case "w2v_phrase":
 			dir_t_w2v_phrase();
 			break;
+		case "w2v_notnorm":
+			dir_t_w2v_notnormalised();
+			break;
 		case "w2v_notnorm_cl":
 			dir_t_w2v_notnormalised_cl();
 			break;  
