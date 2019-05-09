@@ -30,6 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.terrier.applications.batchquerying.TRECQuerying;
 import org.terrier.clir.ClirQuerying;
+import org.terrier.clir.TuneLM;
 import org.terrier.clir.TuneSkipGram;
 import org.terrier.clir.TuneSkipGramFull;
 import org.terrier.clir.TuneSkipgramNotNormalised;
@@ -147,6 +148,8 @@ public class TrecTerrier {
 	protected boolean tuneskipgramnotnorm;
 	
 	protected boolean tuneskipgramfull;
+	
+	protected boolean tunelm;
 
 	/**
 	 * Specifies whether to perform trec_eval like evaluation,
@@ -321,6 +324,9 @@ public class TrecTerrier {
 			
 			else if (args[pos].equals("--tuneskipgramfull"))
 				tuneskipgramfull = true;
+			
+			else if (args[pos].equals("--tunlm"))
+				tunelm = true;
 			
 			else if (args[pos].equals("-e") || args[pos].equals("--evaluate")){
 				evaluation = true;
@@ -584,6 +590,10 @@ public class TrecTerrier {
 
 			TuneSkipGramFull tuneskipgramfull = new TuneSkipGramFull();
 			tuneskipgramfull.processQueries();
+		} else if (tunelm) {
+
+			TuneLM tunelm = new TuneLM();
+			tunelm.processQueries();
 		}
 		
 
