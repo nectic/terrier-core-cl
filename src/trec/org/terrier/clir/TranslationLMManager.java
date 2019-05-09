@@ -1506,13 +1506,11 @@ public class TranslationLMManager extends Manager{
 
 			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency()+")");
 			
-			/*
+			
 			if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 					|| lEntry.getDocumentFrequency()>this.topthreshold || w.matches(".*\\d+.*"))
 				System.out.println("Term " + w + " matches the conditions for not beeing considered by w2v (cf, docf<" + this.rarethreshold + " || docf>" + this.topthreshold);
-				*/
-
-
+				
 			//HashMap<String, Double> top_translations_of_w = getTopW2VTranslations(w); // <- this is the line to change if we want other transltions
 			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime(w);
 			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
