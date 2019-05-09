@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
 import org.terrier.applications.batchquerying.TRECQuerying;
 import org.terrier.clir.ClirQuerying;
 import org.terrier.clir.TuneCbow;
+import org.terrier.clir.TuneCbowFull;
 import org.terrier.clir.TuneCbowSelf;
 import org.terrier.clir.TuneLM;
 import org.terrier.clir.TuneSkipGram;
@@ -159,6 +160,8 @@ public class TrecTerrier {
 	protected boolean tunecbow;
 
 	protected boolean tunecbowself;
+	
+	protected boolean tunecbowfull;
 
 
 
@@ -345,6 +348,9 @@ public class TrecTerrier {
 
 			else if (args[pos].equals("--tunecbowself"))
 				tunecbowself = true;
+			
+			else if (args[pos].equals("--tunecbowfull"))
+				tunecbowfull = true;
 
 			else if (args[pos].equals("--tunelm"))
 				tunelm = true;
@@ -622,6 +628,10 @@ public class TrecTerrier {
 		} else if (tunecbowself) {
 			TuneCbowSelf tunecbowself = new TuneCbowSelf();
 			tunecbowself.processQueries();
+
+		} else if (tunecbowfull) {
+			TuneCbowFull tunecbowfull = new TuneCbowFull();
+			tunecbowfull.processQueries();
 
 		}
 
