@@ -325,7 +325,7 @@ public class TrecTerrier {
 			else if (args[pos].equals("--tuneskipgramfull"))
 				tuneskipgramfull = true;
 			
-			else if (args[pos].equals("--tunlm"))
+			else if (args[pos].equals("--tunelm"))
 				tunelm = true;
 			
 			else if (args[pos].equals("-e") || args[pos].equals("--evaluate")){
