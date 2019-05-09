@@ -37,6 +37,7 @@ import org.terrier.clir.TuneLM;
 import org.terrier.clir.TuneSkipGram;
 import org.terrier.clir.TuneSkipGramCl;
 import org.terrier.clir.TuneSkipGramFull;
+import org.terrier.clir.TuneSkipGramFullCl;
 import org.terrier.clir.TuneSkipgramNotNormalised;
 import org.terrier.clir.TuneSkipgramPhrase;
 import org.terrier.clir.TuneSkipgramSelf;
@@ -165,7 +166,10 @@ public class TrecTerrier {
 	protected boolean tunecbowfull;
 
 	protected boolean tuneskipgramcl;
-
+	
+	protected boolean tuneskipgramfullcl;
+	
+	
 
 	/**
 	 * Specifies whether to perform trec_eval like evaluation,
@@ -355,7 +359,10 @@ public class TrecTerrier {
 			
 			else if (args[pos].equals("--tuneskipgramcl"))
 				tuneskipgramcl = true;
-
+			
+			else if (args[pos].equals("--tuneskipgramfullcl"))
+				tuneskipgramfullcl = true;
+			
 			else if (args[pos].equals("--tunelm"))
 				tunelm = true;
 
@@ -647,8 +654,14 @@ public class TrecTerrier {
 		else if (tuneskipgramcl) {
 			TuneSkipGramCl tuneskipgramcl = new TuneSkipGramCl();
 			tuneskipgramcl.processQueries();
-
 		}
+		
+		else if (tuneskipgramfullcl) {
+			TuneSkipGramFullCl tuneskipgramfullcl = new TuneSkipGramFullCl();
+			tuneskipgramfullcl.processQueries();
+		}
+		
+		
 
 
 		long endTime = System.currentTimeMillis();
