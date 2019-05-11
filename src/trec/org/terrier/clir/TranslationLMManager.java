@@ -27,6 +27,9 @@ import org.terrier.matching.Matching;
 import org.terrier.matching.MatchingQueryTerms;
 import org.terrier.matching.QueryResultSet;
 import org.terrier.matching.ResultSet;
+import org.terrier.matching.models.BM25;
+import org.terrier.matching.models.DirichletLM;
+import org.terrier.matching.models.TF_IDF;
 import org.terrier.matching.models.WeightingModelLibrary;
 import org.terrier.querying.Manager;
 import org.terrier.querying.Request;
@@ -414,9 +417,9 @@ public class TranslationLMManager extends Manager{
 
 	public void initialiseW2V_cl(String src_filepath, String trg_filepath) throws NumberFormatException, IOException {
 
-		
+
 		String score_path = ApplicationSetup.getProperty("clir.score.file","/Volumes/SDEXT/these/score_fr_en_EEB1.ser");
-		
+
 		File f = new File(score_path);
 		if(f.exists()) { 
 			/* load the matrix that has been serialised to disk */ 
@@ -486,8 +489,8 @@ public class TranslationLMManager extends Manager{
 
 				String[] input = line.split(" ");
 				String term = input[0];
-				
-				
+
+
 				String termPipelined = tpa.pipelineTerm(term);
 				if(termPipelined==null) {
 					//System.err.println("Term delected after pipeline: "+term);
@@ -501,12 +504,12 @@ public class TranslationLMManager extends Manager{
 					//System.err.println("W2V Term Not Found: "+term);
 					continue;
 				}
-				
+
 				/*
 				if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 						|| lEntry.getDocumentFrequency()>this.topthreshold || term.matches(".*\\d+.*"))
 					continue;
-				*/
+				 */
 
 				foundterms++;
 				int dimension=0;
@@ -553,7 +556,7 @@ public class TranslationLMManager extends Manager{
 
 				String[] input = line.split(" ");
 				String term = input[0];
-				
+
 				String termPipelined = tpa.pipelineTerm(term);
 				if(termPipelined==null) {
 					//System.err.println("Term delected after pipeline: "+term);
@@ -567,7 +570,7 @@ public class TranslationLMManager extends Manager{
 					//System.err.println("W2V Term Not Found: "+term);
 					continue;
 				}
-				
+
 				/*
 				if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 						|| lEntry.getDocumentFrequency()>this.topthreshold || term.matches(".*\\d+.*"))
@@ -1505,12 +1508,12 @@ public class TranslationLMManager extends Manager{
 			IterablePosting ip = this.invertedIndex.getPostings(lEntry);
 
 			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency()+")");
-			
-			
+
+
 			if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 					|| lEntry.getDocumentFrequency()>this.topthreshold || w.matches(".*\\d+.*"))
 				System.out.println("Term " + w + " matches the conditions for not beeing considered by w2v (cf, docf<" + this.rarethreshold + " || docf>" + this.topthreshold);
-				
+
 			//HashMap<String, Double> top_translations_of_w = getTopW2VTranslations(w); // <- this is the line to change if we want other transltions
 			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime(w);
 			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
@@ -1639,7 +1642,7 @@ public class TranslationLMManager extends Manager{
 			if(fullw2vmatrix_src.get(w)==null)
 				continue;
 
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime_cl(w);
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
 			for(String u : top_translations_of_w.keySet()) {
 				String uPipelined = tpa.pipelineTerm(u);
 				if(uPipelined==null) {
@@ -1661,8 +1664,19 @@ public class TranslationLMManager extends Manager{
 					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
+					
+					//BM25 matchingMethod = new BM25();
+					//TF_IDF matchingMethod = new TF_IDF();
+					DirichletLM matchingMethod = new DirichletLM();
+					matchingMethod.setParameter(c);
+					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+					matchingMethod.setKeyFrequency(1);
+					matchingMethod.setEntryStatistics(lu);
+					matchingMethod.prepare();
+					
+					double score = matchingMethod.score(ip);
 
-					double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 					if(log_p_d_q[ip.getId()]==-1000.0)
 						log_p_d_q[ip.getId()]=0.0;
@@ -2661,6 +2675,9 @@ public class TranslationLMManager extends Manager{
 		case "dir_theory":
 			dir_theory();
 			break;
+		case "bm25":
+			bm25();
+			break;
 		case "mi":
 			dir_t_mi_atquery();
 			break;
@@ -2711,6 +2728,57 @@ public class TranslationLMManager extends Manager{
 			System.err.println("No translation explicitely set!");
 			break;
 		}
+	}
+
+	public void bm25() throws IOException {
+
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String ti = this.queryTerms[i];
+			String tiPipelined = tpa.pipelineTerm(ti);
+			if(tiPipelined==null) {
+				continue;
+			}
+			LexiconEntry lEntry = this.lex.getLexiconEntry(tiPipelined);
+			if (lEntry==null) {
+				continue;
+			}
+
+			IterablePosting ip = this.invertedIndex.getPostings(lEntry);
+
+			while(ip.next() != IterablePosting.EOL) {
+				double tf = (double)ip.getFrequency();
+				double c = this.mu;
+				double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+				double docLength = (double) ip.getDocumentLength();
+				double colltermFrequency = (double)lEntry.getFrequency();
+				
+				//BM25 matchingMethod = new BM25();
+				//TF_IDF matchingMethod = new TF_IDF();
+				DirichletLM matchingMethod = new DirichletLM();
+				
+				matchingMethod.setParameter(40);
+				
+				matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+				matchingMethod.setKeyFrequency(1);
+				matchingMethod.setEntryStatistics(lEntry);
+				matchingMethod.prepare();
+				double score = matchingMethod.score(ip);
+				
+				/*
+				double score =	
+						WeightingModelLibrary.log( (docLength* tf/docLength + c * (colltermFrequency/numberOfTokens)) / (c + docLength)) 
+						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency/numberOfTokens) ) 
+						+ WeightingModelLibrary.log(c/(c + docLength))
+				*/
+						;
+				log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+			}
+		}
+
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
 	}
 
 	public void jm(String translationLMMethod) {

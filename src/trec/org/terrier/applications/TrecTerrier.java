@@ -661,9 +661,6 @@ public class TrecTerrier {
 			tuneskipgramfullcl.processQueries();
 		}
 		
-		
-
-
 		long endTime = System.currentTimeMillis();
 		System.err.println("Time elapsed: " + (endTime-startTime)/1000.0d + " seconds.");
 	}
