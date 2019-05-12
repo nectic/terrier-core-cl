@@ -1662,10 +1662,10 @@ public class TranslationLMManager extends Manager{
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
 					
-					//BM25 matchingMethod = new BM25();
+					BM25 matchingMethod = new BM25();
 					//TF_IDF matchingMethod = new TF_IDF();
-					DirichletLM matchingMethod = new DirichletLM();
-					matchingMethod.setParameter(c);
+					//DirichletLM matchingMethod = new DirichletLM();
+					//matchingMethod.setParameter(c);
 					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
 					matchingMethod.setKeyFrequency(1);
 					matchingMethod.setEntryStatistics(lu);
