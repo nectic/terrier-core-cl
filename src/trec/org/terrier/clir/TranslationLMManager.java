@@ -658,8 +658,6 @@ public class TranslationLMManager extends Manager{
 					continue;
 				}
 
-				System.err.println("===>>>Term : " + term);
-
 				foundterms++;
 				int dimension=0;
 				double[] vector = new double[numberofdimensions];
