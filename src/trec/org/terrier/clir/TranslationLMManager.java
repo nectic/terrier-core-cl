@@ -658,7 +658,7 @@ public class TranslationLMManager extends Manager{
 					continue;
 				}
 
-				//System.err.println("===>>>Term : " + term);
+				System.err.println("===>>>Term : " + term);
 
 				foundterms++;
 				int dimension=0;
