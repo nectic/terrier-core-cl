@@ -418,7 +418,7 @@ public class TranslationLMManager extends Manager{
 	public void initialiseW2V_cl(String src_filepath, String trg_filepath) throws NumberFormatException, IOException {
 
 
-		String score_path = ApplicationSetup.getProperty("clir.score.file","/Volumes/SDEXT/these/score_fr_en_EEB1.ser");
+		String score_path = ApplicationSetup.getProperty("clir.score.file","/Volumes/SDEXT/these/score_fr_en_EEB1_1.ser");
 
 		File f = new File(score_path);
 		if(f.exists()) { 
@@ -641,7 +641,6 @@ public class TranslationLMManager extends Manager{
 					count++;
 					continue;
 				}
-
 
 				String[] input = line.split(" ");
 				String term = input[0];
