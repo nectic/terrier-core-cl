@@ -1671,7 +1671,7 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.setEntryStatistics(lu);
 					matchingMethod.prepare();
 					
-					double score = matchingMethod.score(ip);
+					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
 
 					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
