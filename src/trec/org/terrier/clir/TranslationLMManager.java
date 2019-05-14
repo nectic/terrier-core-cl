@@ -22,6 +22,10 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.Map.Entry;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.terrier.matching.CollectionResultSet;
 import org.terrier.matching.Matching;
 import org.terrier.matching.MatchingQueryTerms;
@@ -49,6 +53,11 @@ import org.terrier.structures.postings.IterablePosting;
 import org.terrier.terms.TermPipelineAccessor;
 import org.terrier.utility.ApplicationSetup;
 import org.terrier.utility.ArrayUtils;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 import org.terrier.applications.batchquerying.*;
 
 import com.google.common.collect.Ordering;
@@ -1743,7 +1752,10 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.setEntryStatistics(lu);
 					matchingMethod.prepare();
 
-					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+					//double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+					
+					double score = matchingMethod.score(ip);
+
 
 					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
@@ -4016,6 +4028,49 @@ public class TranslationLMManager extends Manager{
 		// TODO Auto-generated method stub
 		System.out.println("test");
 	}
+
+
+	public void initialiseW2V_cl_dico(String src_we) throws IOException {
+		//HashMap<String, TreeMultimap<Double, String> > w2v_inverted_translation = new HashMap<String, TreeMultimap<Double, String> >();
+
+		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+		try {
+		
+			final DocumentBuilder builder = factory.newDocumentBuilder();
+			final Document document= builder.parse(new File("French_English_Online_Dictiona.xml"));
+			final Element racine = document.getDocumentElement();
+			final NodeList racineNoeuds = racine.getChildNodes();
+			final int nbRacineNoeuds = racineNoeuds.getLength();
+
+			for (int i = 0; i<nbRacineNoeuds; i++) {
+				if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+					final Element dicoEntry = (Element) racineNoeuds.item(i);
+					TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
+					final Element src = (Element) dicoEntry.getElementsByTagName("h1").item(0);
+					final Element trg = (Element) dicoEntry.getElementsByTagName("p").item(0);
+					String w = src.getTextContent();
+					String[] u_tab = trg.getTextContent().split(",");
+					for (int j = 0; j < u_tab.length; j++) {
+						String u = u_tab[j];
+						double p_dico_w_u = (double)1/(double)u_tab.length;
+						inverted_translation_w.put(p_dico_w_u, u);
+						System.out.println("("+w+","+u+") = "+p_dico_w_u);
+					}
+
+					w2v_inverted_translation.put(w, inverted_translation_w);
+
+				}				
+			}			
+		}
+		catch (final ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 }
 

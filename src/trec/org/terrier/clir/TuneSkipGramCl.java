@@ -136,9 +136,16 @@ public class TuneSkipGramCl {
 
 		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);
 		
+		
 		System.out.println("Initialise src & trg vectors ");
 		tlm_w2v_skipgram.initialiseW2V_cl(src_we,trg_we);;
 		System.out.println("src trg vectors initialised");
+		
+		/*
+		System.out.println("Initialise src & trg vectors ");
+		tlm_w2v_skipgram.initialiseW2V_cl_dico(src_we);;
+		System.out.println("src trg vectors initialised");
+		*/
 		
 		tlm_w2v_skipgram.setTranslation("w2v_cl");
 		tlm_w2v_skipgram.setRarethreshold(index.getCollectionStatistics().getNumberOfDocuments()/200);
