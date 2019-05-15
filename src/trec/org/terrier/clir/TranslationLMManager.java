@@ -1996,7 +1996,56 @@ public class TranslationLMManager extends Manager{
 			stopwords.add(st);
 		}
 		brStopWordsFile.close();
+		
+		for(int docid = 0; docid < numberOfDocuments; docid++) {
+			
+			System.out.println("docid = " + docid);
+			
+			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
+			IterablePosting docPostings = di.getPostings(doc);
+			while (docPostings.next() != IterablePosting.EOL) {
+				Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
+				String u = lee.getKey();
+				//iterating over all query terms
+				for(int i=0; i<this.queryTerms.length;i++) {
+					String w = this.queryTerms[i];
+					if(stopwords.contains(w.toLowerCase())) {
+						//System.err.println("Source Term exist in stop words : " + w);
+						continue;
+					}
+					
+					if(fullw2vmatrix_src.get(w)==null)
+						continue;
+					
+					HashMap<String, Double> translation_w = w2v_translation.get(w);
+					
+					if(!translation_w.containsKey(u))
+						continue;
+					
+					double p_w_u = translation_w.get(u);
 
+					double tf = (double)docPostings.getFrequency();
+					double c = this.mu;
+					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+					double docLength = (double) docPostings.getDocumentLength();
+					double colltermFrequency = (double)lee.getValue().getFrequency();
+
+					double p_u_d = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+					double score = p_w_u*p_u_d;
+					
+					if(log_p_d_q[docid]==-1000.0)
+						log_p_d_q[docid]=0.0;
+
+					log_p_d_q[docid] = log_p_d_q[docid] +  score;
+					
+				}
+			}
+
+		}
+
+		/*
+		
 		//iterating over all query terms
 		for(int i=0; i<this.queryTerms.length;i++) {
 			String w = this.queryTerms[i];
@@ -2043,38 +2092,11 @@ public class TranslationLMManager extends Manager{
 					log_p_d_q[docid] = log_p_d_q[docid] +  score;
 				
 				}
-
 			}
-
-			/*
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
-			for(String u : top_translations_of_w.keySet()) {
-				String uPipelined = tpa.pipelineTerm(u);
-				if(uPipelined==null) {
-					System.err.println("Term delected after pipeline: "+u);
-					continue;
-				}
-				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
-				if (lu==null) {
-					System.err.println("Term not found in corpora : "+u);
-					continue;
-				}
-				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
-				while(ip.next() != IterablePosting.EOL) {
-					double tf = (double)ip.getFrequency();
-					double c = this.mu;
-					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-					double docLength = (double) ip.getDocumentLength();
-					double colltermFrequency = (double)lu.getFrequency();
-					double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-					if(log_p_d_q[ip.getId()]==-1000.0)
-						log_p_d_q[ip.getId()]=0.0;
-
-					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
-				}
-			}
-			 */
 		}
+		
+		*/
+		
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 
