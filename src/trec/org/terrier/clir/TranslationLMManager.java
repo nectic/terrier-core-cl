@@ -46,6 +46,7 @@ import org.terrier.structures.Index;
 import org.terrier.structures.Lexicon;
 import org.terrier.structures.LexiconEntry;
 import org.terrier.structures.MetaIndex;
+import org.terrier.structures.Pointer;
 import org.terrier.structures.PostingIndex;
 import org.terrier.structures.bit.DirectIndex;
 import org.terrier.structures.bit.InvertedIndex;
@@ -77,6 +78,9 @@ public class TranslationLMManager extends Manager{
 	public double alpha=0.7;
 
 	public HashMap<String, TreeMultimap<Double, String> > w2v_inverted_translation = new HashMap<String, TreeMultimap<Double, String> >();
+
+	public HashMap<String, HashMap<String, Double> > w2v_translation = new HashMap<String, HashMap<String, Double> >();
+
 
 	public TranslationMap translationmap = null;
 	public String translation_method = "null";
@@ -443,6 +447,7 @@ public class TranslationLMManager extends Manager{
 				double[] vector_w = fullw2vmatrix_src.get(w);
 				TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
 				HashMap<String,Double> tmp_w = new HashMap<String,Double>();
+				HashMap<String, Double> translation_w = new HashMap<String,Double>();
 				double sum_cosines=0.0;
 				for(String u : fullw2vmatrix_trg.keySet()) {
 					double[] vector_u = fullw2vmatrix_trg.get(u);
@@ -464,8 +469,10 @@ public class TranslationLMManager extends Manager{
 				for(String u: tmp_w.keySet()) {
 					double p_w2v_w_u = tmp_w.get(u)/sum_cosines;
 					inverted_translation_w.put(p_w2v_w_u, u);
+					translation_w.put(u,p_w2v_w_u);
 				}
 				w2v_inverted_translation.put(w, inverted_translation_w);
+				w2v_translation.put(w, translation_w);
 			}
 			this.writemap(f.getAbsolutePath());
 		}
@@ -1721,6 +1728,7 @@ public class TranslationLMManager extends Manager{
 				continue;
 
 			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
+
 			for(String u : top_translations_of_w.keySet()) {
 				String uPipelined = tpa.pipelineTerm(u);
 				if(uPipelined==null) {
@@ -1753,7 +1761,85 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.prepare();
 
 					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
-					
+
+					//double score = matchingMethod.score(ip);
+
+
+					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+					if(log_p_d_q[ip.getId()]==-1000.0)
+						log_p_d_q[ip.getId()]=0.0;
+
+					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+
+				}
+			}
+		}
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+	}
+
+
+	public void dir_t_dico_cl() throws IOException, InterruptedException {
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+
+			if(stopwords.contains(w.toLowerCase())) {
+				//System.err.println("Source Term exist in stop words : " + w);
+				continue;
+			}
+
+			//if(fullw2vmatrix_src.get(w)==null)
+			//	continue;
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
+
+			for(String u : top_translations_of_w.keySet()) {
+				String uPipelined = tpa.pipelineTerm(u);
+				if(uPipelined==null) {
+					System.err.println("Term delected after pipeline: "+u);
+					continue;
+				}
+				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
+				if (lu==null)
+				{
+					System.err.println("Term not found in corpora : "+u);
+					continue;
+				}
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
+
+				while(ip.next() != IterablePosting.EOL) {
+
+					double tf = (double)ip.getFrequency();
+					double c = this.mu;
+					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+					double docLength = (double) ip.getDocumentLength();
+					double colltermFrequency = (double)lu.getFrequency();
+
+					//BM25 matchingMethod = new BM25();
+					//TF_IDF matchingMethod = new TF_IDF();
+					DirichletLM matchingMethod = new DirichletLM();
+					matchingMethod.setParameter(c);
+					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+					matchingMethod.setKeyFrequency(1);
+					matchingMethod.setEntryStatistics(lu);
+					matchingMethod.prepare();
+
+					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+
 					//double score = matchingMethod.score(ip);
 
 
@@ -1895,6 +1981,11 @@ public class TranslationLMManager extends Manager{
 	}
 
 	public void dir_t_w2v_full_cl() throws IOException, InterruptedException {
+
+		DocumentIndex doi = index.getDocumentIndex();
+		PostingIndex<Pointer> di = (PostingIndex<Pointer>) index.getDirectIndex();
+		int numberOfDocuments = doi.getNumberOfDocuments();
+
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 		File stopWordsFile = new File("share/stopwords-fr.txt"); 
@@ -1917,6 +2008,45 @@ public class TranslationLMManager extends Manager{
 			if(fullw2vmatrix_src.get(w)==null)
 				continue;
 
+			HashMap<String, Double> translation_w = w2v_translation.get(w);
+
+			for(int docid = 0; docid < numberOfDocuments; docid++) {
+
+				DocumentIndexEntry doc = doi.getDocumentEntry(docid);	
+
+				IterablePosting docPostings = di.getPostings(doc);
+
+				while (docPostings.next() != IterablePosting.EOL) {
+					Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
+					//docTFmap.put(lee.getKey(), docPostings.getFrequency());
+
+					String u = lee.getKey();
+
+					if(!translation_w.containsKey(u))
+						continue;
+					
+					double p_w_u = translation_w.get(u);
+
+					double tf = (double)docPostings.getFrequency();
+					double c = this.mu;
+					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+					double docLength = (double) docPostings.getDocumentLength();
+					double colltermFrequency = (double)lee.getValue().getFrequency();
+
+					double p_u_d = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+					double score = p_w_u*p_u_d;
+					
+					if(log_p_d_q[docPostings.getId()]==-1000.0)
+						log_p_d_q[docPostings.getId()]=0.0;
+
+					log_p_d_q[docPostings.getId()] = log_p_d_q[docPostings.getId()] +  score;
+				
+				}
+
+			}
+
+			/*
 			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
 			for(String u : top_translations_of_w.keySet()) {
 				String uPipelined = tpa.pipelineTerm(u);
@@ -1943,9 +2073,11 @@ public class TranslationLMManager extends Manager{
 					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
 				}
 			}
+			 */
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
+
 	}
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
@@ -2783,6 +2915,9 @@ public class TranslationLMManager extends Manager{
 		case "w2v_cl":
 			dir_t_w2v_cl();
 			break;
+		case "dico_cl":
+			dir_t_dico_cl();
+			break;
 		case "w2v_phrase":
 			dir_t_w2v_phrase();
 			break;
@@ -3592,12 +3727,13 @@ public class TranslationLMManager extends Manager{
 			cumsum=cumsum+w_top_cooccurence.get(u)/sums_u;
 			tcount++;
 		}
-		
-		
+
+
 		System.out.println(tcount + " translations selected, for a cumulative sum of " + cumsum);
 		return tmp_w_top_cooccurence;
 		//return w_top_cooccurence;
 	}
+
 
 	public HashMap<String, Double> getTopW2VTranslations_atquerytime(String w) {
 		TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
@@ -4039,7 +4175,7 @@ public class TranslationLMManager extends Manager{
 		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
 		try {
-		
+
 			final DocumentBuilder builder = factory.newDocumentBuilder();
 			final Document document= builder.parse(new File("French_English_Online_Dictiona.xml"));
 			final Element racine = document.getDocumentElement();

@@ -33,6 +33,7 @@ import org.terrier.clir.ClirQuerying;
 import org.terrier.clir.TuneCbow;
 import org.terrier.clir.TuneCbowFull;
 import org.terrier.clir.TuneCbowSelf;
+import org.terrier.clir.TuneDicoCl;
 import org.terrier.clir.TuneLM;
 import org.terrier.clir.TuneSkipGram;
 import org.terrier.clir.TuneSkipGramCl;
@@ -168,6 +169,10 @@ public class TrecTerrier {
 	protected boolean tuneskipgramcl;
 	
 	protected boolean tuneskipgramfullcl;
+	
+	protected boolean tunesdicocl;
+	
+	
 	
 	
 
@@ -359,6 +364,9 @@ public class TrecTerrier {
 			
 			else if (args[pos].equals("--tuneskipgramcl"))
 				tuneskipgramcl = true;
+			
+			else if (args[pos].equals("--tunesdicocl"))
+				tunesdicocl = true;
 			
 			else if (args[pos].equals("--tuneskipgramfullcl"))
 				tuneskipgramfullcl = true;
@@ -654,6 +662,11 @@ public class TrecTerrier {
 		else if (tuneskipgramcl) {
 			TuneSkipGramCl tuneskipgramcl = new TuneSkipGramCl();
 			tuneskipgramcl.processQueries();
+		}
+		
+		else if (tunesdicocl) {
+			TuneDicoCl tunesdicocl = new TuneDicoCl();
+			tunesdicocl.processQueries();
 		}
 		
 		else if (tuneskipgramfullcl) {

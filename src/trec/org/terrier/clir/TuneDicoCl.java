@@ -28,10 +28,10 @@ import org.terrier.utility.ArrayUtils;
  * @author zuccong
  *
  */
-public class TuneSkipGramCl {
+public class TuneDicoCl {
 
 
-	protected static final Logger logger = LoggerFactory.getLogger(TuneSkipGramCl.class);
+	protected static final Logger logger = LoggerFactory.getLogger(TuneDicoCl.class);
 	
 
 	/**
@@ -138,11 +138,12 @@ public class TuneSkipGramCl {
 		
 		
 		System.out.println("Initialise src & trg vectors ");
-		tlm_w2v_skipgram.initialiseW2V_cl(src_we,trg_we);;
+		tlm_w2v_skipgram.initialiseW2V_cl_dico(src_we);;
 		System.out.println("src trg vectors initialised");
 		
 		
-		tlm_w2v_skipgram.setTranslation("w2v_cl");
+		
+		tlm_w2v_skipgram.setTranslation("dico_cl");
 		tlm_w2v_skipgram.setRarethreshold(index.getCollectionStatistics().getNumberOfDocuments()/200);
 		tlm_w2v_skipgram.setTopthreshold(index.getCollectionStatistics().getNumberOfDocuments()/2);
 		tlm_w2v_skipgram.setNumber_of_top_translation_terms(numtopterms);
@@ -152,20 +153,20 @@ public class TuneSkipGramCl {
 			double mu = muvalues[i];
 			tlm_w2v_skipgram.setDirMu(mu);
 			TRECDocnoOutputFormat TRECoutput_w2v_skipgram = new TRECDocnoOutputFormat(index);
-			PrintWriter pt_w2v_skipgram = new PrintWriter(new File("var/results/res_dir_w2v_cl_mu_" + String.valueOf(mu) + ".res"));
+			PrintWriter pt_w2v_skipgram = new PrintWriter(new File("var/results/res_dir_dico_cl_mu_" + String.valueOf(mu) + ".res"));
 			QuerySource querySource = getQueryParser();
 			// iterating through the queries
 			while (querySource.hasNext()) {
 				String query = querySource.next();
 				String qid = querySource.getQueryId();
 				qid = qid.substring(1,qid.length());
-				System.out.println("Scoring with Dir TLM with w2v (skipgram)");
+				System.out.println("Scoring with Dir TLM with dico");
 				//scoring with LM dir w2v
 				Request rq_w2v = new Request();
 				rq_w2v.setOriginalQuery(query);
 				rq_w2v.setQueryID(qid);
-				rq_w2v = tlm_w2v_skipgram.runMatching(rq_w2v, "w2v_cl", "dir");
-				TRECoutput_w2v_skipgram.printResults(pt_w2v_skipgram, rq_w2v, "dir_w2v_cl_skipgram", "Q0", 1000);
+				rq_w2v = tlm_w2v_skipgram.runMatching(rq_w2v, "dico_cl", "dir");
+				TRECoutput_w2v_skipgram.printResults(pt_w2v_skipgram, rq_w2v, "dir_dico_cl", "Q0", 1000);
 			}
 			pt_w2v_skipgram.flush();
 			pt_w2v_skipgram.close();
