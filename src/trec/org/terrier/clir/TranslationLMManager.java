@@ -3595,8 +3595,8 @@ public class TranslationLMManager extends Manager{
 		
 		
 		System.out.println(tcount + " translations selected, for a cumulative sum of " + cumsum);
-		//return tmp_w_top_cooccurence;
-		return w_top_cooccurence;
+		return tmp_w_top_cooccurence;
+		//return w_top_cooccurence;
 	}
 
 	public HashMap<String, Double> getTopW2VTranslations_atquerytime(String w) {
