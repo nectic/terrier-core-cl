@@ -2037,10 +2037,10 @@ public class TranslationLMManager extends Manager{
 
 					double score = p_w_u*p_u_d;
 					
-					if(log_p_d_q[docPostings.getId()]==-1000.0)
-						log_p_d_q[docPostings.getId()]=0.0;
+					if(log_p_d_q[docid]==-1000.0)
+						log_p_d_q[docid]=0.0;
 
-					log_p_d_q[docPostings.getId()] = log_p_d_q[docPostings.getId()] +  score;
+					log_p_d_q[docid] = log_p_d_q[docid] +  score;
 				
 				}
 
