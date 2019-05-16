@@ -2033,9 +2033,10 @@ public class TranslationLMManager extends Manager{
 						continue;
 					double p_w_u = translation_w.get(u);
 					
+					fichier_a_analyse.println("("+w+","+u+")="+p_w_u);
+					
 					if(p_w_u>2.5/100000) {
-						sum_p_w_u += p_w_u*p_u_d;
-						fichier_a_analyse.println("("+w+","+u+")="+p_w_u);
+						sum_p_w_u += p_w_u*p_u_d;	
 					}
 				}
 			}
