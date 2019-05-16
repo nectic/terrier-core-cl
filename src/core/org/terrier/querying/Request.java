@@ -111,6 +111,7 @@ public class Request implements SearchRequest
 		QueryID = qid;
 	}
 	
+	
 	/** Set the index to be used for this query */
 	public void setIndex(Index _index)
 	{

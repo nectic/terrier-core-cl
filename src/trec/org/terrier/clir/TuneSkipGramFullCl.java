@@ -103,7 +103,11 @@ public class TuneSkipGramFullCl {
 			while (querySource.hasNext()) {
 				String query = querySource.next();
 				String qid = querySource.getQueryId();
+				
+				tlm_w2v_skipgram.setQid(qid);
+				
 				qid = qid.substring(1,qid.length());
+				
 				System.out.println("Scoring with Dir TLM with w2v (skipgram)");
 				//scoring with LM dir w2v
 				Request rq_w2v = new Request();

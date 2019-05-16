@@ -102,6 +102,8 @@ public class TranslationLMManager extends Manager{
 	HashMap<String, HashMap<String, Double>> window_translations = new HashMap<String, HashMap<String, Double>>();
 
 	protected QuerySource querySource;
+	
+	private String qid;
 
 	/**
 	 * @return the windowsize
@@ -256,6 +258,11 @@ public class TranslationLMManager extends Manager{
 	 */
 	public void setAlpha(double alpha) {
 		this.alpha = alpha;
+	}
+	
+	public void setQid(String qid) {
+		this.qid=qid;
+		
 	}
 
 
@@ -1987,7 +1994,9 @@ public class TranslationLMManager extends Manager{
 		
 		MetaIndex meta = index.getMetaIndex();
 		
-		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse_"+queryTerms.toString()+".txt", "UTF-8");
+		
+		
+		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse_"+this.qid+".txt", "UTF-8");
 		double c = this.mu;
 		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 		DocumentIndex doi = index.getDocumentIndex();
@@ -4181,6 +4190,9 @@ public class TranslationLMManager extends Manager{
 		}
 
 	}
+
+
+	
 
 
 }
