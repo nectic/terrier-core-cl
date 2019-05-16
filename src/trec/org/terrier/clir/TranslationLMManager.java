@@ -1987,7 +1987,7 @@ public class TranslationLMManager extends Manager{
 		
 		MetaIndex meta = index.getMetaIndex();
 		
-		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse_"+queryTerms+".txt", "UTF-8");
+		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse_"+queryTerms.toString()+".txt", "UTF-8");
 		double c = this.mu;
 		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 		DocumentIndex doi = index.getDocumentIndex();
