@@ -2007,8 +2007,8 @@ public class TranslationLMManager extends Manager{
 		for(int docid = 0; docid < numberOfDocuments; docid++) {
 			double sum_p_w_u = 0.0;
 			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
-			System.out.println("--------------- docno=" + meta.getItem("docno", docid)  + "-----------------");
-			fichier_a_analyse.println("--------------- docno=" + meta.getItem("docno", docid)  + "-----------------");
+			System.out.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ")-----------------");
+			fichier_a_analyse.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ")-----------------");
 			double docLength = (double) doc.getDocumentLength();
 			IterablePosting docPostings = di.getPostings(doc);
 			while (docPostings.next() != IterablePosting.EOL) {
