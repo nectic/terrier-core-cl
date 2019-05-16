@@ -2007,8 +2007,8 @@ public class TranslationLMManager extends Manager{
 		for(int docid = 0; docid < numberOfDocuments; docid++) {
 			double sum_p_w_u = 0.0;
 			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
-			System.out.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ")-----------------");
-			fichier_a_analyse.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ")-----------------");
+			System.out.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ") -----------------");
+			fichier_a_analyse.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ") -----------------");
 			double docLength = (double) doc.getDocumentLength();
 			IterablePosting docPostings = di.getPostings(doc);
 			while (docPostings.next() != IterablePosting.EOL) {
@@ -2033,7 +2033,7 @@ public class TranslationLMManager extends Manager{
 						continue;
 					double p_w_u = translation_w.get(u);
 					
-					if(p_w_u>3.0/100000) {
+					if(p_w_u>2.5/100000) {
 						sum_p_w_u += p_w_u*p_u_d;
 						fichier_a_analyse.println("("+w+","+u+")="+p_w_u);
 					}
