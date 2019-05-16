@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -433,12 +434,14 @@ public class TranslationLMManager extends Manager{
 
 		String score_path = ApplicationSetup.getProperty("clir.score.file","/Volumes/SDEXT/these/score_fr_en_EEB1_1.ser");
 
+		/*
 		File f = new File(score_path);
 		if(f.exists()) { 
-			/* load the matrix that has been serialised to disk */ 
+			// load the matrix that has been serialised to disk 
 			System.out.println("Loading translations from file");
 			this.readW2VSerialised(f.getAbsolutePath());
 		} else {
+			*/
 
 			this.initialiseW2V_atquerytime_src(src_filepath);
 			this.initialiseW2V_atquerytime_trg(trg_filepath);
@@ -474,8 +477,8 @@ public class TranslationLMManager extends Manager{
 				w2v_inverted_translation.put(w, inverted_translation_w);
 				w2v_translation.put(w, translation_w);
 			}
-			this.writemap(f.getAbsolutePath());
-		}
+			//this.writemap(f.getAbsolutePath());
+		//}
 		System.out.println("Initialisation of word2vec finished");
 	}
 
@@ -1981,11 +1984,13 @@ public class TranslationLMManager extends Manager{
 	}
 
 	public void dir_t_w2v_full_cl() throws IOException, InterruptedException {
-
+		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse.txt", "UTF-8");
+		double c = this.mu;
+		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 		DocumentIndex doi = index.getDocumentIndex();
 		PostingIndex<Pointer> di = (PostingIndex<Pointer>) index.getDirectIndex();
 		int numberOfDocuments = doi.getNumberOfDocuments();
-
+		
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 		File stopWordsFile = new File("share/stopwords-fr.txt"); 
@@ -1996,16 +2001,19 @@ public class TranslationLMManager extends Manager{
 			stopwords.add(st);
 		}
 		brStopWordsFile.close();
-		
 		for(int docid = 0; docid < numberOfDocuments; docid++) {
-			
-			System.out.println("docid = " + docid);
-			
+			double sum_p_w_u = 0.0;
 			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
+			System.out.println("--------------- docid=" +docid  + "-----------------");
+			fichier_a_analyse.println("--------------- docid=" +docid  + "-----------------");
+			double docLength = (double) doc.getDocumentLength();
 			IterablePosting docPostings = di.getPostings(doc);
 			while (docPostings.next() != IterablePosting.EOL) {
 				Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
 				String u = lee.getKey();
+				double tf = (double)docPostings.getFrequency();
+				double colltermFrequency = (double)lee.getValue().getFrequency();
+				double p_u_d = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 				//iterating over all query terms
 				for(int i=0; i<this.queryTerms.length;i++) {
 					String w = this.queryTerms[i];
@@ -2013,93 +2021,30 @@ public class TranslationLMManager extends Manager{
 						//System.err.println("Source Term exist in stop words : " + w);
 						continue;
 					}
-					
-					if(fullw2vmatrix_src.get(w)==null)
+					if(fullw2vmatrix_src.get(w)==null) {
+						//System.err.println("Source Term not exist in fullw2vmatrix_src : " + w);
 						continue;
-					
+					}
 					HashMap<String, Double> translation_w = w2v_translation.get(w);
-					
 					if(!translation_w.containsKey(u))
 						continue;
-					
 					double p_w_u = translation_w.get(u);
-
-					double tf = (double)docPostings.getFrequency();
-					double c = this.mu;
-					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-					double docLength = (double) docPostings.getDocumentLength();
-					double colltermFrequency = (double)lee.getValue().getFrequency();
-
-					double p_u_d = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-
-					double score = p_w_u*p_u_d;
 					
-					if(log_p_d_q[docid]==-1000.0)
-						log_p_d_q[docid]=0.0;
-
-					log_p_d_q[docid] = log_p_d_q[docid] +  score;
-					
+					if(p_w_u>3.0/100000) {
+						sum_p_w_u += p_w_u*p_u_d;
+						fichier_a_analyse.println("("+w+","+u+")="+p_w_u);
+					}
 				}
 			}
+			if(log_p_d_q[docid]==-1000.0)
+				log_p_d_q[docid]=0.0;
 
+			log_p_d_q[docid] = sum_p_w_u;
+			fichier_a_analyse.println("log_p_d_q[docid] = "+log_p_d_q[docid]);
 		}
-
-		/*
-		
-		//iterating over all query terms
-		for(int i=0; i<this.queryTerms.length;i++) {
-			String w = this.queryTerms[i];
-			if(stopwords.contains(w.toLowerCase())) {
-				//System.err.println("Source Term exist in stop words : " + w);
-				continue;
-			}
-
-			if(fullw2vmatrix_src.get(w)==null)
-				continue;
-
-			HashMap<String, Double> translation_w = w2v_translation.get(w);
-
-			for(int docid = 0; docid < numberOfDocuments; docid++) {
-
-				DocumentIndexEntry doc = doi.getDocumentEntry(docid);	
-
-				IterablePosting docPostings = di.getPostings(doc);
-
-				while (docPostings.next() != IterablePosting.EOL) {
-					Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
-					//docTFmap.put(lee.getKey(), docPostings.getFrequency());
-
-					String u = lee.getKey();
-
-					if(!translation_w.containsKey(u))
-						continue;
-					
-					double p_w_u = translation_w.get(u);
-
-					double tf = (double)docPostings.getFrequency();
-					double c = this.mu;
-					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-					double docLength = (double) docPostings.getDocumentLength();
-					double colltermFrequency = (double)lee.getValue().getFrequency();
-
-					double p_u_d = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-
-					double score = p_w_u*p_u_d;
-					
-					if(log_p_d_q[docid]==-1000.0)
-						log_p_d_q[docid]=0.0;
-
-					log_p_d_q[docid] = log_p_d_q[docid] +  score;
-				
-				}
-			}
-		}
-		
-		*/
-		
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
-
+		fichier_a_analyse.close();
 	}
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
