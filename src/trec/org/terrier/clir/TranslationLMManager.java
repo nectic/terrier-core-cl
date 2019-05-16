@@ -1984,6 +1984,9 @@ public class TranslationLMManager extends Manager{
 	}
 
 	public void dir_t_w2v_full_cl() throws IOException, InterruptedException {
+		
+		MetaIndex meta = index.getMetaIndex();
+		
 		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse.txt", "UTF-8");
 		double c = this.mu;
 		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
@@ -2004,8 +2007,8 @@ public class TranslationLMManager extends Manager{
 		for(int docid = 0; docid < numberOfDocuments; docid++) {
 			double sum_p_w_u = 0.0;
 			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
-			System.out.println("--------------- docid=" +docid  + "-----------------");
-			fichier_a_analyse.println("--------------- docid=" +docid  + "-----------------");
+			System.out.println("--------------- docno=" + meta.getItem("docno", docid)  + "-----------------");
+			fichier_a_analyse.println("--------------- docno=" + meta.getItem("docno", docid)  + "-----------------");
 			double docLength = (double) doc.getDocumentLength();
 			IterablePosting docPostings = di.getPostings(doc);
 			while (docPostings.next() != IterablePosting.EOL) {
