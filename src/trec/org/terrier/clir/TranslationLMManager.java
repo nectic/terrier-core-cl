@@ -978,9 +978,9 @@ public class TranslationLMManager extends Manager{
 				matchingMethod.setEntryStatistics(lEntry);
 				matchingMethod.prepare();
 
-				//double score = matchingMethod.score(ip);
+				double score = matchingMethod.score(ip);
 				
-				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+				//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 				/*
 				double score =	
