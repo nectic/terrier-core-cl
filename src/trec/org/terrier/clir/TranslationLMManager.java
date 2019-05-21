@@ -970,7 +970,17 @@ public class TranslationLMManager extends Manager{
 				double docLength = (double) ip.getDocumentLength();
 				double colltermFrequency = (double)lEntry.getFrequency();
 				
-				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+				
+				DirichletLM matchingMethod = new DirichletLM();
+				matchingMethod.setParameter(c);
+				matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+				matchingMethod.setKeyFrequency(1);
+				matchingMethod.setEntryStatistics(lEntry);
+				matchingMethod.prepare();
+
+				double score = matchingMethod.score(ip);
+				
+				//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 				/*
 				double score =	
