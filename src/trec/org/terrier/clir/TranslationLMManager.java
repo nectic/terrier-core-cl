@@ -2,6 +2,7 @@ package org.terrier.clir;
 
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -82,7 +83,6 @@ public class TranslationLMManager extends Manager{
 
 	public HashMap<String, HashMap<String, Double> > w2v_translation = new HashMap<String, HashMap<String, Double> >();
 
-
 	public TranslationMap translationmap = null;
 	public String translation_method = "null";
 	public int number_of_top_translation_terms=10; //default value
@@ -97,13 +97,16 @@ public class TranslationLMManager extends Manager{
 	HashMap<String, double[]> fullw2vmatrix_src = new HashMap<String, double[]>();
 	HashMap<String, double[]> fullw2vmatrix_trg = new HashMap<String, double[]>();
 
+	int w2v_dimension;
+
 	String path_to_mi_window_folder="";
 	int windowsize=0;
 	HashMap<String, HashMap<String, Double>> window_translations = new HashMap<String, HashMap<String, Double>>();
 
 	protected QuerySource querySource;
-	
+
 	private String qid;
+	private double seuil;
 
 	/**
 	 * @return the windowsize
@@ -112,14 +115,12 @@ public class TranslationLMManager extends Manager{
 		return windowsize;
 	}
 
-
 	/**
 	 * @param windowsize the windowsize to set
 	 */
 	public void setWindowsize(int windowsize) {
 		this.windowsize = windowsize;
 	}
-
 
 	/**
 	 * @return the path_to_mi_window_folder
@@ -128,7 +129,6 @@ public class TranslationLMManager extends Manager{
 		return path_to_mi_window_folder;
 	}
 
-
 	/**
 	 * @param path_to_mi_window_folder the path_to_mi_window_folder to set
 	 */
@@ -136,12 +136,10 @@ public class TranslationLMManager extends Manager{
 		this.path_to_mi_window_folder = path_to_mi_window_folder;
 	}
 
-
 	public TranslationLMManager(Index index) {
 		super(index);
 		querySource = getQueryParser();
 	}
-
 
 	/**
 	 * @return the topthreshold
@@ -221,7 +219,6 @@ public class TranslationLMManager extends Manager{
 		return number_of_top_translation_terms;
 	}
 
-
 	/**
 	 * @param number_of_top_translation_terms the number_of_top_translation_terms to set
 	 */
@@ -229,7 +226,6 @@ public class TranslationLMManager extends Manager{
 			int number_of_top_translation_terms) {
 		this.number_of_top_translation_terms = number_of_top_translation_terms;
 	}
-
 
 	/**
 	 * @return the translation method
@@ -252,19 +248,22 @@ public class TranslationLMManager extends Manager{
 		return alpha;
 	}
 
-
 	/**
 	 * @param alpha the alpha to set
 	 */
 	public void setAlpha(double alpha) {
 		this.alpha = alpha;
 	}
-	
+
 	public void setQid(String qid) {
 		this.qid=qid;
-		
+
 	}
 
+	public void setSeuil(double seuil) {
+		this.seuil = seuil;
+
+	}
 
 	/**
 	 * Get the query parser that is being used.
@@ -299,7 +298,6 @@ public class TranslationLMManager extends Manager{
 		}
 		return rtr;
 	}
-
 
 	public void initialiseTranslation() throws IOException {
 		switch (this.translation_method.toLowerCase()) {
@@ -435,9 +433,7 @@ public class TranslationLMManager extends Manager{
 		System.out.println("Initialisation of word2vec finished");
 	}
 
-
 	public void initialiseW2V_cl(String src_filepath, String trg_filepath) throws NumberFormatException, IOException {
-
 
 		String score_path = ApplicationSetup.getProperty("clir.score.file","/Volumes/SDEXT/these/score_fr_en_EEB1_1.ser");
 
@@ -448,43 +444,102 @@ public class TranslationLMManager extends Manager{
 			System.out.println("Loading translations from file");
 			this.readW2VSerialised(f.getAbsolutePath());
 		} else {
-			*/
+		 */
 
-			this.initialiseW2V_atquerytime_src(src_filepath);
-			this.initialiseW2V_atquerytime_trg(trg_filepath);
+		this.initialiseW2V_atquerytime_src(src_filepath);
+		this.initialiseW2V_atquerytime_trg(trg_filepath);
 
-			for(String w : fullw2vmatrix_src.keySet()) {
-				double[] vector_w = fullw2vmatrix_src.get(w);
-				TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
-				HashMap<String,Double> tmp_w = new HashMap<String,Double>();
-				HashMap<String, Double> translation_w = new HashMap<String,Double>();
-				double sum_cosines=0.0;
-				for(String u : fullw2vmatrix_trg.keySet()) {
-					double[] vector_u = fullw2vmatrix_trg.get(u);
-					double cosine_w_u=0.0;
-					double sum_w=0.0;
-					double sum_u=0.0;
-					for(int i=0; i<vector_w.length;i++) {
-						cosine_w_u=cosine_w_u + vector_w[i]*vector_u[i];
-						sum_w=sum_w + Math.pow(vector_w[i],2);
-						sum_u=sum_u + Math.pow(vector_u[i],2);
-					}
-					//normalisation step
-					cosine_w_u = cosine_w_u / (Math.sqrt(sum_w) * Math.sqrt(sum_u));
-					//System.out.println("normalised cosine: " + cosine_w_u);
-					tmp_w.put(u, cosine_w_u);
-					sum_cosines = sum_cosines+ cosine_w_u;
+		for(String w : fullw2vmatrix_src.keySet()) {
+			double[] vector_w = fullw2vmatrix_src.get(w);
+			TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
+			HashMap<String,Double> tmp_w = new HashMap<String,Double>();
+			HashMap<String, Double> translation_w = new HashMap<String,Double>();
+			double sum_cosines=0.0;
+			for(String u : fullw2vmatrix_trg.keySet()) {
+				double[] vector_u = fullw2vmatrix_trg.get(u);
+				double cosine_w_u=0.0;
+				double sum_w=0.0;
+				double sum_u=0.0;
+				for(int i=0; i<vector_w.length;i++) {
+					cosine_w_u=cosine_w_u + vector_w[i]*vector_u[i];
+					sum_w=sum_w + Math.pow(vector_w[i],2);
+					sum_u=sum_u + Math.pow(vector_u[i],2);
 				}
-				//normalise to probabilities and insert in order
-				for(String u: tmp_w.keySet()) {
-					double p_w2v_w_u = tmp_w.get(u)/sum_cosines;
-					inverted_translation_w.put(p_w2v_w_u, u);
-					translation_w.put(u,p_w2v_w_u);
-				}
-				w2v_inverted_translation.put(w, inverted_translation_w);
-				w2v_translation.put(w, translation_w);
+				//normalisation step
+				cosine_w_u = cosine_w_u / (Math.sqrt(sum_w) * Math.sqrt(sum_u));
+				//System.out.println("normalised cosine: " + cosine_w_u);
+				tmp_w.put(u, cosine_w_u);
+				sum_cosines = sum_cosines+ cosine_w_u;
 			}
-			//this.writemap(f.getAbsolutePath());
+
+			//normalise to probabilities and insert in order
+			for(String u: tmp_w.keySet()) {
+				double p_w2v_w_u = tmp_w.get(u)/sum_cosines;
+				inverted_translation_w.put(p_w2v_w_u, u);
+				translation_w.put(u,p_w2v_w_u);
+			}
+
+			w2v_inverted_translation.put(w, inverted_translation_w);
+			w2v_translation.put(w, translation_w);
+		}
+		//this.writemap(f.getAbsolutePath());
+		//}
+		System.out.println("Initialisation of word2vec finished");
+	}
+
+	public void initialiseW2Vnotnorm_cl(String src_filepath, String trg_filepath) throws NumberFormatException, IOException {
+
+		String score_path = ApplicationSetup.getProperty("clir.score.file","/Volumes/SDEXT/these/score_fr_en_EEB1_1.ser");
+
+		/*
+		File f = new File(score_path);
+		if(f.exists()) { 
+			// load the matrix that has been serialised to disk 
+			System.out.println("Loading translations from file");
+			this.readW2VSerialised(f.getAbsolutePath());
+		} else {
+		 */
+
+		this.initialiseW2V_atquerytime_src(src_filepath);
+		this.initialiseW2V_atquerytime_trg(trg_filepath);
+
+		for(String w : fullw2vmatrix_src.keySet()) {
+			double[] vector_w = fullw2vmatrix_src.get(w);
+			TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
+			HashMap<String,Double> tmp_w = new HashMap<String,Double>();
+			HashMap<String, Double> translation_w = new HashMap<String,Double>();
+			double sum_cosines=0.0;
+			for(String u : fullw2vmatrix_trg.keySet()) {
+				double[] vector_u = fullw2vmatrix_trg.get(u);
+				double cosine_w_u=0.0;
+				double sum_w=0.0;
+				double sum_u=0.0;
+				for(int i=0; i<vector_w.length;i++) {
+					cosine_w_u=cosine_w_u + vector_w[i]*vector_u[i];
+					sum_w=sum_w + Math.pow(vector_w[i],2);
+					sum_u=sum_u + Math.pow(vector_u[i],2);
+				}
+				//normalisation step
+				cosine_w_u = cosine_w_u / (Math.sqrt(sum_w) * Math.sqrt(sum_u));
+				//System.out.println("normalised cosine: " + cosine_w_u);
+				//tmp_w.put(u, cosine_w_u);
+				inverted_translation_w.put(cosine_w_u, u);
+				//sum_cosines = sum_cosines+ cosine_w_u;
+			}
+
+			//normalise to probabilities and insert in order
+			/*
+			for(String u: tmp_w.keySet()) {
+				double p_w2v_w_u = tmp_w.get(u)/sum_cosines;
+				inverted_translation_w.put(p_w2v_w_u, u);
+				translation_w.put(u,p_w2v_w_u);
+			}
+			 */
+
+			w2v_inverted_translation.put(w, inverted_translation_w);
+			//w2v_translation.put(w, translation_w);
+		}
+		//this.writemap(f.getAbsolutePath());
 		//}
 		System.out.println("Initialisation of word2vec finished");
 	}
@@ -554,7 +609,6 @@ public class TranslationLMManager extends Manager{
 		}
 		System.out.println("Initialisation of word2vec finished");
 	}
-
 
 	public void initialiseW2V_atquerytime_trg(String filepath) throws NumberFormatException, IOException {
 		File f = new File(filepath+"_matrix.ser");
@@ -697,10 +751,94 @@ public class TranslationLMManager extends Manager{
 			}
 			System.out.println("Terms founds in word2vec: " + foundterms);
 			br.close();
+			w2v_dimension = numberofdimensions;
 			this.fullw2vmatrix_src = w2vmatrix;
 
 		}
 		System.out.println("Initialisation of word2vec finished");
+	}
+
+	public void initialiseW2V_cl_dico(String src_we) throws IOException {
+		//HashMap<String, TreeMultimap<Double, String> > w2v_inverted_translation = new HashMap<String, TreeMultimap<Double, String> >();
+
+		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+		try {
+
+			final DocumentBuilder builder = factory.newDocumentBuilder();
+			final Document document= builder.parse(new File("French_English_Online_Dictiona.xml"));
+			final Element racine = document.getDocumentElement();
+			final NodeList racineNoeuds = racine.getChildNodes();
+			final int nbRacineNoeuds = racineNoeuds.getLength();
+
+			for (int i = 0; i<nbRacineNoeuds; i++) {
+				if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
+					final Element dicoEntry = (Element) racineNoeuds.item(i);
+					TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
+					final Element src = (Element) dicoEntry.getElementsByTagName("h1").item(0);
+					final Element trg = (Element) dicoEntry.getElementsByTagName("p").item(0);
+					String w = src.getTextContent();
+					String[] u_tab = trg.getTextContent().split(",");
+					for (int j = 0; j < u_tab.length; j++) {
+						String u = u_tab[j];
+						double p_dico_w_u = (double)1/(double)u_tab.length;
+						inverted_translation_w.put(p_dico_w_u, u);
+						System.out.println("("+w+","+u+") = "+p_dico_w_u);
+					}
+
+					w2v_inverted_translation.put(w, inverted_translation_w);
+
+				}				
+			}			
+		}
+		catch (final ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void initialiseW2Vdico_cl() throws IOException {
+
+		String dicoPath = ApplicationSetup.getProperty("clir.dico.path","res_cl_C143.txt");
+
+		String src_we = ApplicationSetup.getProperty("clir.src.we","/Volumes/SDEXT/these/wiki.multi.fr.vec");
+		String trg_we = ApplicationSetup.getProperty("clir.trg.we","/Volumes/SDEXT/these/wiki.multi.en.vec");
+
+		this.initialiseW2V_atquerytime_src(src_we);
+		this.initialiseW2V_atquerytime_trg(trg_we);
+
+		File dicoFile = new File(dicoPath); 
+		BufferedReader brDicoFile = new BufferedReader(new FileReader(dicoFile)); 
+		
+		String line; 
+		while ((line = brDicoFile.readLine()) != null) {
+
+			String[] lineTab = line.split(":");
+			String w = lineTab[0];
+			String[] translation_w_ = lineTab[1].split(";");
+			
+			TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
+			HashMap<String, Double> translation_w = new HashMap<String,Double>();
+
+			for (int i = 0; i < translation_w_.length; i++) {
+				String[] u_translation = translation_w_[i].split(" ");
+				String u = u_translation[0];
+				double p_w_u = Double.parseDouble(u_translation[1]);
+
+				inverted_translation_w.put(p_w_u, u);
+				translation_w.put(u,p_w_u);
+
+			}
+
+			w2v_inverted_translation.put(w, inverted_translation_w);
+			w2v_translation.put(w, translation_w);
+
+		}
+
+		brDicoFile.close();
+
 	}
 
 	/*	
@@ -762,7 +900,6 @@ public class TranslationLMManager extends Manager{
 		return us;
 	}
 
-
 	/** Provides a translation model using skipgram word embeddings (word2vec, w2v). This method returns the top T (most probable) translations for term w
 	 * @param w - the term we want to translate
 	 * @return HashMap<String, Double> containing the top T (this.number_of_top_translations) translations for the input term w.
@@ -771,7 +908,6 @@ public class TranslationLMManager extends Manager{
 		HashMap<String, Double> us = this.translationmap.get_topu_givenw(w, this.number_of_top_translation_terms);
 		return us;
 	}
-
 
 	public HashMap<String, Double> translate(String w){
 		HashMap<String, Double> us = new HashMap<String, Double>();
@@ -791,7 +927,6 @@ public class TranslationLMManager extends Manager{
 		}
 		return us;
 	}
-
 
 	/** Performs retrieval with Dirichlet smoothing language model. Results are saved in the ResultSet of the object
 	 * 
@@ -851,7 +986,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 		System.out.println("this.rs.getResultSize()=" + this.rs.getResultSize());
 	}
-
 
 	/** Performs retrieval with Dirichlet smoothing language model. Results are saved in the ResultSet of the object. This method follows
 	 * the theory, where n log mu/(|d| + mu) is done
@@ -930,7 +1064,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using mutual information, 
 	 * as described in Karimzadehgan, Zhai, "Estimation of Statistical Translation Models Based on Mutual Information for Ad Hoc Information Retrieval", SIGIR 2010
 	 * 
@@ -996,8 +1129,6 @@ public class TranslationLMManager extends Manager{
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 	}
-
-
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using mutual information, 
 	 * as described in Karimzadehgan, Zhai, "Estimation of Statistical Translation Models Based on Mutual Information for Ad Hoc Information Retrieval", SIGIR 2010
@@ -1242,7 +1373,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using mutual information, 
 	 * as described in Karimzadehgan, Zhai, "Estimation of Statistical Translation Models Based on Mutual Information for Ad Hoc Information Retrieval", SIGIR 2010
 	 * 
@@ -1332,7 +1462,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
 	//it is a at query version - this score all documents that contain the translation u
 	public void dir_t_mi_atquery_full() throws IOException, InterruptedException {
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
@@ -1412,7 +1541,6 @@ public class TranslationLMManager extends Manager{
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 	}
-
 
 	//it is a at query version - this score all documents that contain the translation u
 	public void dir_t_mi_atquery_full_smethod() throws IOException, InterruptedException {
@@ -1494,9 +1622,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
-
-
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
 	 * This version performs the translation at query time
@@ -1529,7 +1654,6 @@ public class TranslationLMManager extends Manager{
 			IterablePosting ip = this.invertedIndex.getPostings(lEntry);
 
 			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency()+")");
-
 
 			if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
 					|| lEntry.getDocumentFrequency()>this.topthreshold || w.matches(".*\\d+.*"))
@@ -1711,8 +1835,11 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
 	public void dir_t_w2v_cl() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_"+this.qid+".txt", "UTF-8");
+
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
@@ -1751,8 +1878,10 @@ public class TranslationLMManager extends Manager{
 					System.err.println("Term not found in corpora : "+u);
 					continue;
 				}
-				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
 
+				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
+
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
 				while(ip.next() != IterablePosting.EOL) {
 
 					double tf = (double)ip.getFrequency();
@@ -1787,10 +1916,182 @@ public class TranslationLMManager extends Manager{
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
+		fichier_a_analyse.close();
 	}
 
+	public void dir_t_w2v_seuil_cl() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_seuil_"+this.qid+".txt", "UTF-8");
+
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+
+			if(stopwords.contains(w.toLowerCase())) {
+				//System.err.println("Source Term exist in stop words : " + w);
+				continue;
+			}
+
+			if(fullw2vmatrix_src.get(w)==null)
+				continue;
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsSeuil_cl(w,seuil);
+
+			for(String u : top_translations_of_w.keySet()) {
+				String uPipelined = tpa.pipelineTerm(u);
+				if(uPipelined==null) {
+					System.err.println("Term delected after pipeline: "+u);
+					continue;
+				}
+				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
+				if (lu==null)
+				{
+					System.err.println("Term not found in corpora : "+u);
+					continue;
+				}
+
+				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
+
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
+				while(ip.next() != IterablePosting.EOL) {
+
+					//fichier_a_analyse.println("--------------- docid = " + ip.getId() + "("+ meta.getItem("docno", ip.getId()) + ") : " + this.qid + " -----------------");
+
+					double tf = (double)ip.getFrequency();
+					double c = this.mu;
+					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+					double docLength = (double) ip.getDocumentLength();
+					double colltermFrequency = (double)lu.getFrequency();
+
+					//BM25 matchingMethod = new BM25();
+					//TF_IDF matchingMethod = new TF_IDF();
+					DirichletLM matchingMethod = new DirichletLM();
+					matchingMethod.setParameter(c);
+					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+					matchingMethod.setKeyFrequency(1);
+					matchingMethod.setEntryStatistics(lu);
+					matchingMethod.prepare();
+
+					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+
+					//double score = matchingMethod.score(ip);
+					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+					if(log_p_d_q[ip.getId()]==-1000.0)
+						log_p_d_q[ip.getId()]=0.0;
+
+					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+
+				}
+			}
+		}
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+		fichier_a_analyse.close();
+	}
+
+	public void dir_t_w2v_seuil_notnorm_cl() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_seuil_notnorm_"+this.qid+".txt", "UTF-8");
+
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+
+			if(stopwords.contains(w.toLowerCase())) {
+				//System.err.println("Source Term exist in stop words : " + w);
+				continue;
+			}
+
+			if(fullw2vmatrix_src.get(w)==null)
+				continue;
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsSeuilNotNorm_cl(w,seuil);
+
+			for(String u : top_translations_of_w.keySet()) {
+				String uPipelined = tpa.pipelineTerm(u);
+				if(uPipelined==null) {
+					System.err.println("Term delected after pipeline: "+u);
+					continue;
+				}
+				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
+				if (lu==null)
+				{
+					System.err.println("Term not found in corpora : "+u);
+					continue;
+				}
+
+				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
+
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
+				while(ip.next() != IterablePosting.EOL) {
+
+					//fichier_a_analyse.println("--------------- docid = " + ip.getId() + "("+ meta.getItem("docno", ip.getId()) + ") : " + this.qid + " -----------------");
+
+					double tf = (double)ip.getFrequency();
+					double c = this.mu;
+					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+					double docLength = (double) ip.getDocumentLength();
+					double colltermFrequency = (double)lu.getFrequency();
+
+					//BM25 matchingMethod = new BM25();
+					//TF_IDF matchingMethod = new TF_IDF();
+					DirichletLM matchingMethod = new DirichletLM();
+					matchingMethod.setParameter(c);
+					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+					matchingMethod.setKeyFrequency(1);
+					matchingMethod.setEntryStatistics(lu);
+					matchingMethod.prepare();
+
+					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+
+					//double score = matchingMethod.score(ip);
+					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+					if(log_p_d_q[ip.getId()]==-1000.0)
+						log_p_d_q[ip.getId()]=0.0;
+
+					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+
+				}
+			}
+		}
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+		fichier_a_analyse.close();
+	}
 
 	public void dir_t_dico_cl() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_dico_"+this.qid+".txt", "UTF-8");
+
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
@@ -1829,8 +2130,10 @@ public class TranslationLMManager extends Manager{
 					System.err.println("Term not found in corpora : "+u);
 					continue;
 				}
-				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
 
+				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
+
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
 				while(ip.next() != IterablePosting.EOL) {
 
 					double tf = (double)ip.getFrequency();
@@ -1851,8 +2154,6 @@ public class TranslationLMManager extends Manager{
 					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
 
 					//double score = matchingMethod.score(ip);
-
-
 					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 					if(log_p_d_q[ip.getId()]==-1000.0)
@@ -1865,8 +2166,8 @@ public class TranslationLMManager extends Manager{
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
+		fichier_a_analyse.close();
 	}
-
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
@@ -1991,18 +2292,16 @@ public class TranslationLMManager extends Manager{
 	}
 
 	public void dir_t_w2v_full_cl() throws IOException, InterruptedException {
-		
+
 		MetaIndex meta = index.getMetaIndex();
-		
-		
-		
+
 		PrintWriter fichier_a_analyse = new PrintWriter("fichier_a_analyse_"+this.qid+".txt", "UTF-8");
 		double c = this.mu;
 		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 		DocumentIndex doi = index.getDocumentIndex();
 		PostingIndex<Pointer> di = (PostingIndex<Pointer>) index.getDirectIndex();
 		int numberOfDocuments = doi.getNumberOfDocuments();
-		
+
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 		File stopWordsFile = new File("share/stopwords-fr.txt"); 
@@ -2019,13 +2318,27 @@ public class TranslationLMManager extends Manager{
 			System.out.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ") : " + this.qid + " -----------------");
 			fichier_a_analyse.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ") : " + this.qid + " -----------------");
 			double docLength = (double) doc.getDocumentLength();
+
+
+			int[] nb_translations = new int[queryTerms.length];
+			Arrays.fill(nb_translations,0);
+			double[] sum_p_w_u_temp = new double[queryTerms.length];
+			Arrays.fill(sum_p_w_u_temp,0);
+
 			IterablePosting docPostings = di.getPostings(doc);
 			while (docPostings.next() != IterablePosting.EOL) {
 				Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
 				String u = lee.getKey();
 				double tf = (double)docPostings.getFrequency();
 				double colltermFrequency = (double)lee.getValue().getFrequency();
+
 				double p_u_d = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+				//double p_u_d = WeightingModelLibrary.log( tf + c * (colltermFrequency / numberOfTokens) ) + WeightingModelLibrary.log(docLength+c);
+
+				//double p_u_d = WeightingModelLibrary.log(tf/docLength);
+
+
 				//iterating over all query terms
 				for(int i=0; i<this.queryTerms.length;i++) {
 					String w = this.queryTerms[i];
@@ -2038,27 +2351,246 @@ public class TranslationLMManager extends Manager{
 						continue;
 					}
 					HashMap<String, Double> translation_w = w2v_translation.get(w);
+
 					if(!translation_w.containsKey(u))
 						continue;
+
 					double p_w_u = translation_w.get(u);
-					
-					
-					
-					if(p_w_u>2.5/100000) {
-						fichier_a_analyse.println("("+w+","+u+")="+p_w_u);
-						sum_p_w_u += p_w_u*p_u_d;	
+
+					if(p_w_u>4.0/100000) {
+						fichier_a_analyse.println("("+w+","+u+")="+p_w_u+"; tf="+tf+"; colltermFrequency="+colltermFrequency);
+						nb_translations[i]++;
+						sum_p_w_u_temp[i] += p_w_u*p_u_d;	
 					}
 				}
-			}
+
+			} // end u iteration
+
+
 			if(log_p_d_q[docid]==-1000.0)
 				log_p_d_q[docid]=0.0;
 
-			log_p_d_q[docid] = sum_p_w_u;
-			fichier_a_analyse.println("log_p_d_q[docid] = "+log_p_d_q[docid]);
+			for (int i = 0; i < queryTerms.length; i++) {
+
+				if(nb_translations[i]!=0) {
+					fichier_a_analyse.println("queryTerm = " + queryTerms[i]);
+					fichier_a_analyse.println("nb_translations = "+nb_translations[i]);
+					fichier_a_analyse.println("sum_p_w_u_temp = "+sum_p_w_u_temp[i]/nb_translations[i]);
+					log_p_d_q[docid] += sum_p_w_u_temp[i]/nb_translations[i];
+				}
+			}
+
+			fichier_a_analyse.println("docLength = "+docLength+"; log_p_d_q[docid] = "+log_p_d_q[docid]);
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 		fichier_a_analyse.close();
+	}
+
+	public void clir_aggregation() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+
+		double c = this.mu;
+		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+		DocumentIndex doi = index.getDocumentIndex();
+		PostingIndex<Pointer> di = (PostingIndex<Pointer>) index.getDirectIndex();
+		int numberOfDocuments = doi.getNumberOfDocuments();
+
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		for(int docid = 0; docid < numberOfDocuments; docid++) {
+
+			System.out.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ") : " + this.qid + " -----------------");
+
+			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
+			double[] vector_doc = new double[w2v_dimension];
+
+			IterablePosting docPostings = di.getPostings(doc);
+			while (docPostings.next() != IterablePosting.EOL) {
+				Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
+				String u = lee.getKey();
+
+				double[] vector_u = fullw2vmatrix_trg.get(u);
+
+				if(vector_u==null)
+					continue;
+
+				for (int i = 0; i < vector_u.length; i++) {
+					vector_doc[i]+=vector_u[i];
+					//vector_doc[i]+=WeightingModelLibrary.log(index.getCollectionStatistics().getNumberOfDocuments()/lee.getValue().getDocumentFrequency())*vector_u[i];
+				}
+
+			} // end u iteration
+
+
+			double[] vector_query = new double[w2v_dimension];
+
+			//iterating over all query terms
+			for(int i=0; i<this.queryTerms.length;i++) {
+				String w = this.queryTerms[i];
+				if(stopwords.contains(w.toLowerCase())) {
+					//System.err.println("Source Term exist in stop words : " + w);
+					continue;
+				}
+
+				double[] vector_w = fullw2vmatrix_src.get(w);
+
+
+				if(vector_w==null) {
+					//System.err.println("Source Term not exist in fullw2vmatrix_src : " + w);
+					continue;
+				}
+
+				for (int j = 0; j < vector_w.length; j++) {
+					vector_query[j]+=vector_w[j];
+				}
+
+			}
+
+			double cosine_q_d=0.0;
+			double sum_query=0.0;
+			double sum_doc=0.0;
+			for(int ii=0; ii<vector_query.length;ii++) {
+				cosine_q_d=cosine_q_d + vector_query[ii]*vector_doc[ii];
+				sum_query=sum_query + Math.pow(vector_query[ii],2);
+				sum_doc=sum_doc + Math.pow(vector_doc[ii],2);
+			}
+			//normalisation step
+			cosine_q_d = cosine_q_d / (Math.sqrt(sum_query) * Math.sqrt(sum_doc));
+
+
+			if(log_p_d_q[docid]==-1000.0)
+				log_p_d_q[docid]=0.0;
+
+
+
+			log_p_d_q[docid] = cosine_q_d;
+
+		}
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+
+	}
+
+	public void clir_aggregation_tf() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+
+		double c = this.mu;
+		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+		DocumentIndex doi = index.getDocumentIndex();
+		PostingIndex<Pointer> di = (PostingIndex<Pointer>) index.getDirectIndex();
+		int numberOfDocuments = doi.getNumberOfDocuments();
+
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		for(int docid = 0; docid < numberOfDocuments; docid++) {
+
+			System.out.println("--------------- docid = " + docid + "("+ meta.getItem("docno", docid) + ") : " + this.qid + " -----------------");
+
+			DocumentIndexEntry doc = doi.getDocumentEntry(docid);
+			double docLength = (double) doc.getDocumentLength();
+
+			double[] vector_doc = new double[w2v_dimension];
+
+			IterablePosting docPostings = di.getPostings(doc);
+			while (docPostings.next() != IterablePosting.EOL) {
+				Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
+				String u = lee.getKey();
+
+				double tf = (double)docPostings.getFrequency();
+				double colltermFrequency = (double)lee.getValue().getFrequency();
+
+				//lee.getValue().getDocumentFrequency()
+
+				double[] vector_u = fullw2vmatrix_trg.get(u);
+
+				if(vector_u==null)
+					continue;
+
+				for (int i = 0; i < vector_u.length; i++) {
+					//vector_doc[i]+=-WeightingModelLibrary.log(tf/docLength)*vector_u[i];
+					//vector_doc[i]+=WeightingModelLibrary.log(index.getCollectionStatistics().getNumberOfDocuments()/lee.getValue().getDocumentFrequency())*vector_u[i];
+					vector_doc[i]+=vector_u[i];
+				}
+
+			} // end u iteration
+
+			double[] vector_query = new double[w2v_dimension];
+
+			//iterating over all query terms
+			for(int i=0; i<this.queryTerms.length;i++) {
+				String w = this.queryTerms[i];
+				if(stopwords.contains(w.toLowerCase())) {
+					//System.err.println("Source Term exist in stop words : " + w);
+					continue;
+				}
+
+				double[] vector_w = fullw2vmatrix_src.get(w);
+
+				if(vector_w==null) {
+					//System.err.println("Source Term not exist in fullw2vmatrix_src : " + w);
+					continue;
+				}
+
+				HashMap<String, Double> translations_of_w = getW2VTranslations_cl(w);
+
+				for(String u : translations_of_w.keySet()) {
+					
+					double[] vector_u = fullw2vmatrix_trg.get(u);
+
+					if(vector_u==null)
+						continue;
+					
+					for (int j = 0; j < vector_u.length; j++) {
+						//vector_query[j]+=translations_of_w.get(u)*vector_u[j];//ponderation
+						vector_query[j]+=vector_u[j];
+						
+					}
+				}
+			}
+
+			double cosine_q_d=0.0;
+			double sum_query=0.0;
+			double sum_doc=0.0;
+			for(int ii=0; ii<vector_query.length;ii++) {
+				cosine_q_d=cosine_q_d + vector_query[ii]*vector_doc[ii];
+				sum_query=sum_query + Math.pow(vector_query[ii],2);
+				sum_doc=sum_doc + Math.pow(vector_doc[ii],2);
+			}
+			//normalisation step
+			cosine_q_d = cosine_q_d / (Math.sqrt(sum_query) * Math.sqrt(sum_doc));
+
+			if(log_p_d_q[docid]==-1000.0)
+				log_p_d_q[docid]=0.0;
+
+			log_p_d_q[docid] = cosine_q_d;
+
+		}
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+
 	}
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
@@ -2147,7 +2679,6 @@ public class TranslationLMManager extends Manager{
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 	}
-
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
@@ -2289,7 +2820,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
 	public void dir_t_w2v_self_cl() throws IOException, InterruptedException {
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
@@ -2352,7 +2882,6 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
 	 * This version performs the translation at query time
@@ -2363,7 +2892,9 @@ public class TranslationLMManager extends Manager{
 	 * @throws InterruptedException 
 	 */
 	public void dir_t_w2v_notnormalised() throws IOException, InterruptedException {
+
 		MetaIndex meta = index.getMetaIndex();
+
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
@@ -2486,6 +3017,10 @@ public class TranslationLMManager extends Manager{
 	}
 
 	public void dir_t_w2v_notnormalised_cl() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_notnorm_"+this.qid+".txt", "UTF-8");
+
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
@@ -2508,7 +3043,7 @@ public class TranslationLMManager extends Manager{
 				continue;
 			}
 
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime_notnormalised_cl(w);
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsNotnormalised_cl(w);
 			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
 
 			for(String u : top_translations_of_w.keySet()) {
@@ -2524,8 +3059,9 @@ public class TranslationLMManager extends Manager{
 					continue;
 				}
 
-				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
+				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
 
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
 				while(ip.next() != IterablePosting.EOL) {
 
 					double tf = (double)ip.getFrequency();
@@ -2534,7 +3070,7 @@ public class TranslationLMManager extends Manager{
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
 
-					double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+					double score = top_translations_of_w.get(u)*(WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c)));
 
 					if(log_p_d_q[ip.getId()]==-1000.0)
 						log_p_d_q[ip.getId()]=0.0;
@@ -2546,6 +3082,7 @@ public class TranslationLMManager extends Manager{
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
+		fichier_a_analyse.close();
 	}
 
 	double[] get_empty_sentence_vector() {
@@ -2558,7 +3095,6 @@ public class TranslationLMManager extends Manager{
 		return sentence_vector;
 	}
 
-
 	double[] add_to_sentence_vector(double[] sentence_vector, String w) {
 		if(this.fullw2vmatrix.containsKey(w)) {
 			double[] vector_w = this.fullw2vmatrix.get(w);
@@ -2568,7 +3104,6 @@ public class TranslationLMManager extends Manager{
 		}
 		return sentence_vector;
 	}
-
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
@@ -2896,6 +3431,15 @@ public class TranslationLMManager extends Manager{
 		case "w2v_cl":
 			dir_t_w2v_cl();
 			break;
+
+		case "w2v_seuil_cl":
+			dir_t_w2v_seuil_cl();
+			break;
+
+		case "w2v_seuil_notnorm_cl":
+			dir_t_w2v_seuil_notnorm_cl();
+			break;
+
 		case "dico_cl":
 			dir_t_dico_cl();
 			break;
@@ -2919,7 +3463,15 @@ public class TranslationLMManager extends Manager{
 			break; 
 		case "w2v_full_cl":
 			dir_t_w2v_full_cl();
-			break; 
+			break;
+		case "clir_aggregation":
+			clir_aggregation();
+			break;
+
+		case "clir_aggregation_tf":
+			clir_aggregation_tf();
+			break;
+
 		default: 
 			dir();
 			System.err.println("No translation explicitely set!");
@@ -3672,15 +4224,18 @@ public class TranslationLMManager extends Manager{
 		System.out.println("\tWord2Vec translations " + w);
 		TreeMultimap<Double, String> inverted_translation_w = w2v_inverted_translation.get(w);
 		HashMap<String, Double> w_top_cooccurence = new HashMap<String, Double>();
+
 		if(!w2v_inverted_translation.containsKey(w)) {
 			System.err.println("No translations recorded for term " + w);
 			w_top_cooccurence.put(w, 1.0);
 			return w_top_cooccurence;
 		}
-		System.out.println("\tTranslations for " + w);
-		int count =0;
 
+		System.out.println("\tTranslations for " + w);
+
+		int count =0;
 		double sums_u=0.0;
+
 		for (Double p_w_u : inverted_translation_w.keySet()) {
 			if(count<this.number_of_top_translation_terms) {
 				NavigableSet<String> terms = inverted_translation_w.get(p_w_u);
@@ -3709,12 +4264,139 @@ public class TranslationLMManager extends Manager{
 			tcount++;
 		}
 
-
 		System.out.println(tcount + " translations selected, for a cumulative sum of " + cumsum);
 		return tmp_w_top_cooccurence;
 		//return w_top_cooccurence;
 	}
 
+	public HashMap<String, Double> getW2VTranslations_cl(String w) throws IOException {
+		//do the selection of top terms from the inverted_translation_w and return them
+		System.out.println("\tWord2Vec translations " + w);
+		TreeMultimap<Double, String> inverted_translation_w = w2v_inverted_translation.get(w);
+		HashMap<String, Double> w_top_cooccurence = new HashMap<String, Double>();
+
+		if(!w2v_inverted_translation.containsKey(w)) {
+			System.err.println("No translations recorded for term " + w);
+			w_top_cooccurence.put(w, 1.0);
+			return w_top_cooccurence;
+		}
+
+		System.out.println("\tTranslations for " + w);
+
+		int count =0;
+		double sums_u=0.0;
+
+		for (Double p_w_u : inverted_translation_w.keySet()) {
+			NavigableSet<String> terms = inverted_translation_w.get(p_w_u);
+			Iterator<String> termit = terms.iterator();
+			while(termit.hasNext()) {
+				String topterm = termit.next();
+				System.out.println("\t  " + p_w_u + ": " + topterm);
+				w_top_cooccurence.put(topterm, p_w_u);
+			}
+		}
+
+		return w_top_cooccurence;
+	}
+
+
+	public HashMap<String, Double> getTopW2VTranslationsSeuil_cl(String w, double seuil) throws IOException {
+
+		System.out.println("\tWord2Vec translations " + w);
+		TreeMultimap<Double, String> inverted_translation_w = w2v_inverted_translation.get(w);
+		HashMap<String, Double> w_top_cooccurence = new HashMap<String, Double>();
+		if(!w2v_inverted_translation.containsKey(w)) {
+			System.err.println("No translations recorded for term " + w);
+			w_top_cooccurence.put(w, 1.0);
+			return w_top_cooccurence;
+		}
+
+		System.out.println("\tTranslations for " + w);
+
+		//int count =0;
+		double sums_u=0.0;
+		for (Double p_w_u : inverted_translation_w.keySet()) {
+			//if(p_w_u>this.seuil) {
+			NavigableSet<String> terms = inverted_translation_w.get(p_w_u);
+			Iterator<String> termit = terms.iterator();
+			while(termit.hasNext()) {
+				String topterm = termit.next();
+				if(p_w_u>this.seuil) {
+					System.out.println("("+w+","+topterm+"):"+p_w_u );
+					w_top_cooccurence.put(topterm, p_w_u);
+					sums_u=sums_u + p_w_u;
+					//count ++;
+				}else
+					break;
+			}
+			//}else
+			//	break;
+
+		}
+
+		//normalised based on u
+		HashMap<String, Double> tmp_w_top_cooccurence = new HashMap<String, Double>();
+		int tcount=0;
+		double cumsum=0.0;
+		for(String u: w_top_cooccurence.keySet()) {
+			tmp_w_top_cooccurence.put(u, w_top_cooccurence.get(u)/sums_u);
+			cumsum=cumsum+w_top_cooccurence.get(u)/sums_u;
+			tcount++;
+		}
+
+		//System.out.println(tcount + " translations selected, for a cumulative sum of " + cumsum);
+		return tmp_w_top_cooccurence;
+		//return w_top_cooccurence;
+	}
+
+	public HashMap<String, Double> getTopW2VTranslationsSeuilNotNorm_cl(String w, double seuil) throws IOException {
+
+		System.out.println("\tWord2Vec translations " + w);
+		TreeMultimap<Double, String> inverted_translation_w = w2v_inverted_translation.get(w);
+		HashMap<String, Double> w_top_cooccurence = new HashMap<String, Double>();
+		if(!w2v_inverted_translation.containsKey(w)) {
+			System.err.println("No translations recorded for term " + w);
+			w_top_cooccurence.put(w, 1.0);
+			return w_top_cooccurence;
+		}
+
+		System.out.println("\tTranslations for " + w);
+
+		//int count =0;
+		double sums_u=0.0;
+		for (Double p_w_u : inverted_translation_w.keySet()) {
+			//if(p_w_u>this.seuil) {
+			NavigableSet<String> terms = inverted_translation_w.get(p_w_u);
+			Iterator<String> termit = terms.iterator();
+			while(termit.hasNext()) {
+				String topterm = termit.next();
+				if(p_w_u>this.seuil) {
+					System.out.println("("+w+","+topterm+"):"+p_w_u );
+					w_top_cooccurence.put(topterm, p_w_u);
+					sums_u=sums_u + p_w_u;
+					//count ++;
+				}else
+					break;
+			}
+			//}else
+			//	break;
+
+		}
+
+		//normalised based on u
+		HashMap<String, Double> tmp_w_top_cooccurence = new HashMap<String, Double>();
+		int tcount=0;
+		double cumsum=0.0;
+		for(String u: w_top_cooccurence.keySet()) {
+			tmp_w_top_cooccurence.put(u, w_top_cooccurence.get(u)/sums_u);
+			cumsum=cumsum+w_top_cooccurence.get(u)/sums_u;
+			tcount++;
+		}
+
+		//System.out.println(tcount + " translations selected, for a cumulative sum of " + cumsum);
+		//return tmp_w_top_cooccurence;
+		return w_top_cooccurence;
+	}
 
 	public HashMap<String, Double> getTopW2VTranslations_atquerytime(String w) {
 		TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
@@ -4086,6 +4768,53 @@ public class TranslationLMManager extends Manager{
 		return tmp_w_top_cooccurence;
 	}
 
+	public HashMap<String, Double> getTopW2VTranslationsNotnormalised_cl(String w) {
+
+		TreeMultimap<Double, String> inverted_translation_w = w2v_inverted_translation.get(w);
+		HashMap<String, Double> w_top_cooccurence = new HashMap<String, Double>();
+
+		if(!w2v_inverted_translation.containsKey(w)) {
+			System.err.println("No translations recorded for term " + w);
+			w_top_cooccurence.put(w, 1.0);
+			return w_top_cooccurence;
+		}
+
+		System.out.println("\tTranslations for " + w);
+
+		int count =0;
+		double sums_u=0.0;
+
+		for (Double p_w_u : inverted_translation_w.keySet()) {
+			if(count<this.number_of_top_translation_terms) {
+				NavigableSet<String> terms = inverted_translation_w.get(p_w_u);
+				Iterator<String> termit = terms.iterator();
+				while(termit.hasNext()) {
+					String topterm = termit.next();
+					if(count<this.number_of_top_translation_terms) {
+						w_top_cooccurence.put(topterm, p_w_u);
+						sums_u=sums_u + p_w_u;
+						count ++;
+					}else
+						break;
+				}
+			}else
+				break;
+		}
+
+		//normalised based on u
+		HashMap<String, Double> tmp_w_top_cooccurence = new HashMap<String, Double>();
+		int tcount=0;
+		double cumsum=0.0;
+		for(String u: w_top_cooccurence.keySet()) {
+			tmp_w_top_cooccurence.put(u, w_top_cooccurence.get(u)/sums_u);
+			System.out.println("\t  " + w_top_cooccurence.get(u)/sums_u + ": " + u);
+			cumsum=cumsum+w_top_cooccurence.get(u)/sums_u;
+			tcount++;
+		}
+		System.out.println(tcount + " translations selected, for a cumulative sum of " + cumsum);
+		//return tmp_w_top_cooccurence;
+		return w_top_cooccurence;
+	}
 
 	public void compute_mi_window() throws FileNotFoundException, IOException{
 		HashMap<String, HashMap<String, Double>> translations = new HashMap<String, HashMap<String, Double>>();
@@ -4148,52 +4877,6 @@ public class TranslationLMManager extends Manager{
 		// TODO Auto-generated method stub
 		System.out.println("test");
 	}
-
-
-	public void initialiseW2V_cl_dico(String src_we) throws IOException {
-		//HashMap<String, TreeMultimap<Double, String> > w2v_inverted_translation = new HashMap<String, TreeMultimap<Double, String> >();
-
-		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-		try {
-
-			final DocumentBuilder builder = factory.newDocumentBuilder();
-			final Document document= builder.parse(new File("French_English_Online_Dictiona.xml"));
-			final Element racine = document.getDocumentElement();
-			final NodeList racineNoeuds = racine.getChildNodes();
-			final int nbRacineNoeuds = racineNoeuds.getLength();
-
-			for (int i = 0; i<nbRacineNoeuds; i++) {
-				if(racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
-					final Element dicoEntry = (Element) racineNoeuds.item(i);
-					TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
-					final Element src = (Element) dicoEntry.getElementsByTagName("h1").item(0);
-					final Element trg = (Element) dicoEntry.getElementsByTagName("p").item(0);
-					String w = src.getTextContent();
-					String[] u_tab = trg.getTextContent().split(",");
-					for (int j = 0; j < u_tab.length; j++) {
-						String u = u_tab[j];
-						double p_dico_w_u = (double)1/(double)u_tab.length;
-						inverted_translation_w.put(p_dico_w_u, u);
-						System.out.println("("+w+","+u+") = "+p_dico_w_u);
-					}
-
-					w2v_inverted_translation.put(w, inverted_translation_w);
-
-				}				
-			}			
-		}
-		catch (final ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-
-	
-
 
 }
 

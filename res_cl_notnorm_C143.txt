@@ -1,0 +1,9 @@
+conférence conference 6.58204660669636E-5
+conférence meeting 5.2504045298544915E-5
+conférence conferences 5.649499571804815E-5
+pékin nanjing 5.888287992858819E-5
+pékin beijing 7.067264762663336E-5
+pékin peking 5.879594188104642E-5
+femmes lesbians 4.283002394412159E-5
+femmes men 4.506114011710649E-5
+femmes women 5.6898027811994484E-5

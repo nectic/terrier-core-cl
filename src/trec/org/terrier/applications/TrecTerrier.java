@@ -29,17 +29,22 @@ import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.terrier.applications.batchquerying.TRECQuerying;
+import org.terrier.clir.ClirAggregation;
+import org.terrier.clir.ClirAggregationTF;
 import org.terrier.clir.ClirQuerying;
 import org.terrier.clir.TuneCbow;
 import org.terrier.clir.TuneCbowFull;
 import org.terrier.clir.TuneCbowSelf;
 import org.terrier.clir.TuneDicoCl;
 import org.terrier.clir.TuneLM;
+import org.terrier.clir.TuneSeuilNotNormCl;
 import org.terrier.clir.TuneSkipGram;
 import org.terrier.clir.TuneSkipGramCl;
 import org.terrier.clir.TuneSkipGramFull;
 import org.terrier.clir.TuneSkipGramFullCl;
+import org.terrier.clir.TuneSeuilCl;
 import org.terrier.clir.TuneSkipgramNotNormalised;
+import org.terrier.clir.TuneSkipgramNotNormalisedCl;
 import org.terrier.clir.TuneSkipgramPhrase;
 import org.terrier.clir.TuneSkipgramSelf;
 import org.terrier.evaluation.AdhocEvaluation;
@@ -168,12 +173,19 @@ public class TrecTerrier {
 
 	protected boolean tuneskipgramcl;
 	
+	protected boolean tuneskipgramnotnormcl;
+	
 	protected boolean tuneskipgramfullcl;
 	
 	protected boolean tunesdicocl;
 	
+	protected boolean tuneseuilcl;
 	
+	protected boolean tuneseuilnotnormcl;
 	
+	protected boolean aggregation;
+	
+	protected boolean aggregationtf;
 	
 
 	/**
@@ -365,6 +377,18 @@ public class TrecTerrier {
 			else if (args[pos].equals("--tuneskipgramcl"))
 				tuneskipgramcl = true;
 			
+			else if (args[pos].equals("--tuneskipgramnotnormcl"))
+				tuneskipgramnotnormcl = true;
+			
+			else if (args[pos].equals("--tuneskipgramseuilcl"))
+				tuneseuilcl = true;
+			
+			else if (args[pos].equals("--tuneseuilcl"))
+				tuneseuilcl = true;
+			
+			else if (args[pos].equals("--tuneseuilnotnormcl"))
+				tuneseuilnotnormcl = true;
+			
 			else if (args[pos].equals("--tunesdicocl"))
 				tunesdicocl = true;
 			
@@ -373,7 +397,13 @@ public class TrecTerrier {
 			
 			else if (args[pos].equals("--tunelm"))
 				tunelm = true;
-
+			
+			else if (args[pos].equals("--aggregation"))
+				aggregation = true;
+			
+			else if (args[pos].equals("--aggregationtf"))
+				aggregationtf = true;
+			
 			else if (args[pos].equals("-e") || args[pos].equals("--evaluate")){
 				evaluation = true;
 			}
@@ -664,6 +694,23 @@ public class TrecTerrier {
 			tuneskipgramcl.processQueries();
 		}
 		
+		else if (tuneskipgramnotnormcl) {
+
+			TuneSkipgramNotNormalisedCl tuneskipgramnotnormcl = new TuneSkipgramNotNormalisedCl();
+			tuneskipgramnotnormcl.processQueries();
+		}
+		
+		else if (tuneseuilcl) {
+			TuneSeuilCl tuneseuilcl = new TuneSeuilCl();
+			tuneseuilcl.processQueries();
+		}
+		
+		else if (tuneseuilnotnormcl) {
+			TuneSeuilNotNormCl tuneseuilnotnormcl = new TuneSeuilNotNormCl();
+			tuneseuilnotnormcl.processQueries();
+		}
+		
+		
 		else if (tunesdicocl) {
 			TuneDicoCl tunesdicocl = new TuneDicoCl();
 			tunesdicocl.processQueries();
@@ -673,6 +720,18 @@ public class TrecTerrier {
 			TuneSkipGramFullCl tuneskipgramfullcl = new TuneSkipGramFullCl();
 			tuneskipgramfullcl.processQueries();
 		}
+		
+		else if (aggregation) {
+			ClirAggregation aggregationCl = new ClirAggregation();
+			aggregationCl.processQueries();
+		}
+		
+		else if (aggregationtf) {
+			ClirAggregationTF clirAggregationTF = new ClirAggregationTF();
+			clirAggregationTF.processQueries();
+		}
+		
+		
 		
 		long endTime = System.currentTimeMillis();
 		System.err.println("Time elapsed: " + (endTime-startTime)/1000.0d + " seconds.");

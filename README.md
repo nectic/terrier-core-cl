@@ -165,3 +165,38 @@ tokeniser=UTFTokeniser
 
 -Dterrier.home=/Users/seydoudoumbia/these/expe/workspace_php_test/terrier-core-4.4
 -Dtrec.topics=/Users/seydoudoumbia/these/expe/workspace_php_test/terrier-core-4.4/share/clef/query_title_fr.trec
+
+
+
+bin/trec_terrier.sh --tunelm -Dtrec.topics=share/clef/query_en.trec -Dclir.src.we=/home/mrim/doumbise/clir/vectors_ap8889_cbow_s1000_w10_neg20_hs0_sam1e-4_iter5.txt -Dclir.number_of_top_translation_terms=1
+
+
+bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/query_title_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser -Dclir.number_of_top_translation_terms=1
+
+
+
+--tuneskipgramcl
+
+--tuneskipgramfullcl
+
+-Dterrier.home=/Users/seydoudoumbia/projets/these/workspace_these/mai/terrier-core-4.4
+-Dtrec.topics=/Users/seydoudoumbia/projets/these/workspace_these/mai/terrier-core-4.4/share/clef/query_title_fr.trec
+
+
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/clef/query_title_en.trec
+
+bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
+
+--tuneskipgramcl
+--tuneskipgramnotnormcl
+--tuneseuilcl
+--tuneseuilnotnormcl
+--tunesdicocl
+--tuneskipgramfullcl
+--tunelm
+--aggregation
+
+--aggregationtf
+
+
+
