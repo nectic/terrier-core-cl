@@ -980,15 +980,15 @@ public class TranslationLMManager extends Manager{
 
 				//double score = matchingMethod.score(ip);
 				
-				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+				//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
-				/*
+				
 				double score =	
 						WeightingModelLibrary.log( (docLength* tf/docLength + c * (colltermFrequency/numberOfTokens)) / (c + docLength)) 
 						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency/numberOfTokens) ) 
 						+ WeightingModelLibrary.log(c/(c + docLength))
 						;
-				*/
+				
 
 				log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
 
