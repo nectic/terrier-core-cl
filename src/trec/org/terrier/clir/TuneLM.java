@@ -32,41 +32,6 @@ public class TuneLM {
 	
 	
 	protected static final Logger logger = LoggerFactory.getLogger(TuneLM.class);
-
-	/**
-	 * @param args
-	 * @throws IOException 
-	 * @throws InterruptedException 
-	 */
-	public static void main(String[] args) throws IOException, InterruptedException {
-		Index index = Index.createIndex();
-		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
-		for(int i = 0; i<muvalues.length;i++) {
-			double mu = muvalues[i];
-			TranslationLMManager tlm = new TranslationLMManager(index);
-			tlm.setTranslation("null");
-			tlm.setDirMu(mu);
-			TRECDocnoOutputFormat TRECoutput = new TRECDocnoOutputFormat(index);
-			PrintWriter pt = new PrintWriter(new File("var/results/res_dir_mu_" + String.valueOf(mu) + ".res"));
-			QuerySource querySource = getQueryParser();
-			// iterating through the queries
-			while (querySource.hasNext()) {
-				String query = querySource.next();
-				String qid = querySource.getQueryId();
-				qid = qid.substring(1,qid.length());
-				System.out.println("Scoring with Dir LM; mu=" + mu);
-				//scoring with LM dir
-				Request rq = new Request();
-				rq.setOriginalQuery(query);
-				rq.setIndex(index);
-				rq.setQueryID(qid);
-				rq = tlm.runMatching(rq, "null", "dir");
-				TRECoutput.printResults(pt, rq, "dir", "Q0", 1000);
-			}
-			pt.flush();
-			pt.close();
-		}
-	}
 	
 	/**
 	 * Get the query parser that is being used.
@@ -102,7 +67,6 @@ public class TuneLM {
 		return rtr;
 	}
 
-	
 	public void processQueries() throws IOException, InterruptedException {
 		Index index = Index.createIndex();
 		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};

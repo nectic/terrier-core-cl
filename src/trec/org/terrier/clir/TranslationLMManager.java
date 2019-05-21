@@ -811,14 +811,14 @@ public class TranslationLMManager extends Manager{
 
 		File dicoFile = new File(dicoPath); 
 		BufferedReader brDicoFile = new BufferedReader(new FileReader(dicoFile)); 
-		
+
 		String line; 
 		while ((line = brDicoFile.readLine()) != null) {
 
 			String[] lineTab = line.split(":");
 			String w = lineTab[0];
 			String[] translation_w_ = lineTab[1].split(";");
-			
+
 			TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
 			HashMap<String, Double> translation_w = new HashMap<String,Double>();
 
@@ -963,23 +963,25 @@ public class TranslationLMManager extends Manager{
 			 * while this is good for single term queries, it is incorrect for multi term queries
 			 * */
 			while(ip.next() != IterablePosting.EOL) {
-				{
 
-					double tf = (double)ip.getFrequency();
-					double c = this.mu;
-					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-					double docLength = (double) ip.getDocumentLength();
-					double colltermFrequency = (double)lEntry.getFrequency();
+				double tf = (double)ip.getFrequency();
+				double c = this.mu;
+				double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+				double docLength = (double) ip.getDocumentLength();
+				double colltermFrequency = (double)lEntry.getFrequency();
+				
+				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
-					double score =	
-							WeightingModelLibrary.log( (docLength* tf/docLength + c * (colltermFrequency/numberOfTokens)) / (c + docLength)) 
-							- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency/numberOfTokens) ) 
-							+ WeightingModelLibrary.log(c/(c + docLength))
-							;
+				/*
+				double score =	
+						WeightingModelLibrary.log( (docLength* tf/docLength + c * (colltermFrequency/numberOfTokens)) / (c + docLength)) 
+						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency/numberOfTokens) ) 
+						+ WeightingModelLibrary.log(c/(c + docLength))
+						;
+				*/
 
-					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+				log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
 
-				}
 			}
 		}
 		//now need to put the scores into the result set
@@ -2557,16 +2559,16 @@ public class TranslationLMManager extends Manager{
 				HashMap<String, Double> translations_of_w = getW2VTranslations_cl(w);
 
 				for(String u : translations_of_w.keySet()) {
-					
+
 					double[] vector_u = fullw2vmatrix_trg.get(u);
 
 					if(vector_u==null)
 						continue;
-					
+
 					for (int j = 0; j < vector_u.length; j++) {
 						//vector_query[j]+=translations_of_w.get(u)*vector_u[j];//ponderation
 						vector_query[j]+=vector_u[j];
-						
+
 					}
 				}
 			}
