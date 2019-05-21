@@ -971,24 +971,15 @@ public class TranslationLMManager extends Manager{
 				double colltermFrequency = (double)lEntry.getFrequency();
 				
 				
-				DirichletLM matchingMethod = new DirichletLM();
-				matchingMethod.setParameter(c);
-				matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
-				matchingMethod.setKeyFrequency(1);
-				matchingMethod.setEntryStatistics(lEntry);
-				matchingMethod.prepare();
+				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
-				//double score = matchingMethod.score(ip);
-				
-				//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-
-				
+				/*
 				double score =	
 						WeightingModelLibrary.log( (docLength* tf/docLength + c * (colltermFrequency/numberOfTokens)) / (c + docLength)) 
 						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency/numberOfTokens) ) 
 						+ WeightingModelLibrary.log(c/(c + docLength))
 						;
-				
+				*/
 
 				log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
 
@@ -1902,21 +1893,9 @@ public class TranslationLMManager extends Manager{
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
 
-					//BM25 matchingMethod = new BM25();
-					//TF_IDF matchingMethod = new TF_IDF();
-					DirichletLM matchingMethod = new DirichletLM();
-					matchingMethod.setParameter(c);
-					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
-					matchingMethod.setKeyFrequency(1);
-					matchingMethod.setEntryStatistics(lu);
-					matchingMethod.prepare();
-
-					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
-
-					//double score = matchingMethod.score(ip);
-
-
-					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+					//double score = top_translations_of_w.get(u)*(WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c)));
+					
+					double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 					if(log_p_d_q[ip.getId()]==-1000.0)
 						log_p_d_q[ip.getId()]=0.0;
@@ -2179,128 +2158,6 @@ public class TranslationLMManager extends Manager{
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 		fichier_a_analyse.close();
-	}
-
-	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
-	 * 
-	 * This version performs the translation at query time
-	 * 
-	 * Results are saved in the ResultSet of the object
-	 * 
-	 * @throws IOException if a problem occurs during matching
-	 * @throws InterruptedException 
-	 */
-	public void dir_t_w2v_full() throws IOException, InterruptedException {
-		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
-		Arrays.fill(log_p_d_q, -1000.0);
-
-		PostingIndex<?> di = index.getDirectIndex();
-		DocumentIndex doi = index.getDocumentIndex();
-
-		double c = this.mu;
-		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-
-		//iterating over all query terms
-		for(int i=0; i<this.queryTerms.length;i++) {
-			System.out.println(this.queryTerms[i]);
-			String w = this.queryTerms[i];
-
-			String wPipelined = tpa.pipelineTerm(w);
-			if(wPipelined==null) {
-				//System.err.println("Term delected after pipeline: "+ti);
-				continue;
-			}
-
-			LexiconEntry lEntry = this.lex.getLexiconEntry(wPipelined);
-			if (lEntry==null)
-			{
-				System.err.println("Term Not Found: "+w);
-				continue;
-			}
-
-			//IterablePosting ip = this.invertedIndex.getPostings(lEntry);
-
-			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency());
-			if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
-					|| lEntry.getDocumentFrequency()>this.topthreshold || w.matches(".*\\d+.*"))
-				System.out.println("Term " + w + " matches the conditions for not beeing considered by w2v (cf, docf<" + this.rarethreshold + " || docf>" + this.topthreshold+ ")");
-
-
-			//HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime_notnormalised(w); 
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime(w);
-			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
-
-
-			if(!top_translations_of_w.containsKey(w))
-				System.err.println("Attention, there is no self-translation for term " + w);
-			//setting the self-translation to 1
-			top_translations_of_w.put(w, 1.0);
-
-			/*FOR ANALYSIS ONLY*/
-
-			/*END OF ANALYSIS CODE*/
-
-
-			HashMap<Integer, Double> dacc = new HashMap<Integer, Double>();
-
-			for(String u : top_translations_of_w.keySet()) {
-
-				String uPipelined = tpa.pipelineTerm(u);
-				if(uPipelined==null) {
-					//System.err.println("Term delected after pipeline: "+ti);
-					continue;
-				}
-
-				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
-				if (lEntry==null)
-				{
-					System.err.println("Term Not Found: "+u);
-					continue;
-				}
-
-				//LexiconEntry lu = this.lex.getLexiconEntry( u );
-
-				IterablePosting postings = this.invertedIndex.getPostings((BitIndexPointer) lu);
-				while (postings.next() != IterablePosting.EOL) {
-					int doc = postings.getId();					
-					double p_u_d = (double)postings.getFrequency()/(double)postings.getDocumentLength();
-					double p_w_u = top_translations_of_w.get(u);
-					/*FOR ANALYSIS ONLY*/
-					/*if(u.equalsIgnoreCase("dollar"))
-						p_w_u=0;*/
-					/*END OF ANALYSIS CODE*/
-
-					double sums_p_u_d_p_w_u = 0.0;
-					if(dacc.containsKey(doc))
-						sums_p_u_d_p_w_u = dacc.get(doc);
-					sums_p_u_d_p_w_u = sums_p_u_d_p_w_u + p_u_d * p_w_u;
-					dacc.put(doc, sums_p_u_d_p_w_u);
-				}
-			}
-			double colltermFrequency_w = (double)lEntry.getFrequency();
-
-			//Iterate through all the docs to score
-			for(int doc : dacc.keySet()) {
-				double sums_p_u_d_p_w_u = dacc.get(doc);
-				IterablePosting ip = di.getPostings(doi.getDocumentEntry(doc));
-				double docLength = (double) ip.getDocumentLength();
-
-				double score =	
-						WeightingModelLibrary.log( (docLength* sums_p_u_d_p_w_u + c * (colltermFrequency_w/numberOfTokens)) / (c + docLength)) 
-						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency_w/numberOfTokens) ) 
-						+ WeightingModelLibrary.log(c/(c + docLength))
-						;
-				if(log_p_d_q[doc]==-1000.0)
-					log_p_d_q[doc]=0.0;
-
-				log_p_d_q[doc] = log_p_d_q[doc] +  score;
-
-			}
-
-		}
-
-		//now need to put the scores into the result set
-		this.rs.initialise(log_p_d_q);
 	}
 
 	public void dir_t_w2v_full_cl() throws IOException, InterruptedException {
@@ -2605,6 +2462,259 @@ public class TranslationLMManager extends Manager{
 
 	}
 
+	public void dir_t_w2v_self_cl() throws IOException, InterruptedException {
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+
+			if(stopwords.contains(w.toLowerCase())) {
+				continue;
+			}
+
+			if(fullw2vmatrix_src.get(w)==null) {
+				continue;
+			}
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime_cl(w);
+
+			for(String u : top_translations_of_w.keySet()) {
+				String uPipelined = tpa.pipelineTerm(u);
+				if(uPipelined==null) {
+					System.err.println("Term delected after pipeline: "+u);
+					continue;
+				}
+				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
+				if (lu==null) {
+					System.err.println("Term Not Found: "+uPipelined);
+					continue;
+				}
+
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
+
+				while(ip.next() != IterablePosting.EOL) {
+					{
+						double tf = (double)ip.getFrequency();
+						double c = this.mu;
+						double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+						double docLength = (double) ip.getDocumentLength();
+						double colltermFrequency = (double)lu.getFrequency();
+
+						double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+
+						if(log_p_d_q[ip.getId()]==-1000.0)
+							log_p_d_q[ip.getId()]=0.0;
+
+						log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+
+					}
+				}
+			}
+		}
+		this.rs.initialise(log_p_d_q);
+	}
+	
+	public void dir_t_w2v_notnormalised_cl() throws IOException, InterruptedException {
+
+		MetaIndex meta = index.getMetaIndex();
+		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_notnorm_"+this.qid+".txt", "UTF-8");
+
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+			if(stopwords.contains(w.toLowerCase())) {
+				continue;
+			}
+			if(fullw2vmatrix_src.get(w)==null) {
+				continue;
+			}
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsNotnormalised_cl(w);
+			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
+
+			for(String u : top_translations_of_w.keySet()) {
+				String uPipelined = tpa.pipelineTerm(u);
+				if(uPipelined==null) {
+					//System.err.println("Term delected after pipeline: "+ti);
+					continue;
+				}
+
+				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
+				if (lu==null) {
+					System.err.println("Term Not Found: "+u);
+					continue;
+				}
+
+				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
+
+				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
+				while(ip.next() != IterablePosting.EOL) {
+
+					double tf = (double)ip.getFrequency();
+					double c = this.mu;
+					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+					double docLength = (double) ip.getDocumentLength();
+					double colltermFrequency = (double)lu.getFrequency();
+
+					double score = top_translations_of_w.get(u)*(WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c)));
+
+					if(log_p_d_q[ip.getId()]==-1000.0)
+						log_p_d_q[ip.getId()]=0.0;
+
+					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
+
+				}
+			}
+		}
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+		fichier_a_analyse.close();
+	}
+
+	
+	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
+	 * 
+	 * This version performs the translation at query time
+	 * 
+	 * Results are saved in the ResultSet of the object
+	 * 
+	 * @throws IOException if a problem occurs during matching
+	 * @throws InterruptedException 
+	 */
+	public void dir_t_w2v_full() throws IOException, InterruptedException {
+		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
+		Arrays.fill(log_p_d_q, -1000.0);
+
+		PostingIndex<?> di = index.getDirectIndex();
+		DocumentIndex doi = index.getDocumentIndex();
+
+		double c = this.mu;
+		double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
+
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			System.out.println(this.queryTerms[i]);
+			String w = this.queryTerms[i];
+
+			String wPipelined = tpa.pipelineTerm(w);
+			if(wPipelined==null) {
+				//System.err.println("Term delected after pipeline: "+ti);
+				continue;
+			}
+
+			LexiconEntry lEntry = this.lex.getLexiconEntry(wPipelined);
+			if (lEntry==null)
+			{
+				System.err.println("Term Not Found: "+w);
+				continue;
+			}
+
+			//IterablePosting ip = this.invertedIndex.getPostings(lEntry);
+
+			System.out.println("\t Obtaining translations for " + w + "\t(cf=" + lEntry.getFrequency() + "; docf=" + lEntry.getDocumentFrequency());
+			if(lEntry.getFrequency()<this.rarethreshold || lEntry.getDocumentFrequency()<this.rarethreshold 
+					|| lEntry.getDocumentFrequency()>this.topthreshold || w.matches(".*\\d+.*"))
+				System.out.println("Term " + w + " matches the conditions for not beeing considered by w2v (cf, docf<" + this.rarethreshold + " || docf>" + this.topthreshold+ ")");
+
+
+			//HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime_notnormalised(w); 
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime(w);
+			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
+
+
+			if(!top_translations_of_w.containsKey(w))
+				System.err.println("Attention, there is no self-translation for term " + w);
+			//setting the self-translation to 1
+			top_translations_of_w.put(w, 1.0);
+
+			/*FOR ANALYSIS ONLY*/
+
+			/*END OF ANALYSIS CODE*/
+
+
+			HashMap<Integer, Double> dacc = new HashMap<Integer, Double>();
+
+			for(String u : top_translations_of_w.keySet()) {
+
+				String uPipelined = tpa.pipelineTerm(u);
+				if(uPipelined==null) {
+					//System.err.println("Term delected after pipeline: "+ti);
+					continue;
+				}
+
+				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
+				if (lEntry==null)
+				{
+					System.err.println("Term Not Found: "+u);
+					continue;
+				}
+
+				//LexiconEntry lu = this.lex.getLexiconEntry( u );
+
+				IterablePosting postings = this.invertedIndex.getPostings((BitIndexPointer) lu);
+				while (postings.next() != IterablePosting.EOL) {
+					int doc = postings.getId();					
+					double p_u_d = (double)postings.getFrequency()/(double)postings.getDocumentLength();
+					double p_w_u = top_translations_of_w.get(u);
+					/*FOR ANALYSIS ONLY*/
+					/*if(u.equalsIgnoreCase("dollar"))
+						p_w_u=0;*/
+					/*END OF ANALYSIS CODE*/
+
+					double sums_p_u_d_p_w_u = 0.0;
+					if(dacc.containsKey(doc))
+						sums_p_u_d_p_w_u = dacc.get(doc);
+					sums_p_u_d_p_w_u = sums_p_u_d_p_w_u + p_u_d * p_w_u;
+					dacc.put(doc, sums_p_u_d_p_w_u);
+				}
+			}
+			double colltermFrequency_w = (double)lEntry.getFrequency();
+
+			//Iterate through all the docs to score
+			for(int doc : dacc.keySet()) {
+				double sums_p_u_d_p_w_u = dacc.get(doc);
+				IterablePosting ip = di.getPostings(doi.getDocumentEntry(doc));
+				double docLength = (double) ip.getDocumentLength();
+
+				double score =	
+						WeightingModelLibrary.log( (docLength* sums_p_u_d_p_w_u + c * (colltermFrequency_w/numberOfTokens)) / (c + docLength)) 
+						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency_w/numberOfTokens) ) 
+						+ WeightingModelLibrary.log(c/(c + docLength))
+						;
+				if(log_p_d_q[doc]==-1000.0)
+					log_p_d_q[doc]=0.0;
+
+				log_p_d_q[doc] = log_p_d_q[doc] +  score;
+
+			}
+
+		}
+
+		//now need to put the scores into the result set
+		this.rs.initialise(log_p_d_q);
+	}
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
 	 * This version performs the translation at query time
@@ -2832,67 +2942,7 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-	public void dir_t_w2v_self_cl() throws IOException, InterruptedException {
-		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
-		Arrays.fill(log_p_d_q, -1000.0);
 
-		File stopWordsFile = new File("share/stopwords-fr.txt"); 
-		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
-		List<String> stopwords = new ArrayList<String>();		
-		String st; 
-		while ((st = brStopWordsFile.readLine()) != null) {
-			stopwords.add(st);
-		}
-		brStopWordsFile.close();
-
-		for(int i=0; i<this.queryTerms.length;i++) {
-			String w = this.queryTerms[i];
-
-			if(stopwords.contains(w.toLowerCase())) {
-				continue;
-			}
-
-			if(fullw2vmatrix_src.get(w)==null) {
-				continue;
-			}
-
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime_cl(w);
-
-			for(String u : top_translations_of_w.keySet()) {
-				String uPipelined = tpa.pipelineTerm(u);
-				if(uPipelined==null) {
-					System.err.println("Term delected after pipeline: "+u);
-					continue;
-				}
-				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
-				if (lu==null) {
-					System.err.println("Term Not Found: "+uPipelined);
-					continue;
-				}
-
-				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
-
-				while(ip.next() != IterablePosting.EOL) {
-					{
-						double tf = (double)ip.getFrequency();
-						double c = this.mu;
-						double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-						double docLength = (double) ip.getDocumentLength();
-						double colltermFrequency = (double)lu.getFrequency();
-
-						double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-
-						if(log_p_d_q[ip.getId()]==-1000.0)
-							log_p_d_q[ip.getId()]=0.0;
-
-						log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
-
-					}
-				}
-			}
-		}
-		this.rs.initialise(log_p_d_q);
-	}
 
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
@@ -3028,75 +3078,7 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-	public void dir_t_w2v_notnormalised_cl() throws IOException, InterruptedException {
-
-		MetaIndex meta = index.getMetaIndex();
-		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_notnorm_"+this.qid+".txt", "UTF-8");
-
-		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
-		Arrays.fill(log_p_d_q, -1000.0);
-
-		File stopWordsFile = new File("share/stopwords-fr.txt"); 
-		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
-		List<String> stopwords = new ArrayList<String>();		
-		String st; 
-		while ((st = brStopWordsFile.readLine()) != null) {
-			stopwords.add(st);
-		}
-		brStopWordsFile.close();
-
-		//iterating over all query terms
-		for(int i=0; i<this.queryTerms.length;i++) {
-			String w = this.queryTerms[i];
-			if(stopwords.contains(w.toLowerCase())) {
-				continue;
-			}
-			if(fullw2vmatrix_src.get(w)==null) {
-				continue;
-			}
-
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsNotnormalised_cl(w);
-			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
-
-			for(String u : top_translations_of_w.keySet()) {
-				String uPipelined = tpa.pipelineTerm(u);
-				if(uPipelined==null) {
-					//System.err.println("Term delected after pipeline: "+ti);
-					continue;
-				}
-
-				LexiconEntry lu = this.lex.getLexiconEntry(uPipelined);
-				if (lu==null) {
-					System.err.println("Term Not Found: "+u);
-					continue;
-				}
-
-				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
-
-				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
-				while(ip.next() != IterablePosting.EOL) {
-
-					double tf = (double)ip.getFrequency();
-					double c = this.mu;
-					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
-					double docLength = (double) ip.getDocumentLength();
-					double colltermFrequency = (double)lu.getFrequency();
-
-					double score = top_translations_of_w.get(u)*(WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c)));
-
-					if(log_p_d_q[ip.getId()]==-1000.0)
-						log_p_d_q[ip.getId()]=0.0;
-
-					log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
-
-				}
-			}
-		}
-		//now need to put the scores into the result set
-		this.rs.initialise(log_p_d_q);
-		fichier_a_analyse.close();
-	}
-
+	
 	double[] get_empty_sentence_vector() {
 		int dimensions =0;
 		for (String s: fullw2vmatrix.keySet()) {
@@ -3264,6 +3246,7 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
+	
 	public HashMap<String, Double> getTopW2VTranslations_atquerytime_phrase(double[] sentence_vector) {
 		TreeMultimap<Double, String> inverted_translation_sentence = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
 		HashMap<String, Double> sentence_top_cooccurence = new HashMap<String, Double>();

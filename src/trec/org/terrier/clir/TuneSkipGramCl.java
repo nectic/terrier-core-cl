@@ -77,7 +77,6 @@ public class TuneSkipGramCl {
 
 		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);
 		
-		
 		System.out.println("Initialise src & trg vectors ");
 		tlm_w2v_skipgram.initialiseW2V_cl(src_we,trg_we);;
 		System.out.println("src trg vectors initialised");
@@ -88,9 +87,9 @@ public class TuneSkipGramCl {
 		tlm_w2v_skipgram.setTopthreshold(index.getCollectionStatistics().getNumberOfDocuments()/2);
 		tlm_w2v_skipgram.setNumber_of_top_translation_terms(numtopterms);
 
-		//double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
+		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
 		
-		double [ ]  muvalues = {200.0};
+		//double [ ]  muvalues = {200.0};
 		
 		for(int i = 0; i<muvalues.length;i++) {
 			double mu = muvalues[i];
