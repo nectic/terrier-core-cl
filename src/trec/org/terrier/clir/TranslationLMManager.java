@@ -767,7 +767,7 @@ public class TranslationLMManager extends Manager{
 
 			final DocumentBuilder builder = factory.newDocumentBuilder();
 			//final Document document= builder.parse(new File("French_English_Online_Dictiona.xml"));
-			final Document document= builder.parse(new File("Dico_Finnish.xml.xml"));
+			final Document document= builder.parse(new File("Dico_Finnish.xml"));
 			final Element racine = document.getDocumentElement();
 			final NodeList racineNoeuds = racine.getChildNodes();
 			final int nbRacineNoeuds = racineNoeuds.getLength();
