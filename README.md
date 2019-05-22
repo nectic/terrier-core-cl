@@ -22,37 +22,6 @@ bin/trec_terrier.sh -r -c 500.0 -Dtrec.model=DirichletLM -Dtrec.topics=share/cle
 -Dclir.score.file=/Volumes/SDEXT/these/score_fr_en_EEB1_2.ser
 
 
-bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
-
-
-git add .
-git commit -m "clir"
-git push -u origin master
-
-git pull origin master
-mvn package -DskipTests
-
-EEB1 :
-Terms founds in src word2vec: 154
-Terms founds in trg word2vec: 122530
-
-EEB2 :
-Terms founds in src word2vec: 164
-Terms founds in trg word2vec: 325487
-
-
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/nectic/terrier-core-cl.git
-git push -u origin master
-
-
-
-
-bin/trec_setup.sh share/
-
-
 bin/trec_terrier.sh -i
 
 bin/trec_terrier.sh --printstats
@@ -84,14 +53,6 @@ LOAD DATA LOCAL INFILE '/Users/seydoudoumbia/these/expe/word_embedding/wiki.en.m
 
 
 LOAD DATA LOCAL INFILE '/Users/seydoudoumbia/these/expe/terrier-core/terms_scores.txt' INTO TABLE  terms_similarity_mono_ap8889 FIELDS TERMINATED BY " " LINES TERMINATED BY "\n";
-
-
-Translations for enfant
-	  0.1782122373980286: mother
-	  0.19406661901677397: toddler
-	  0.1946631716384313: children
-	  0.18947237663796765: infant
-	  0.2435855953087984: child
 
 
 
@@ -129,24 +90,6 @@ wiki.multi.fr.vec
 wiki.multi.en.vec
 
 
-query: liberté parole internet
-
-Translations for liberté
-  0.595720276139199: freedom
-  0.40427972386080113: motherland
-
-
-Translations for parole
-	  0.5008338457316482: speech
-	  0.4991661542683518: spokesperson
-
-Translations for internet
-	  0.47698486917975813: web
-	  0.5230151308202418: internet
-
-
-new query: freedom motherland speech spokesperson web internet
-
 
 -Dterrier.home=/Users/seydoudoumbia/these/expe/workspace_phd_1/terrier-core-4.4
 -Dtrec.topics=/Users/seydoudoumbia/these/expe/workspace_phd_1/terrier-core-4.4/share/clef/query_title_fr.trec
@@ -171,7 +114,7 @@ tokeniser=UTFTokeniser
 bin/trec_terrier.sh --tunelm -Dtrec.topics=share/clef/query_en.trec -Dclir.src.we=/home/mrim/doumbise/clir/vectors_ap8889_cbow_s1000_w10_neg20_hs0_sam1e-4_iter5.txt -Dclir.number_of_top_translation_terms=1
 
 
-bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/query_title_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser -Dclir.number_of_top_translation_terms=1
+bin/trec_terrier.sh --tuneskipgramnotnormcl -Dtrec.topics=share/clef/query_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser -Dclir.number_of_top_translation_terms=1
 
 
 
@@ -185,6 +128,10 @@ bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/query_title_fr.tre
 
 bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/clef/query_title_en.trec
 
+bin/trec_terrier.sh -r -Dtrec.model=DirichletLM -Dtrec.topics=share/clef/query_en.trec
+
+bin/trec_terrier.sh -r -Dtrec.model=DirichletLM -Dtrec.topics=share/clef/query_fr.trec
+
 bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
 
 --tuneskipgramcl
@@ -195,8 +142,21 @@ bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
 --tuneskipgramfullcl
 --tunelm
 --aggregation
-
 --aggregationtf
 
+
+
+git add .
+git commit -m "clir"
+git push -u origin master
+
+git pull origin master
+mvn package -DskipTests
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/nectic/terrier-core-cl.git
+git push -u origin master
 
 
