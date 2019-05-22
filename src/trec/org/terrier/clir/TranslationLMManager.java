@@ -1976,9 +1976,9 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.setEntryStatistics(lu);
 					matchingMethod.prepare();
 
-					//double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
 
-					double score = matchingMethod.score(ip);
+					//double score = matchingMethod.score(ip);
 
 					
 					//double score = matchingMethod.score(ip);
