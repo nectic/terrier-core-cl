@@ -94,9 +94,9 @@ public class TuneSeuilCl {
 		tlm_w2v_skipgram.setSeuil(Double.parseDouble(ApplicationSetup.getProperty("clir.score.seuil","2.0/100000")));
 
 		
-		//double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
+		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
 		
-		double [ ]  muvalues = {10.0};
+		//double [ ]  muvalues = {10.0};
 		
 		for(int i = 0; i<muvalues.length;i++) {
 			double mu = muvalues[i];
