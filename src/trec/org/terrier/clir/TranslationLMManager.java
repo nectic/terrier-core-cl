@@ -1893,10 +1893,24 @@ public class TranslationLMManager extends Manager{
 					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
+					
+					
+					BM25 matchingMethod = new BM25();
+					//TF_IDF matchingMethod = new TF_IDF();
+					//DirichletLM matchingMethod = new DirichletLM();
+					matchingMethod.setParameter(c);
+					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+					matchingMethod.setKeyFrequency(1);
+					matchingMethod.setEntryStatistics(lu);
+					matchingMethod.prepare();
+
+					//double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+					
+					double score = matchingMethod.score(ip);
 
 					//double score = top_translations_of_w.get(u)*(WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c)));
 					
-					double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
+					//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 					
 					
 					if(log_p_d_q[ip.getId()]==-1000.0)
