@@ -683,7 +683,7 @@ public class TranslationLMManager extends Manager{
 			//TODO: to replace with appropriate method
 		} else {
 
-			File stopWordsFile = new File("share/stopwords-fr.txt"); 
+			File stopWordsFile = new File("share/stopwords-trg.txt"); 
 			BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 			List<String> stopwords = new ArrayList<String>();		
 			String st; 
