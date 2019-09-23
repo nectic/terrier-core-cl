@@ -72,7 +72,7 @@ public class TuneSkipGramCl {
 		int numtopterms = Integer.valueOf(ApplicationSetup.getProperty("clir.number_of_top_translation_terms","1"));
 		String src_we = ApplicationSetup.getProperty("clir.src.we","/Volumes/SDEXT/these/wiki.multi.fr.vec");
 		String trg_we = ApplicationSetup.getProperty("clir.trg.we","/Volumes/SDEXT/these/wiki.multi.en.vec");
-
+		
 		Index index = Index.createIndex();
 
 		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);

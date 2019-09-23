@@ -143,6 +143,12 @@ bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
 --aggregationtf
 
 
+bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/topics/query_title_fi.trec
+
+
+
+
+
 
 git add .
 git commit -m "clir"

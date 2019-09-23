@@ -1,0 +1,72 @@
+#clir terrier-core
+
+
+bin/trec_terrier.sh -i
+
+bin/trec_terrier.sh --printstats
+
+bin/trec_terrier.sh -r -Dtrec.topics=share/
+
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/
+
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/clef/query_title_en.trec
+
+share/clef/query_title_en.trec
+
+bin/trec_terrier.sh -r -Dtrec.model=Hiemstra_LM -c 0.4 -Dtrec.topics=share/clef/clef2003_query_en.txt
+
+bin/trec_terrier.sh -r -Dtrec.model=TF_IDF -c 0.4 -Dtrec.topics=share/clef/clef2003_query_en.txt
+
+bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
+
+
+tokeniser=UTFTokeniser
+
+
+
+bin/trec_terrier.sh --tunelm -Dtrec.topics=share/clef/query_en.trec -Dclir.src.we=/home/mrim/doumbise/clir/vectors_ap8889_cbow_s1000_w10_neg20_hs0_sam1e-4_iter5.txt -Dclir.number_of_top_translation_terms=1
+
+
+bin/trec_terrier.sh --tuneseuilcl -Dtrec.topics=share/clef/topics/query_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser -Dclir.number_of_top_translation_terms=1 -Dclir.score.seuil=0.00002
+
+
+bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/topics/query_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fi.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser -Dclir.number_of_top_translation_terms=1 -Dclir.score.seuil=0.00002
+
+
+-Dterrier.home=/Users/seydoudoumbia/projets/these/workspace_these/mai/terrier-core-4.4
+-Dtrec.topics=/Users/seydoudoumbia/projets/these/workspace_these/mai/terrier-core-4.4/share/clef/query_title_fr.trec
+
+
+bin/trec_terrier.sh -r -Dtrec.model=BM25 -c 0.4 -Dtrec.topics=share/clef/query_title_en.trec
+
+bin/trec_terrier.sh -r -Dtrec.model=DirichletLM -Dtrec.topics=share/clef/query_en.trec
+
+bin/trec_terrier.sh -r -Dtrec.model=DirichletLM -Dtrec.topics=share/clef/query_fr.trec
+
+bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
+
+--tuneskipgramcl
+--tuneskipgramnotnormcl
+--tuneseuilcl
+--tuneseuilnotnormcl
+--tunesdicocl
+--tuneskipgramfullcl
+--tunelm
+--aggregation
+--aggregationtf
+
+
+git add .
+git commit -m "clir"
+git push -u origin master
+
+ssh doumbise@ligone.imag.fr
+
+ssh doumbise@bach5.imag.fr 
+
+
+git pull origin master
+mvn package -DskipTests
+
+
+

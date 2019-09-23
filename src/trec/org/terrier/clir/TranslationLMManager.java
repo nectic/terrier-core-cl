@@ -683,7 +683,7 @@ public class TranslationLMManager extends Manager{
 			//TODO: to replace with appropriate method
 		} else {
 
-			File stopWordsFile = new File("share/stopwords-trg.txt"); 
+			File stopWordsFile = new File("share/stopwords-src.txt"); 
 			BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 			List<String> stopwords = new ArrayList<String>();		
 			String st; 
@@ -1847,7 +1847,7 @@ public class TranslationLMManager extends Manager{
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
-		File stopWordsFile = new File("share/stopwords-trg.txt"); 
+		File stopWordsFile = new File("share/stopwords-src.txt"); 
 		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 		List<String> stopwords = new ArrayList<String>();		
 		String st; 
