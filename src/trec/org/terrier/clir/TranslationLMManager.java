@@ -108,6 +108,12 @@ public class TranslationLMManager extends Manager{
 
 	private String qid;
 	private double seuil;
+	
+	PrintWriter pw_dico_eeb;
+	
+	
+	
+	
 
 	/**
 	 * @return the windowsize
@@ -140,6 +146,16 @@ public class TranslationLMManager extends Manager{
 	public TranslationLMManager(Index index) {
 		super(index);
 		querySource = getQueryParser();
+		createDicoFile();
+	}
+
+	private void createDicoFile() {
+		try {
+			pw_dico_eeb = new PrintWriter("dico_eeb.txt", "UTF-8");
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -1972,7 +1988,6 @@ public class TranslationLMManager extends Manager{
 		System.out.println("query: " + query);
 		this.queryTerms = srq.getOriginalQuery().split(" ");
 
-		PrintWriter pw_dico_eeb = new PrintWriter("dico_eeb.txt", "UTF-8");
 		File stopWordsFile = new File("share/stopwords-src.txt"); 
 		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 		List<String> stopwords = new ArrayList<String>();		
