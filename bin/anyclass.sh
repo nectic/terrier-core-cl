@@ -105,6 +105,7 @@ $JAVA_HOME/bin/java -Xmx$TERRIER_HEAP_MEM $JAVA_OPTIONS $TERRIER_OPTIONS \
      -Dclir.number_of_top_translation_terms=1 \
      -Dclir.score.seuil=0.00002 \
      -Dclir.dico.path=/home/mrim/doumbise/terrier-core-cl/dico_eeb.txt \
+     -Dclir.dico.path=dico_eeb.txt \
      -cp $CLASSPATH $@
 
 if [ "$TERRIER_LIB_TMP" == "1" ];
