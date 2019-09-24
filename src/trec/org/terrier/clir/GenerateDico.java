@@ -97,6 +97,8 @@ public class GenerateDico {
 
 			}
 			
+			tlm_w2v_skipgram.pw_dico_eeb.close();
+			
 	}
 
 }
