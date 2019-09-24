@@ -2017,8 +2017,6 @@ public class TranslationLMManager extends Manager{
 
 		}
 
-		pw_dico_eeb.close();
-
 	}
 
 	public void dir_t_w2v_seuil_cl() throws IOException, InterruptedException {
