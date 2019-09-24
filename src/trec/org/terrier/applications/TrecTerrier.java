@@ -32,6 +32,7 @@ import org.terrier.applications.batchquerying.TRECQuerying;
 import org.terrier.clir.ClirAggregation;
 import org.terrier.clir.ClirAggregationTF;
 import org.terrier.clir.ClirQuerying;
+import org.terrier.clir.GenerateDico;
 import org.terrier.clir.TuneCbow;
 import org.terrier.clir.TuneCbowFull;
 import org.terrier.clir.TuneCbowSelf;
@@ -178,6 +179,8 @@ public class TrecTerrier {
 	protected boolean tuneskipgramfullcl;
 	
 	protected boolean tunesdicocl;
+
+	protected boolean generatedico;
 	
 	protected boolean tuneseuilcl;
 	
@@ -391,6 +394,9 @@ public class TrecTerrier {
 			
 			else if (args[pos].equals("--tunesdicocl"))
 				tunesdicocl = true;
+			
+			else if (args[pos].equals("--generatedico"))
+				generatedico = true;
 			
 			else if (args[pos].equals("--tuneskipgramfullcl"))
 				tuneskipgramfullcl = true;
@@ -714,6 +720,12 @@ public class TrecTerrier {
 		else if (tunesdicocl) {
 			TuneDicoCl tunesdicocl = new TuneDicoCl();
 			tunesdicocl.processQueries();
+		}
+		
+		else if (generatedico) {
+			System.out.println("Generate Dico");
+			GenerateDico generateDico = new GenerateDico();
+			generateDico.processQueries();
 		}
 		
 		else if (tuneskipgramfullcl) {

@@ -99,7 +99,6 @@ $JAVA_HOME/bin/java -Xmx$TERRIER_HEAP_MEM $JAVA_OPTIONS $TERRIER_OPTIONS \
 	 -Dterrier.home=$TERRIER_HOME \
      -Dterrier.setup=$TERRIER_ETC/terrier.properties \
      -Dlogback.configurationFile=$TERRIER_ETC/logback.xml \
-     -Dtrec.topics=share/clef/query_fr.trec \
      -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec \
      -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec \
      -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser \

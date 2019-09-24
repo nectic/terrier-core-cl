@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -800,6 +801,46 @@ public class TranslationLMManager extends Manager{
 
 	}
 
+	public void initialiseW2V_cl_dico_2(String src_we) throws IOException {
+		String dicoPath = ApplicationSetup.getProperty("clir.dico.path","res_cl_C143.txt");
+		File dicoFile = new File(dicoPath); 
+		BufferedReader brDicoFile = new BufferedReader(new FileReader(dicoFile)); 
+		
+		
+
+		String line; 
+		int i = 0;
+		String w_curr = "";
+		String w = "";
+		String u = "";
+		
+		TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
+		
+		while ((line = brDicoFile.readLine()) != null) {
+			String[] lineTap = line.split(" ");
+			w = lineTap[0];
+			u = lineTap[1];
+			double p_w_u = Double.parseDouble(lineTap[2]);
+			System.out.println("w="+w);
+			//System.out.println("u="+u);
+			//System.out.println("p_w_u="+p_w_u);
+			
+			if(i==0 || !w_curr.equals(w)) {
+				System.out.println("Nouveau w");
+				if(i!=0) {
+					w2v_inverted_translation.put(w_curr, inverted_translation_w);
+					inverted_translation_w.clear();
+				}
+				w_curr=w;
+			}
+			inverted_translation_w.put(p_w_u, u);
+			i++;
+		}
+
+		brDicoFile.close();
+
+	}
+
 	public void initialiseW2Vdico_cl() throws IOException {
 
 		String dicoPath = ApplicationSetup.getProperty("clir.dico.path","res_cl_C143.txt");
@@ -970,8 +1011,8 @@ public class TranslationLMManager extends Manager{
 				double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 				double docLength = (double) ip.getDocumentLength();
 				double colltermFrequency = (double)lEntry.getFrequency();
-				
-				
+
+
 				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 				/*
@@ -980,7 +1021,7 @@ public class TranslationLMManager extends Manager{
 						- WeightingModelLibrary.log( c/( c+ docLength) * (colltermFrequency/numberOfTokens) ) 
 						+ WeightingModelLibrary.log(c/(c + docLength))
 						;
-				*/
+				 */
 
 				log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
 
@@ -1893,8 +1934,8 @@ public class TranslationLMManager extends Manager{
 					double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
-					
-					
+
+
 					//BM25 matchingMethod = new BM25();
 					//TF_IDF matchingMethod = new TF_IDF();
 					DirichletLM matchingMethod = new DirichletLM();
@@ -1905,14 +1946,14 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.prepare();
 
 					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
-					
+
 					//double score = matchingMethod.score(ip);
 
 					//double score = top_translations_of_w.get(u)*(WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c)));
-					
+
 					//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-					
-					
+
+
 					if(log_p_d_q[ip.getId()]==-1000.0)
 						log_p_d_q[ip.getId()]=0.0;
 
@@ -1924,6 +1965,45 @@ public class TranslationLMManager extends Manager{
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 		fichier_a_analyse.close();
+	}
+
+	public void generateDico(Request srq) throws IOException {
+		String query = srq.getOriginalQuery(); //this is before any pre-processing
+		System.out.println("query: " + query);
+		this.queryTerms = srq.getOriginalQuery().split(" ");
+
+		PrintWriter pw_dico_eeb = new PrintWriter("dico_eeb.txt", "UTF-8");
+		File stopWordsFile = new File("share/stopwords-src.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+
+			if(stopwords.contains(w.toLowerCase())) {
+				//System.err.println("Source Term exist in stop words : " + w);
+				continue;
+			}
+
+			if(fullw2vmatrix_src.get(w)==null)
+				continue;
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
+
+			for(String u : top_translations_of_w.keySet()) {
+				pw_dico_eeb.println(w+" "+u+" "+top_translations_of_w.get(u));
+			}
+
+		}
+
+		pw_dico_eeb.close();
+
 	}
 
 	public void dir_t_w2v_seuil_cl() throws IOException, InterruptedException {
@@ -1993,7 +2073,7 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.prepare();
 
 					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
-					
+
 					//double score = matchingMethod.score(ip);
 
 					//double score = matchingMethod.score(ip);
@@ -2101,12 +2181,12 @@ public class TranslationLMManager extends Manager{
 	public void dir_t_dico_cl() throws IOException, InterruptedException {
 
 		MetaIndex meta = index.getMetaIndex();
-		PrintWriter fichier_a_analyse = new PrintWriter("res_cl_dico_"+this.qid+".txt", "UTF-8");
+		//PrintWriter fichier_a_analyse = new PrintWriter("res_cl_dico_"+this.qid+".txt", "UTF-8");
 
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
-		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		File stopWordsFile = new File("share/stopwords-src.txt"); 
 		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 		List<String> stopwords = new ArrayList<String>();		
 		String st; 
@@ -2142,7 +2222,7 @@ public class TranslationLMManager extends Manager{
 					continue;
 				}
 
-				fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
+				//fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
 
 				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
 				while(ip.next() != IterablePosting.EOL) {
@@ -2153,9 +2233,9 @@ public class TranslationLMManager extends Manager{
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lu.getFrequency();
 
-					BM25 matchingMethod = new BM25();
+					//BM25 matchingMethod = new BM25();
 					//TF_IDF matchingMethod = new TF_IDF();
-					//DirichletLM matchingMethod = new DirichletLM();
+					DirichletLM matchingMethod = new DirichletLM();
 					matchingMethod.setParameter(c);
 					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
 					matchingMethod.setKeyFrequency(1);
@@ -2163,7 +2243,7 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.prepare();
 
 					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
-					
+
 					//double score = matchingMethod.score(ip);
 
 					//double score = matchingMethod.score(ip);
@@ -2179,7 +2259,7 @@ public class TranslationLMManager extends Manager{
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
-		fichier_a_analyse.close();
+		//fichier_a_analyse.close();
 	}
 
 	public void dir_t_w2v_full_cl() throws IOException, InterruptedException {
@@ -2545,7 +2625,7 @@ public class TranslationLMManager extends Manager{
 		}
 		this.rs.initialise(log_p_d_q);
 	}
-	
+
 	public void dir_t_w2v_notnormalised_cl() throws IOException, InterruptedException {
 
 		MetaIndex meta = index.getMetaIndex();
@@ -2615,7 +2695,7 @@ public class TranslationLMManager extends Manager{
 		fichier_a_analyse.close();
 	}
 
-	
+
 	/** Performs retrieval with a Dirichlet smoothing translation language model, where the translation probability is estimated using word2vec
 	 * 
 	 * This version performs the translation at query time
@@ -3100,7 +3180,7 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-	
+
 	double[] get_empty_sentence_vector() {
 		int dimensions =0;
 		for (String s: fullw2vmatrix.keySet()) {
@@ -3268,7 +3348,7 @@ public class TranslationLMManager extends Manager{
 		this.rs.initialise(log_p_d_q);
 	}
 
-	
+
 	public HashMap<String, Double> getTopW2VTranslations_atquerytime_phrase(double[] sentence_vector) {
 		TreeMultimap<Double, String> inverted_translation_sentence = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
 		HashMap<String, Double> sentence_top_cooccurence = new HashMap<String, Double>();
@@ -4894,6 +4974,8 @@ public class TranslationLMManager extends Manager{
 		// TODO Auto-generated method stub
 		System.out.println("test");
 	}
+
+
 
 }
 

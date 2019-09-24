@@ -28,12 +28,10 @@ import org.terrier.utility.ArrayUtils;
  * @author zuccong
  *
  */
-public class TuneDicoCl {
+public class GenerateDico {
 
 
-	protected static final Logger logger = LoggerFactory.getLogger(TuneDicoCl.class);
-	
-
+	protected static final Logger logger = LoggerFactory.getLogger(GenerateDico.class);
 	
 	/**
 	 * Get the query parser that is being used.
@@ -74,33 +72,17 @@ public class TuneDicoCl {
 		int numtopterms = Integer.valueOf(ApplicationSetup.getProperty("clir.number_of_top_translation_terms","1"));
 		String src_we = ApplicationSetup.getProperty("clir.src.we","/Volumes/SDEXT/these/wiki.multi.fr.vec");
 		String trg_we = ApplicationSetup.getProperty("clir.trg.we","/Volumes/SDEXT/these/wiki.multi.en.vec");
-
+		
 		Index index = Index.createIndex();
 
 		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);
 		
-		
 		System.out.println("Initialise src & trg vectors ");
-		tlm_w2v_skipgram.initialiseW2V_cl_dico_2(src_we);;
+		tlm_w2v_skipgram.initialiseW2V_cl(src_we,trg_we);;
 		System.out.println("src trg vectors initialised");
 		
-		
-		
-		tlm_w2v_skipgram.setTranslation("dico_cl");
-		tlm_w2v_skipgram.setRarethreshold(index.getCollectionStatistics().getNumberOfDocuments()/200);
-		tlm_w2v_skipgram.setTopthreshold(index.getCollectionStatistics().getNumberOfDocuments()/2);
 		tlm_w2v_skipgram.setNumber_of_top_translation_terms(numtopterms);
-
-		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
 		
-		//double [ ]  muvalues = { 0.75};
-		
-		
-		for(int i = 0; i<muvalues.length;i++) {
-			double mu = muvalues[i];
-			tlm_w2v_skipgram.setDirMu(mu);
-			TRECDocnoOutputFormat TRECoutput_w2v_skipgram = new TRECDocnoOutputFormat(index);
-			PrintWriter pt_w2v_skipgram = new PrintWriter(new File("var/results/res_dir_dico_cl_mu_" + String.valueOf(mu) + ".res"));
 			QuerySource querySource = getQueryParser();
 			// iterating through the queries
 			while (querySource.hasNext()) {
@@ -108,18 +90,13 @@ public class TuneDicoCl {
 				String qid = querySource.getQueryId();
 				tlm_w2v_skipgram.setQid(qid);
 				qid = qid.substring(1,qid.length());
-				System.out.println("Scoring with Dir TLM with dico");
-				//scoring with LM dir w2v
 				Request rq_w2v = new Request();
 				rq_w2v.setOriginalQuery(query);
 				rq_w2v.setQueryID(qid);
-				rq_w2v = tlm_w2v_skipgram.runMatching(rq_w2v, "dico_cl", "dir");
-				TRECoutput_w2v_skipgram.printResults(pt_w2v_skipgram, rq_w2v, "dir_dico_cl", "Q0", 1000);
+				tlm_w2v_skipgram.generateDico(rq_w2v);
+
 			}
-			pt_w2v_skipgram.flush();
-			pt_w2v_skipgram.close();
-		}
-		
+			
 	}
 
 }
