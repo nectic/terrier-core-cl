@@ -1,9 +1,0 @@
-conférence conference 6.58204660669636E-5
-conférence conferences 5.649499571804815E-5
-pékin nanjing 5.888287992858819E-5
-pékin tianjin 5.5284539084581555E-5
-pékin shanghai 5.8232998453461234E-5
-pékin guangzhou 5.770621900581123E-5
-pékin beijing 7.067264762663336E-5
-pékin peking 5.879594188104642E-5
-femmes women 5.6898027811994484E-5
