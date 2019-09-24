@@ -55,6 +55,8 @@ bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
 --aggregation
 --aggregationtf
 
+--generatedico
+
 
 git add .
 git commit -m "clir"
@@ -62,7 +64,7 @@ git push -u origin master
 
 ssh doumbise@ligone.imag.fr
 
-ssh doumbise@bach5.imag.fr 
+ssh doumbise@bach1.imag.fr 
 
 
 git pull origin master

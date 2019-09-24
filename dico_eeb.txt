@@ -1,9 +1,0 @@
-reichstag bundestag 0.3217850524916078
-reichstag bundesrat 0.3096109468135307
-reichstag reichstag 0.3686040006948615
-emballé overstuffed 0.3284769035208068
-emballé canned 0.32500218584431934
-emballé buttered 0.34652091063487395
-christo christus 0.28023223000893405
-christo christo 0.4122196825377335
-christo christoff 0.30754808745333256

@@ -91,9 +91,9 @@ public class TuneDicoCl {
 		tlm_w2v_skipgram.setTopthreshold(index.getCollectionStatistics().getNumberOfDocuments()/2);
 		tlm_w2v_skipgram.setNumber_of_top_translation_terms(numtopterms);
 
-		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
+		//double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
 		
-		//double [ ]  muvalues = { 0.75};
+		double [ ]  muvalues = {10.0};
 		
 		
 		for(int i = 0; i<muvalues.length;i++) {
