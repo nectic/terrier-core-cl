@@ -822,8 +822,6 @@ public class TranslationLMManager extends Manager{
 		File dicoFile = new File(dicoPath); 
 		BufferedReader brDicoFile = new BufferedReader(new FileReader(dicoFile)); 
 		
-		
-
 		String line; 
 		int i = 0;
 		String w_curr = "";
@@ -833,6 +831,19 @@ public class TranslationLMManager extends Manager{
 		TreeMultimap<Double, String> inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());
 		
 		while ((line = brDicoFile.readLine()) != null) {
+			
+			if(!line.equals("--")){
+				String[] lineTap = line.split(" ");
+				w = lineTap[0];
+				u = lineTap[1];
+				double p_w_u = Double.parseDouble(lineTap[2]);
+				inverted_translation_w.put(p_w_u, u);
+			}else {
+				w2v_inverted_translation.put(w, inverted_translation_w);
+				inverted_translation_w = TreeMultimap.create(Ordering.natural().reverse(), Ordering.natural());;
+			}
+			
+			/*
 			String[] lineTap = line.split(" ");
 			w = lineTap[0];
 			u = lineTap[1];
@@ -840,17 +851,23 @@ public class TranslationLMManager extends Manager{
 			System.out.println("w="+w);
 			//System.out.println("u="+u);
 			//System.out.println("p_w_u="+p_w_u);
-			
-			if(i==0 || !w_curr.equals(w)) {
-				System.out.println("Nouveau w");
-				if(i!=0) {
-					w2v_inverted_translation.put(w_curr, inverted_translation_w);
-					inverted_translation_w.clear();
-				}
+			if(i==0) {
 				w_curr=w;
+				inverted_translation_w.put(p_w_u, u);
 			}
-			inverted_translation_w.put(p_w_u, u);
+			if(i!=0 && w_curr.equals(w)) {
+				w_curr=w;
+				inverted_translation_w.put(p_w_u, u);	
+			}
+			if(!w_curr.equals(w)) {
+				System.out.println("Nouveau w");
+				w2v_inverted_translation.put(w_curr, inverted_translation_w);
+				inverted_translation_w.clear();
+			}
 			i++;
+			*/
+			
+			
 		}
 
 		brDicoFile.close();
@@ -2014,6 +2031,7 @@ public class TranslationLMManager extends Manager{
 			for(String u : top_translations_of_w.keySet()) {
 				pw_dico_eeb.println(w+" "+u+" "+top_translations_of_w.get(u));
 			}
+			pw_dico_eeb.println("--");
 
 		}
 

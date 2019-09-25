@@ -1,0 +1,362 @@
+lettre letter 1.0
+--
+piégée detonates 1.0
+--
+arabella arabella 1.0
+--
+reichstag reichstag 1.0
+--
+emballé buttered 1.0
+--
+christo christo 1.0
+--
+conférence conference 1.0
+--
+pékin beijing 1.0
+--
+femmes women 1.0
+--
+diamants diamonds 1.0
+--
+rébellion rebellion 1.0
+--
+sierra sierra 1.0
+--
+leone leone 1.0
+--
+japon japan 1.0
+--
+importations exports 1.0
+--
+riz rice 1.0
+--
+fast fast 1.0
+--
+foods conagra 1.0
+--
+japon japan 1.0
+--
+accidents accidents 1.0
+--
+pétroliers petroleum 1.0
+--
+oiseaux birds 1.0
+--
+dommages damages 1.0
+--
+couche layer 1.0
+--
+ozone ozone 1.0
+--
+visite visit 1.0
+--
+pape pope 1.0
+--
+sri sri 1.0
+--
+lanka lanka 1.0
+--
+peine imprisonment 1.0
+--
+mort death 1.0
+--
+merveilles wonders 1.0
+--
+monde world 1.0
+--
+droits rights 1.0
+--
+enfant child 1.0
+--
+jeux games 1.0
+--
+olympiques olympics 1.0
+--
+paix peace 1.0
+--
+liberté freedom 1.0
+--
+internet internet 1.0
+--
+risques risks 1.0
+--
+téléphone phone 1.0
+--
+portable handheld 1.0
+--
+syndicats unions 1.0
+--
+europe europe 1.0
+--
+gagnantes finalists 1.0
+--
+féminines women 1.0
+--
+wimbledon wimbledon 1.0
+--
+match match 1.0
+--
+football football 1.0
+--
+dublin dublin 1.0
+--
+mer sea 1.0
+--
+nord north 1.0
+--
+pétrole petroleum 1.0
+--
+environnement environment 1.0
+--
+production production 1.0
+--
+consommation consumption 1.0
+--
+whisky whisky 1.0
+--
+régimes regimes 1.0
+--
+union union 1.0
+--
+européenne european 1.0
+--
+douanes customs 1.0
+--
+turques turks 1.0
+--
+restrictions restrictions 1.0
+--
+tabac tobacco 1.0
+--
+condamnations imprisonments 1.0
+--
+trafic traffic 1.0
+--
+drogue drug 1.0
+--
+europe europe 1.0
+--
+golden golden 1.0
+--
+globes globes 1.0
+--
+général general 1.0
+--
+français french 1.0
+--
+zone zone 1.0
+--
+sécurité security 1.0
+--
+balkans balkans 1.0
+--
+relations relations 1.0
+--
+chine china 1.0
+--
+mongolie mongolia 1.0
+--
+assassinat assassination 1.0
+--
+rabin rabin 1.0
+--
+arrivée arrival 1.0
+--
+graveur engraver 1.0
+--
+cd cd 1.0
+--
+langues languages 1.0
+--
+officielles official 1.0
+--
+union union 1.0
+--
+européenne european 1.0
+--
+finale finals 1.0
+--
+hockey hockey 1.0
+--
+records records 1.0
+--
+monde world 1.0
+--
+athlétisme athletics 1.0
+--
+preuve proof 1.0
+--
+existence existence 1.0
+--
+quarks quarks 1.0
+--
+top top 1.0
+--
+querelle quarrel 1.0
+--
+bavaroise bavarian 1.0
+--
+crucifix crucifix 1.0
+--
+dommages damages 1.0
+--
+écologiques ecological 1.0
+--
+everglades everglades 1.0
+--
+shoemaker palomar 1.0
+--
+levy levine 1.0
+--
+jupiter jupiter 1.0
+--
+consommation consumption 1.0
+--
+lait milk 1.0
+--
+europe europe 1.0
+--
+refus refusal 1.0
+--
+service service 1.0
+--
+militaire military 1.0
+--
+démission resignation 1.0
+--
+secrétaire secretary 1.0
+--
+général general 1.0
+--
+otan nato 1.0
+--
+faillite bankrupt 1.0
+--
+essais tests 1.0
+--
+nucléaires nuclear 1.0
+--
+français french 1.0
+--
+anniversaire anniversary 1.0
+--
+débarquement beachheads 1.0
+--
+normandie normandy 1.0
+--
+restes skeletons 1.0
+--
+asiatiques asian 1.0
+--
+dinosaure dinosaur 1.0
+--
+congé furlough 1.0
+--
+maternité maternity 1.0
+--
+europe europe 1.0
+--
+photos photos 1.0
+--
+néerlandaises dutch 1.0
+--
+srebrenica srebrenica 1.0
+--
+gouvernement government 1.0
+--
+coalition coalition 1.0
+--
+néerlandais dutch 1.0
+--
+transport transport 1.0
+--
+nucléaire nuclear 1.0
+--
+allemagne germany 1.0
+--
+réforme reforms 1.0
+--
+allemande german 1.0
+--
+orthographe spelling 1.0
+--
+hubble hubble 1.0
+--
+trous holes 1.0
+--
+noirs whites 1.0
+--
+travail work 1.0
+--
+enfants children 1.0
+--
+asie asia 1.0
+--
+activité activity 1.0
+--
+agricole agricultural 1.0
+--
+delta delta 1.0
+--
+ebre ebro 1.0
+--
+assassinat assassination 1.0
+--
+directeur director 1.0
+--
+télévision television 1.0
+--
+russe russian 1.0
+--
+union union 1.0
+--
+européenne european 1.0
+--
+pays countries 1.0
+--
+baltes baltic 1.0
+--
+famille family 1.0
+--
+royale royal 1.0
+--
+italienne italian 1.0
+--
+grèves protests 1.0
+--
+personnels personal 1.0
+--
+bord aboard 1.0
+--
+italiens italians 1.0
+--
+fusion merger 1.0
+--
+banques banking 1.0
+--
+japonaises japanese 1.0
+--
+traité treaty 1.0
+--
+paix peace 1.0
+--
+dayton dayton 1.0
+--
+oscar oscar 1.0
+--
+honorifique honorific 1.0
+--
+réalisateurs filmmakers 1.0
+--
+italiens italians 1.0
+--
+épidémie epidemic 1.0
+--
+ebola ebola 1.0
+--
+zaïre congo 1.0
+--
+hollande zeeland 1.0
+--
+allemagne germany 1.0
+--
