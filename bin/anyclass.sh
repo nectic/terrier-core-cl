@@ -102,7 +102,6 @@ $JAVA_HOME/bin/java -Xmx$TERRIER_HEAP_MEM $JAVA_OPTIONS $TERRIER_OPTIONS \
      -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec \
      -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec \
      -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser \
-     -Dclir.number_of_top_translation_terms=1 \
      -Dclir.score.seuil=0.00002 \
      -Dclir.dico.path=/home/mrim/doumbise/terrier-core-cl/dico_eeb_gen.txt \
      -cp $CLASSPATH $@
