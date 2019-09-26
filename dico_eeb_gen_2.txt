@@ -1,0 +1,543 @@
+lettre letter 0.5571288821500341
+lettre letters 0.4428711178499659
+--
+piégée detonates 0.511085511019987
+piégée detonated 0.488914488980013
+--
+arabella arabella 0.544106786559555
+arabella desdemona 0.45589321344044503
+--
+reichstag bundestag 0.4660923446083319
+reichstag reichstag 0.5339076553916681
+--
+emballé overstuffed 0.4866340255215215
+emballé buttered 0.5133659744784785
+--
+christo christo 0.5727120603675406
+christo christoff 0.4272879396324594
+--
+conférence conference 0.5381205704202238
+conférence conferences 0.4618794295797763
+--
+pékin nanjing 0.45449917143434926
+pékin beijing 0.5455008285656507
+--
+femmes men 0.4419528035815328
+femmes women 0.5580471964184671
+--
+diamants diamonds 0.5374774840370429
+diamants gemstones 0.4625225159629572
+--
+rébellion rebellion 0.5128562793642171
+rébellion revolt 0.4871437206357829
+--
+sierra sierra 0.5409570950106215
+sierra sierras 0.4590429049893784
+--
+leone liberia 0.43860604580776397
+leone leone 0.5613939541922359
+--
+japon japanese 0.43003312726975246
+japon japan 0.5699668727302475
+--
+importations imports 0.4940999095450586
+importations exports 0.5059000904549414
+--
+riz rice 0.5051501233235286
+riz vegetables 0.49484987667647123
+--
+fast fast 0.5174485103513488
+fast sushi 0.48255148964865113
+--
+foods conagra 0.5071435895139459
+foods unilever 0.49285641048605416
+--
+japon japanese 0.43003312726975246
+japon japan 0.5699668727302475
+--
+accidents accidents 0.5420253003346406
+accidents accident 0.45797469966535925
+--
+pétroliers tankers 0.48447067290317714
+pétroliers petroleum 0.5155293270968229
+--
+oiseaux songbirds 0.47314303811411684
+oiseaux birds 0.5268569618858832
+--
+dommages damage 0.49674188317382373
+dommages damages 0.5032581168261763
+--
+couche layers 0.4726556323885801
+couche layer 0.5273443676114199
+--
+ozone chlorofluorocarbons 0.4531731911126881
+ozone ozone 0.546826808887312
+--
+visite visits 0.47730734903322075
+visite visit 0.5226926509667793
+--
+pape pope 0.528744615974189
+pape papacy 0.47125538402581096
+--
+sri lanka 0.49997674560079786
+sri sri 0.5000232543992021
+--
+lanka lanka 0.5134791326791878
+lanka sri 0.48652086732081223
+--
+peine punishment 0.4897313635706919
+peine imprisonment 0.5102686364293082
+--
+mort death 0.5060766363853639
+mort died 0.49392336361463607
+--
+merveilles wonders 0.5230808532079453
+merveilles marvels 0.47691914679205466
+--
+monde world 0.5699220423539016
+monde worlds 0.4300779576460983
+--
+droits liberties 0.43175126306935885
+droits rights 0.5682487369306412
+--
+enfant children 0.44418418560404316
+enfant child 0.5558158143959568
+--
+jeux games 0.5014981555926595
+jeux olympics 0.4985018444073406
+--
+olympiques olympic 0.4941736767632236
+olympiques olympics 0.5058263232367765
+--
+paix peacemaking 0.4194961880681454
+paix peace 0.5805038119318546
+--
+liberté freedom 0.545796406048849
+liberté liberty 0.454203593951151
+--
+internet web 0.4769848691797582
+internet internet 0.5230151308202418
+--
+risques risks 0.5124788547268613
+risques risk 0.48752114527313856
+--
+téléphone phone 0.5168339660544857
+téléphone telephones 0.4831660339455144
+--
+portable handheld 0.5143322865898218
+portable portable 0.4856677134101783
+--
+syndicats unions 0.5324674412536751
+syndicats syndicalists 0.4675325587463249
+--
+europe european 0.4785188850667806
+europe europe 0.5214811149332194
+--
+gagnantes winners 0.483307507360078
+gagnantes finalists 0.5166924926399221
+--
+féminines genders 0.48298863552008503
+féminines women 0.5170113644799149
+--
+wimbledon henman 0.44737438597837975
+wimbledon wimbledon 0.5526256140216201
+--
+match match 0.5343701123240736
+match matches 0.46562988767592633
+--
+football soccer 0.4741166455354936
+football football 0.5258833544645064
+--
+dublin tallaght 0.448862173591365
+dublin dublin 0.551137826408635
+--
+mer seas 0.4612844290414569
+mer sea 0.5387155709585432
+--
+nord south 0.4744360046768834
+nord north 0.5255639953231166
+--
+pétrole oil 0.474839440548075
+pétrole petroleum 0.5251605594519251
+--
+environnement environment 0.5445216980811828
+environnement environmental 0.4554783019188172
+--
+production producing 0.44533136977637644
+production production 0.5546686302236236
+--
+consommation consumed 0.4244197493630667
+consommation consumption 0.5755802506369332
+--
+whisky whisky 0.5175650868422575
+whisky whiskey 0.48243491315774245
+--
+régimes dictatorships 0.4715505413794554
+régimes regimes 0.5284494586205446
+--
+union federation 0.4244992188385688
+union union 0.5755007811614312
+--
+européenne eu 0.4341277999484902
+européenne european 0.5658722000515097
+--
+douanes customs 0.5280406457979261
+douanes excise 0.4719593542020739
+--
+turques turks 0.5121318560286726
+turques turkish 0.4878681439713274
+--
+restrictions restricting 0.4536409808874121
+restrictions restrictions 0.5463590191125879
+--
+tabac coffee 0.4593741153925168
+tabac tobacco 0.5406258846074832
+--
+condamnations imprisonments 0.5067742442424531
+condamnations prosecutions 0.4932257557575468
+--
+trafic freight 0.46108022170874663
+trafic traffic 0.5389197782912534
+--
+drogue drugs 0.4991678880272716
+drogue drug 0.5008321119727284
+--
+europe european 0.4785188850667806
+europe europe 0.5214811149332194
+--
+golden razzie 0.4390617446150339
+golden golden 0.5609382553849661
+--
+globes globe 0.46968063366736057
+globes globes 0.5303193663326393
+--
+général general 0.554745481047763
+général brigadier 0.445254518952237
+--
+français english 0.4214000108856455
+français french 0.5785999891143545
+--
+zone zone 0.5019094326608886
+zone zones 0.49809056733911133
+--
+sécurité security 0.5494090982332873
+sécurité safety 0.4505909017667126
+--
+balkans balkans 0.5238524862278691
+balkans balkan 0.47614751377213105
+--
+relations relationships 0.4720509815140645
+relations relations 0.5279490184859356
+--
+chine taiwan 0.4519952278835696
+chine china 0.5480047721164304
+--
+mongolie china 0.473296438130329
+mongolie mongolia 0.526703561869671
+--
+assassinat assassinating 0.48575975383267955
+assassinat assassination 0.5142402461673204
+--
+rabin yitzhak 0.45105573100382895
+rabin rabin 0.548944268996171
+--
+arrivée arrival 0.553160058927254
+arrivée arriving 0.44683994107274605
+--
+graveur printmaker 0.4745191984503811
+graveur engraver 0.5254808015496188
+--
+cd cd 0.5247912853527622
+cd cassette 0.4752087146472377
+--
+langues languages 0.539725264421529
+langues language 0.46027473557847104
+--
+officielles official 0.5465096088581463
+officielles unofficial 0.45349039114185374
+--
+union federation 0.4244992188385688
+union union 0.5755007811614312
+--
+européenne eu 0.4341277999484902
+européenne european 0.5658722000515097
+--
+finale finals 0.5118502781385221
+finale final 0.4881497218614778
+--
+hockey hockey 0.5436570280822209
+hockey defenceman 0.456342971917779
+--
+records records 0.5269140505614612
+records label 0.47308594943853877
+--
+monde world 0.5699220423539016
+monde worlds 0.4300779576460983
+--
+athlétisme athletics 0.5286186051414018
+athlétisme pentathlon 0.4713813948585983
+--
+preuve prove 0.486553377584785
+preuve proof 0.513446622415215
+--
+existence nonexistence 0.45951714942546085
+existence existence 0.5404828505745392
+--
+quarks nucleons 0.4843366244773012
+quarks quarks 0.5156633755226989
+--
+top top 0.5310280286670241
+top heatseekers 0.4689719713329758
+--
+querelle quarrels 0.48498210816707726
+querelle quarrel 0.5150178918329228
+--
+bavaroise bavarians 0.4502490356844928
+bavaroise bavarian 0.5497509643155073
+--
+crucifix crucifixes 0.4799087374480211
+crucifix crucifix 0.520091262551979
+--
+dommages damage 0.49674188317382373
+dommages damages 0.5032581168261763
+--
+écologiques ecological 0.506153743521484
+écologiques ecologies 0.4938462564785161
+--
+everglades everglades 0.5376496457956936
+everglades okeechobee 0.4623503542043063
+--
+shoemaker tololo 0.4981617974928685
+shoemaker palomar 0.5018382025071314
+--
+levy levine 0.5006126443391301
+levy cohen 0.49938735566086995
+--
+jupiter uranus 0.4583278390326849
+jupiter jupiter 0.5416721609673151
+--
+consommation consumed 0.4244197493630667
+consommation consumption 0.5755802506369332
+--
+lait butter 0.47791335885464814
+lait milk 0.522086641145352
+--
+europe european 0.4785188850667806
+europe europe 0.5214811149332194
+--
+refus refusal 0.5306745147035923
+refus unwillingness 0.46932548529640783
+--
+service service 0.5584705298035314
+service services 0.44152947019646865
+--
+militaire army 0.43581530655928186
+militaire military 0.5641846934407181
+--
+démission resignation 0.5178403766680323
+démission resign 0.48215962333196777
+--
+secrétaire secretary 0.5320890305549633
+secrétaire undersecretary 0.46791096944503674
+--
+général general 0.554745481047763
+général brigadier 0.445254518952237
+--
+otan osce 0.4155350814610566
+otan nato 0.5844649185389434
+--
+faillite bankruptcy 0.48765161691948206
+faillite bankrupt 0.5123483830805179
+--
+essais tests 0.5139171581002066
+essais test 0.4860828418997936
+--
+nucléaires reactors 0.4707489503213843
+nucléaires nuclear 0.5292510496786158
+--
+français english 0.4214000108856455
+français french 0.5785999891143545
+--
+anniversaire celebrating 0.46834253994388597
+anniversaire anniversary 0.531657460056114
+--
+débarquement beachheads 0.5000244813404499
+débarquement beachhead 0.4999755186595502
+--
+normandie normandy 0.5107613491903795
+normandie normandie 0.48923865080962037
+--
+restes skeletons 0.5050941206880128
+restes remnants 0.49490587931198726
+--
+asiatiques asians 0.4482304222483542
+asiatiques asian 0.5517695777516459
+--
+dinosaure dinosaur 0.5125932774934618
+dinosaure dinosaurian 0.48740672250653816
+--
+congé deferment 0.46264119225049094
+congé furlough 0.5373588077495092
+--
+maternité maternity 0.5443578553302443
+maternité motherhood 0.4556421446697557
+--
+europe european 0.4785188850667806
+europe europe 0.5214811149332194
+--
+photos photographs 0.48498115455610863
+photos photos 0.5150188454438913
+--
+néerlandaises dutch 0.5144552246536165
+néerlandaises netherlands 0.4855447753463836
+--
+srebrenica srebrenica 0.5150473506607494
+srebrenica bratunac 0.4849526493392507
+--
+gouvernement government 0.5276173187605071
+gouvernement governments 0.47238268123949273
+--
+coalition coalition 0.5357804845581652
+coalition coalitions 0.4642195154418347
+--
+néerlandais dutch 0.5696746861492767
+néerlandais belgian 0.43032531385072326
+--
+transport transport 0.5246395104922958
+transport transportation 0.47536048950770415
+--
+nucléaire reactors 0.45386681019956887
+nucléaire nuclear 0.5461331898004312
+--
+allemagne germany 0.5731577540424949
+allemagne austria 0.42684224595750514
+--
+réforme reform 0.4965670123389105
+réforme reforms 0.5034329876610896
+--
+allemande german 0.5785023693231396
+allemande prussian 0.4214976306768604
+--
+orthographe spelling 0.5033234421390644
+orthographe respelling 0.4966765578609355
+--
+hubble hubble 0.5196429967009772
+hubble parsecs 0.4803570032990227
+--
+trous hole 0.46410343836334045
+trous holes 0.5358965616366596
+--
+noirs whites 0.5010389734206643
+noirs black 0.4989610265793357
+--
+travail work 0.5537575549672797
+travail working 0.44624244503272037
+--
+enfants children 0.5585433184610961
+enfants parents 0.44145668153890405
+--
+asie asia 0.5576186036354764
+asie asian 0.44238139636452356
+--
+activité activity 0.5508821678566087
+activité activities 0.4491178321433913
+--
+agricole agriculture 0.4721255774559295
+agricole agricultural 0.5278744225440705
+--
+delta delta 0.5705251769481435
+delta deltas 0.42947482305185647
+--
+ebre ebro 0.520928954512047
+ebre guadiana 0.47907104548795293
+--
+assassinat assassinating 0.48575975383267955
+assassinat assassination 0.5142402461673204
+--
+directeur director 0.5361070591798659
+directeur assistant 0.46389294082013405
+--
+télévision tv 0.4726451851822595
+télévision television 0.5273548148177404
+--
+russe ukrainian 0.4314779217126036
+russe russian 0.5685220782873965
+--
+union federation 0.4244992188385688
+union union 0.5755007811614312
+--
+européenne eu 0.4341277999484902
+européenne european 0.5658722000515097
+--
+pays country 0.48403630284274574
+pays countries 0.5159636971572541
+--
+baltes baltics 0.4981806192954374
+baltes baltic 0.5018193807045627
+--
+famille family 0.5944190138466374
+famille families 0.40558098615336263
+--
+royale royale 0.41795770616495864
+royale royal 0.5820422938350415
+--
+italienne italiane 0.4416496034764884
+italienne italian 0.5583503965235116
+--
+grèves protests 0.5134435618507931
+grèves walkouts 0.4865564381492069
+--
+personnels personals 0.44110738111840875
+personnels personal 0.5588926188815914
+--
+bord onboard 0.4777313741104055
+bord aboard 0.5222686258895946
+--
+italiens italians 0.5285108804986454
+italiens italian 0.47148911950135464
+--
+fusion merged 0.46872850716343784
+fusion merger 0.5312714928365623
+--
+banques depositors 0.48878179082593265
+banques banking 0.5112182091740674
+--
+japonaises japanese 0.5442939182710492
+japonaises japan 0.4557060817289509
+--
+traité treaty 0.546137702289354
+traité treaties 0.453862297710646
+--
+paix peacemaking 0.4194961880681454
+paix peace 0.5805038119318546
+--
+dayton dayton 0.5141064606232845
+dayton akron 0.4858935393767155
+--
+oscar oscar 0.5584006662866847
+oscar award 0.4415993337133153
+--
+honorifique bestowed 0.4883829454902207
+honorifique honorific 0.5116170545097792
+--
+réalisateurs filmmakers 0.5352595011120858
+réalisateurs screenwriters 0.46474049888791413
+--
+italiens italians 0.5285108804986454
+italiens italian 0.47148911950135464
+--
+épidémie epidemics 0.4876103710194141
+épidémie epidemic 0.5123896289805859
+--
+ebola retrovirus 0.46878280428397767
+ebola ebola 0.5312171957160224
+--
+zaïre zaire 0.4978337747319867
+zaïre congo 0.5021662252680132
+--
+hollande zeeland 0.5025527208083077
+hollande netherlands 0.4974472791916923
+--
+allemagne germany 0.5731577540424949
+allemagne austria 0.42684224595750514
+--

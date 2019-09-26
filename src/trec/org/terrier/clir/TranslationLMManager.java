@@ -2026,7 +2026,7 @@ public class TranslationLMManager extends Manager{
 			if(fullw2vmatrix_src.get(w)==null)
 				continue;
 
-			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsNotnormalised_cl(w);
 
 			for(String u : top_translations_of_w.keySet()) {
 				pw_dico_eeb.println(w+" "+u+" "+top_translations_of_w.get(u));

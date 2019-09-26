@@ -73,4 +73,9 @@ git pull origin master
 mvn package -DskipTests
 
 
+bin/trec_terrier.sh --tunesdicocl -Dtrec.topics=share/clef/query_fr_title.trec -Dclir.number_of_top_translation_terms=2 -Dclir.dico.path=/home/mrim/doumbise/terrier-core-cl/dico_eeb_gen.txt
+
+bin/trec_terrier.sh --tunesdicocl -Dtrec.topics=share/clef/query_fr_title.trec -Dclir.number_of_top_translation_terms=2 -Dclir.dico.path=dico_eeb_gen_2.txt
+
+
 
