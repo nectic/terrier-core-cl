@@ -32,6 +32,8 @@ bin/trec_terrier.sh --tuneseuilcl -Dtrec.topics=share/clef/topics/query_fr.trec 
 
 bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/topics/query_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fi.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser -Dclir.number_of_top_translation_terms=1 -Dclir.score.seuil=0.00002
 
+bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/topics/query_fr.trec -Dclir.src.we=/home/mrim/doumbise/clir/wiki.multi.fr.vec -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec -Dclir.number_of_top_translation_terms=1
+
 
 -Dterrier.home=/Users/seydoudoumbia/projets/these/workspace_these/mai/terrier-core-4.4
 -Dtrec.topics=/Users/seydoudoumbia/projets/these/workspace_these/mai/terrier-core-4.4/share/clef/query_title_fr.trec

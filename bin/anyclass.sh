@@ -103,7 +103,6 @@ $JAVA_HOME/bin/java -Xmx$TERRIER_HEAP_MEM $JAVA_OPTIONS $TERRIER_OPTIONS \
      -Dclir.trg.we=/home/mrim/doumbise/clir/wiki.multi.en.vec \
      -Dclir.score.file=/home/mrim/doumbise/clir/score_fr_en_eeb1_1.ser \
      -Dclir.score.seuil=0.00002 \
-     -Dclir.dico.path=/home/mrim/doumbise/terrier-core-cl/dico_eeb_gen.txt \
      -cp $CLASSPATH $@
 
 if [ "$TERRIER_LIB_TMP" == "1" ];
