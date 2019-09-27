@@ -1,0 +1,413 @@
+
+<top>
+<num> C091 </num>
+<PT-title> AI na América Latina </PT-title>
+<PT-desc> Relatórios da Amnistia Internacional sobre os direitos humanos na América Latina </PT-desc>
+<PT-narr> Documentação relevante que deverá informar os leitores acerca dos relatórios da Amnistia Internacional sobre os direitos humanos na América Latina, ou acerca das reacções acerca destes relatórios</PT-narr>
+</top>
+
+<top>
+<num> C092 </num> 
+<PT-title> Sanções da ONU ao Iraque </PT-title> 
+<PT-desc> Que medidas tem tomado o Iraque para anular os efeitos do embargo económico e das sanções políticas impostas pela ONU após a sua invasão ao Kuwait em 1990?</PT-desc>
+
+<PT-narr> Os documentos deverão incluir os meios pelos quais o Iraque tem tentado anular as sanções. Meras descrições das sanções ou retórica contra as sanções não são relevantes. Expressões de arrependimento pela invasão do Kuwait por oficiais iraquianos são relevantes
+</top>
+
+
+<top>
+<num> C093 </num>
+<PT-title> Eurofighter </PT-title>
+<PT-desc> Pesquisa de documentos que descrevam o EFA ou projecto "Eurofighter".</PT-desc>
+<PT-narr> Documentos relevantes que acerca do projecto EFA. Os países participantes, Alemanha, Reino Unido, Itália e Espanha, formam o sindicato "Eurofighter". Informação acerca do trabalho comum dos grupos envolvidos bem como as estimativas de custos também são de interesse.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C094 </num>
+<PT-title> O regresso de Solzhenitsyn </PT-title>
+<PT-desc> Pesquisa de documentos que descrevam o regresso do vencedor do prémio Nobel de Literatura, Solzhenitsyn, à Rússia.</PT-desc>
+<PT-narr> Documentos relevantes que relatem as motivações e a época do regresso de Solzhenitsyn à Rússia. Também poderão mencionar as motivações da sua emigração para os Estados Unidos. 
+</PT-narr>
+</top>
+
+
+<top>
+<num> C095 </num>
+<PT-title> Conflito na Palestina </PT-title>
+<PT-desc> Pesquisa de artigos relacionados com conflitos armados nos territórios Palestinianos e com o envolvimento de uma parte da população civil.
+</PT-desc>
+<PT-narr> Os documentos relevantes fornecerão informação acerca de eventos recentes nos conflitos Israelo-Palestinianos. Relatórios de ataques suicidas também farão parte.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C096 </num>
+<PT-title> Deverá González renunciar?</PT-title>
+<PT-desc> Pedidos públicos feitos por personalidades políticas em Espanha para a renúncia de Felippe González </PT-desc>
+<PT-narr> Os documentos deverão relatar qualquer uma das várias ocasiões em que foi pedida, pelos opositores políticos do
+presidente Espanhol Felipe González, a sua renúncia. As motivações para estes pedidos deverão ser mencionadas.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C097 </num>
+<PT-title> Referendo para a independência da Moldova </PT-title>
+<PT-desc> Pesquisa de documentos que relatem o referendo para a independência da República da Moldova. </PT-desc>
+<PT-narr> Documentos relevantes que relatem o referendo através do qual a maioria da população votou a favor da independência da Moldova, isto é, também em oposição a uma união com a Roménia. 
+Os fundamentos e as consequências da decisão bem como os resultados do referendo em diferentes regiões, são informações de interesse.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C098 </num> 
+<PT-title> Filmes de Kaurismäkis. </PT-title>
+<PT-desc> Pesquisa de informação acerca dos filmes dirigidos por ambos os irmãos Aki e Mika Kaurismäki.</PT-desc>
+<PT-narr> Documentos relevantes fornecerão os nomes de um ou mais títulos de filmes dirigidos por Aki ou Mika Kaurismäki.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C099 </num>
+<PT-title> Renegando o Holocausto </PT-title>
+<PT-desc> Pesquisa de documentos relacionados com medidas tomadas na Alemanha para a limitação pública de acções que renunciem o Holocausto.</PT-desc>
+<PT-narr> Pedida informação acerca de medidas que têm vindo a ser tomadas para limitação ou proibição de discursos ou publicações que claramente neguem o Holocausto.
+Documentos relevantes poderão também discutir temas relacionados com a liberdade de expressão na Alemanha tomando em consideração a expressão de opiniões que neguem a existência do Holocausto.</PT-narr>
+</top>
+
+
+<top>
+<num> C100 </num> 
+<PT-title> O caso de espionagem "Ames" </PT-title>
+<PT-desc> Pesquisa de documentos que demonstrem o impacto que o caso de espionagem "Ames" nas relações Estados Unidos - Rússia. 
+</PT-desc>
+<PT-narr> Um documento relevante mencionará explicitamente algum efeito do caso de espionagem "Ames" nas relações Estados Unidos - Rússia. Simples episódios do caso não são relevantes.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C101 </num>
+<PT-title> Chipre e a União Europeia</PT-title>
+<PT-desc> Poderá Chipre tornar-se um membro da União Europeia?</PT-desc>
+<PT-narr> Relações políticas entre a Turquia e a Grécia tornam problemática a integração de Chipre na União Europeia. Documentos relevantes fornecerão informações acerca dos problemas e dificuldades.</PT-narr>
+</top>
+
+
+<top>
+<num> C102 </num>
+<PT-title> Vitórias de Alberto Tomba </PT-title>
+<PT-desc> Encontrar documentos que relatem as provas de ski ganhas por Alberto Tomba.</PT-desc>
+<PT-narr> Apenas documentos que mencionem as competições de Tomba são relevantes. Os documentos pertinentes dizem respeito a qualquer tipo de prova de ski e em qualquer tipo de campeonato. Não é necessário que o documento cite explicitamente o tipo de prova desde que mencione Tomba como vencedor.</PT-narr>
+</top>
+
+
+<top>
+<num> C103 </num>
+<PT-title> Conflito de interesses em Itália </PT-title>
+<PT-desc> Encontrar documentos que discutam o problema do conflito de interesses do primeiro ministro Italiano, Silvio Berlusconi.</PT-desc>
+<PT-narr> Os documentos relevantes referirão explicitamente o conflito de interesses entre o político e cabeça do governo Italiano Berlusconi e o Berlusconi homem de negócios. Também podem incluir informação acerca de propostas feitas ou de soluções adoptadas para resolução deste conflito.</PT-narr>
+</top>
+
+
+<top>
+<num> C104 </num>
+<PT-title> Medalha de Ouro Super G </PT-title> 
+PT-desc> Quem ganhou a medalha de outro no super G em Lillehammer durante os Jogos Olímpicos de Inverno de 1994?</PT-desc>
+<PT-narr> Encontrar o nome do medalhista de ouro no super G dos Jogos Olímpicos de Inverno de 1994 em Lillehammer, Noruega. Apenas os documentos posteriores à vitória no super G são relevantes. Também são de interesse documentos que descrevam as consequências para o ski Alemão.</PT-narr>
+</top>
+
+
+<top>
+<num> C105 </num>
+<PT-title> Asma Bronquial </PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca da asma bronquial e de descobertas na medicina acerca desta doença respiratória </PT-desc>
+<PT-narr> São relevantes os documentos que discutam acerca da asma bronquial e das suas possíveis causas (em particular, condições ambientais como a poluição e o nevoeiro de fumo). Também são de interesse os documentos que forneçam informação acerca de novas terapias para cura desta doença. </PT-narr>
+</top>
+
+
+<top>
+<num> C106 </num>
+<PT-title> Indústria automóvel Europeia</PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca da situação da indústria automóvel Europeia no que diz respeito à queda das vendas (crise nas vendas) e possíveis medidas preventivas </PT-desc>
+<PT-narr> São relevantes os documentos que falem acerca da crise das vendas na indústria automóvel Europeia e das medidas preventivas da indústria, negociantes de automóveis e estados Europeus. Informação acerca da ligação entre o declínio económico e os problemas nas vendas do negócio automóvel também são relevantes.</PT-narr>
+</top>
+
+
+<top>
+<num> C107 </num>
+<PT-title> Engenharia Genética </PT-title>
+<PT-desc> De que formas se manifesta a engenharia genética na cadeia alimentar humana?</PT-desc>
+<PT-narr> Os artigos devem remeter directamente para a apresentação da engenharia genética e seus efeitos na cadeia alimentar humana. Discutirão os pros e contras. Relatórios acerca da bioengenharia do tabaco e acerca da engenharia do gene humano não são relevantes.</PT-narr>
+</top>
+
+
+<top>
+<num> C108 </num>
+<PT-title> Separação do Iémen do Sul</PT-title>
+PT-desc> Quais são as consequências sociais e económicas da declaração de separação no Iémen do Sul?</PT-desc>
+<PT-narr> São relevantes todos os documentos que discutam os efeitos do conflito, que se tenham seguido à declaração de separação do Iémen do Sul, na economia e sociedade daquele país.</PT-narr>
+</top>
+
+
+<top>
+<num> C109 </num> 
+<PT-title> Segurança Informática </PT-title> 
+<PT-desc> Qual é o nível da segurança informática no que diz respeito ao acesso em rede?</PT-desc>
+<PT-narr> Os documentos devem referir-se à segurança relativa à utilização das redes. Não são relevantes relatórios que apenas se refiram à segurança física dos sistemas informáticos.</PT-narr>
+</top>
+
+
+<top>
+<num> C110 </num>
+<PT-title> Suspeitos Iranianos Extraditados </PT-title>
+<PT-desc> A França expulsou para Teerão dois Iranianos suspeitos de terem assassinado Kazem Radjavi na Suíça.</PT-desc>
+<PT-narr> Kazem Radjavi, um opositor político ao governo Islâmico de Teerão, foi assassinado na Suíça. Dois suspeitos Iranianos vivendo em França, não foram extraditados para a Suíça mas expulsos para o Irão. Os documentos relevantes irão falar da extradição e podem também discutir acerca dos efeitos nas relações entre a França e o Irão.</PT-narr>
+</top>
+
+
+<top>
+<num> C111 </num>
+<PT-title> Animação Informática</PT-title>
+PT-desc> Encontrar discussões acerca do impacto da animação informática na indústria cinematográfica.</PT-desc>
+<PT-narr> Qualquer informação relacionada com o efeito da animação informática na indústria cinematográfica será relevante, por exemplo a viabilidade económica dos filmes animados informaticamente. Documentos que descrevam animação informática para aplicações que não sejam filmes, não são relevantes.</PT-narr>
+</top>
+
+
+<top>
+<num> C112 </num>
+<PT-title> Pulp Fiction </PT-title>
+<PT-desc> Que prémio ganhou o filme Pulp Fiction de Quentin Tarantino no Festival de Cinema de Cannes?</PT-desc>
+<PT-narr> O filme Pulp Fiction com John Travolta recebeu um prémio no festival de cinema de Cannes. Os documentos relevantes deverão referir o nome do prémio associeado com o filme.</PT-narr>
+</top>
+
+
+<top>
+<num> C113 </num>
+<PT-title> Taça Europeia </PT-title>
+<PT-desc> Pesquisa de documentos acerca dos estágios preliminares e acerca de outros assuntos organizacionais acerca do Campeonato da Europa de Futebol de 1996. </PT-desc>
+<PT-narr> É de interesse qualquer informação acerca da fase preparatória do Campeonato da Europa de Futebol de 1996. Os documentos poderão discutir acerca da organização dos grupos nos jogos preliminares, podendo listar as equipas qualificadas para a fase final, etc..</PT-narr>
+</top>
+
+
+<top>
+<num> C114 </num>
+<PT-title> Guerra Civil no Afeganistão </PT-title>
+<PT-desc> Pesquisa de todos os documentos que descrevam a situação política no Afeganistão que levaram à guerra civil após a deposição do líder comunista Najibullah. </PT-desc>
+<PT-narr> A queda no Afeganistão do governo comunista liderado por Najibullah em Abril de 1992 foi seguida por uma guerra civil, causada por discordâncias políticas entre as facções do primeiro ministro Hekmatyar e o presidente da República Rabbani. Apenas são de interesse aqueles documentos que façam referência explícita à queda do governo de Najibullah como causa dos conflitos políticos e civis subsequentes.</PT-narr>
+</top>
+
+
+<top> 
+<num> C115 </num> 
+<PT-title> Estatísticas de Divórcios </PT-title> 
+<PT-desc> Fornecimento de informação acerca das tendências internacionais para as taxas de divórcios. Os documentos relevantes citarão os números em qualquer país do mundo. </PT-narr>
+</top>
+
+
+<top>
+<num> C116 </num>
+<PT-title> O snowboard </PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca do aparecimento de um novo desporto de inverno: o snowboard </PT-desc>
+<PT-narr> Os documentos relevantes falarão acerca deste aparecimento, prática e riscos do snowboard e podem também fornecer detalhes acerca de acidentes nas pistas de ski que tenham sido causados por praticantes de snowboard. Também se consideram relevantes documentos que estejam a favor deste desposto defendendo que não é mais perigoso que as descidas de ski.</PT-narr>
+</top>
+
+
+<top>
+<num> C117 </num>
+<PT-title> Eleições para o Parlamento Europeu </PT-title>
+<PT-desc> Quantos eleitores foram chamados às urnas para eleição do novo parlamento Europeu em 1994?</PT-desc>
+<PT-narr> Os documentos relevantes deverão falar do número de cidadãos na União Europeia com direito de voto nas eleições para o Parlamento Europeu em 1994. Documentos relevantes podem fornecer números de eleitores por país ou região ou para toda a União Europeia. Documentos que mencionem percentagens de eleitores que tenham efectivamente votado não são relevantes.</PT-narr>
+</top>
+
+
+<top>
+<num> C118 </num>
+<PT-title> O primeiro Comissário Finlandês da União Europeia. </PT-title>
+<PT-desc> Quem foi nomeado para primeiro comissário Finlandês na União Europeia?</PT-desc>
+<PT-narr> Os documentos relevantes também deverão mencionar as áreas de interesse da nomeação do novo Comissário.	</PT-narr>
+</top>
+
+
+<top>
+<num> C119 </num>
+<PT-title> Destruição das armas nucleares Ucranianas </PT-title>
+<PT-desc> Procura de documentos que falem acerca do acordo entre a Ucrânia, a Rússia e os Estados Unidos para remoção e destruição das armas nucleares Ucranianas anteriores a 1996.</PT-desc>
+<PT-narr> Os documentos relevantes falam acerca do acordo entre a Ucrânia, a Rússia e os Estados Unidos para remoção e destruição das armas nucleares Ucranianas. O número de armas e os detalhes das negociações também são importantes. </PT-narr>
+</top>
+
+
+<top>
+<num> C120 </num>
+<PT-title> Edouard Balladur </PT-title>
+<PT-desc> Qual a importância que as políticas económicas de Edouard Balladur têm para a União Europeia?</PT-desc>
+<PT-narr> Os documentos relevantes discutirão acerca da importância das políticas financeiras de Edouard Balladur, político Francês, para a unidade económica da Europa.</PT-narr>
+</top>
+
+
+<top>
+<num> C121 </num>
+<PT-title> Sucessos de Ayrton Senna </PT-title>
+<PT-desc> Fornecer um registo das realizações desportivas deste piloto Brasileiro de corrida de automóveis, Ayrton Senna </PT-desc>
+<PT-narr> Os documentos deverão incluir uma lista das realizações do piloto de Formula 1, Ayrton Senna, antes da sua morte em 1994. </PT-narr>
+</top>
+
+
+<top>
+<num> C122 </num>
+<PT-title> A indústria automóvel Norte Americana </PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca dos esforços que a indústria automóvel na América do Norte tem feito para aumentar as suas vendas em ambos os mercados doméstico e internacional.</PT-desc>
+<PT-narr> É necessária informação acerca de medidas implementadas pela Informação Automóvel Norte Americana para aumento das vendas. Serão relevantes documentos que falem acerca do aumento da produtividade, da redução de preços, das relações com uniões comerciais, de melhorias na qualidade, etc.. </PT-narr>
+</top>
+
+
+<top>
+<num> C123 </num>
+<PT-title> Casamento de Jackson e Presley </PT-title>
+<PT-desc> Pesquisa de documentos que falem no presumível casamento de Michael Jackson com Lisa Marie Presley ou acerca da sua separação. </PT-desc>
+<PT-narr> Diz-se que em Maio de 1994 a famosa estrela de pop, Michael Jackson, casou com Lisa Marie Presley, a filha do rei do rock and roll. Serão relevantes os documentos que contenham alguns detalhes acerca do casamento, como onde e quando foi realizado, devendo discutir acerca da posterior separação do casal. </PT-narr>
+</top>
+
+
+<top>
+<num> C124 </num>
+<PT-title> Políticas Comuns de Estrangeiros e Segurança (CFSP) </PT-title>
+<PT-desc> Pesquisar informação acerca de como estabelecer uma política comum Europeia de estrangeiros e segurança.</PT-desc>
+<PT-narr> São relevantes os documentos que falem em reuniões, discussões ou declarações políticas relacionadas com o estabelecimento de uma estratégia comumde estrangeiros e segurança (CFSP) para a União Europeia.</PT-narr>
+</top>
+
+
+<top>
+<num> C125 </num>
+<PT-title> A moeda única Europeia </PT-title> 
+<PT-desc> Qual é o calendário previsto para uma moeda única Europeia? </PT-desc>
+<PT-narr> São relevantes as especulações feitas por políticos e por figuras de negócios acerca de um calendário para obtenção de uma moeda única na União Europeia. </PT-narr>
+</top>
+
+
+<top>
+<num> C126 </num>
+<PT-title> Acções contra a indústria das peles. </PT-title>
+<PT-desc> Procura de informação acerca de protestos e de actos de violência contra a indústria das peles.</PT-desc>
+<PT-narr> São relevantes os documentos que descrevam as medidas tomadas por activistas dos direitos dos animais contra a produção de peles e/ou o comércio de peles, por exemplo lojas que vendam artigos em pele. Artigos que relatem acções tomadas contra pessoas que vestem peles também são importantes.</PT-narr>
+</top>
+
+
+<top>
+<num> C127 </num>
+<PT-title> Evasão de Roldán </PT-title> 
+<PT-desc> Evasão e fuga do ex-Director da Guarda Civil Espanhola Luis Roldán </PT-desc>
+<PT-narr> Os documentos devem descrever a evasão de Luis Roldán da justiça Espanhola e/ou fornecer informação acerca de vários incidentes ocorridos durante a sua fuga. </PT-narr>
+</top>
+
+
+
+<top>
+<num> C128 </num>
+<PT-title> Sexo em Anúncios </PT-title>
+<PT-desc> Pesquisa de artigos relacionados com anúncios de apelo sexual e suas consequências na sociedade. </PT-desc>
+<PT-narr> Os documentos relevantes falarão acerca do problema do uso excessivo da sexualidade explícita na publicidade. Opiniões de que isto poderá indirectamente levar a ataques e agressões sexuais, também são de interesse. </PT-narr>
+</top>
+
+
+<top>
+<num> C129 </num>
+<PT-title> Descoberta de 100 biliões de estrelas </PT-title>
+<PT-desc> Que revelações tecnológicas permitiram a descoberta de um excepcional número de estrelas ou galáxias em 1994. </PT-desc>
+<PT-narr> São relevantes os documentos que falem acerca da nova tecnologia que permitiu a descoberta de novas galáxias e estrelas, não acerca de satélites ou corpos celestes do nosso próprio sistema solar. </PT-narr>
+</top>
+
+
+<top>
+<num> C130 </num>
+<PT-title> Morte do líder dos Nirvana </PT-title>
+<PT-desc> Como é que o vocalista do grupo de rock e grunge Americano, Nirvana, morreu? </PT-desc>
+<PT-narr> Kurt Cobain, vocalista dos Nirvana, famoso grupo musical, morreu em Abril de 1994. Não são relevantes documentos que falem acerca da morte de Cobain sem que façam a menção à causa da desta. </PT-narr>
+</top>
+
+
+<top>
+<num> C131 </num>
+<PT-title> Direitos de Propriedade Intelectual </PT-title>
+<PT-desc> Procura de informação acerca dos direitos dos autores pela propriedade intelectual e acerca dos esforços dos países para proteger os autores.</PT-desc>
+<PT-narr> Os documentos relevantes discutirão os meios de protecção da propriedade intelectual em qualquer parte do mundo. Informações acerca de regulamentação de patentes devem ser ignoradas.
+</PT-narr>
+</top>
+
+
+<top>
+<num> C132 </num>
+<PT-title> Area de Conisberga (Kaliningrad) </PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca do futuro político e económico do exclave de Conisberga (Kaliningrad). </PT-desc>
+<PT-narr> Apenas informações políticas ou económicas acerca de Conisberga têm interesse. Expectativas para futuras relações com a Escandinávia, países do Báltico e Rússia. Informações históricas ou turísticas não são importantes       . </PT-narr>
+</top>
+
+
+<top>
+<num> C133 </num>
+<PT-title> Forças Armadas Alemãs fora de área </PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca das decisões políticas e jurídicas da necessidade de afastamento de área das Forças Armadas Alemãs. </PT-desc>
+<PT-narr> Os documentos relevantes devem relatar as decisões políticas e jurídicas acerca da decisão de afastamento de área (isto é, missões e combate fora da área da NATO) das Forças Armadas Alemãs ou que discutam acerca das consequências desta decisão. </PT-narr>
+</top>
+
+
+<top>
+<num> C134 </num>
+<PT-title> A sonda espacial Clementine </PT-title>
+<PT-desc> Pesquisa de relatórios que falem acerca da sonda especial Clementine, lançada para recolher dados acerca da Lua e do asteroide 1620 Geographos próximo da Terra. </PT-desc>
+<PT-narr> Os principais objectivos da Clementine, a sonda espacial Americana lançada pela NASA e pelo Departamento de Defesa, são de testar a durabilidade dos sensores e dos sistemas micro-electrónicos e coleccionar informação e dados acerca da Lua e do asteroide Geographos. Os documentos relevantes deverão fornecer alguma informação acerca dos aspectos técnicos e científicos da missão. </PT-narr>
+</top>
+
+
+<top>
+<num> C135 </num>
+<PT-title> Candidatos à presidência da União Europeia </PT-title> 
+<PT-desc> Quem foi mencionado como um possível candidato para presidente da Comissão Europeia? </PT-desc>
+PT-narr> Os documentos deverão fornecer os nomes das pessoas referidas como possíveis candidatos para a presidência da Comissão Europeia. </PT-narr>
+</top>
+
+
+<top>
+<num> C136 </num>
+<PT-title> A Torre Inclinada de Pisa </PT-title>
+<PT-desc> Qual é o estado de saúde da Torre Inclinada de Pisa? </PT-desc>
+<PT-narr> Os documentos relevantes discutirão acerca do estado de saúde da Torre Inclinada de Pisa e em particular mencionando a sua inclinação e variações. Também são de interesse os documentos que relatem esforços para redução da inclinação. </PT-narr>
+</top>
+
+
+<top>
+<num> C137 </num>
+<PT-title> Concursos Internacionais de Beleza </PT-title>
+<PT-desc> Pesquisa dos nomes dos vencedores dos concursos internacionais de beleza de 1994 e 1995. </PT-desc>
+<PT-narr> Os documentos relevantes deverão citar os nomes dos homens e mulheres que ganharam concursos de beleza internacionais em 1994 ou 1995. Não se incluem as competições de culturismo.</PT-narr>
+</top>
+
+
+<top>
+<num> C138 </num>
+<PT-title> Palavras estrangeiras em Francês </PT-title>
+<PT-desc> Pesquisa de documentos que falem acerca do papel das palavras estrangeiras em Francês. </PT-desc>
+<PT-narr> O Conselho Constitucional revue e tornou menos estrita a lei de Toubon acerca do uso da língua Francesa. São relevantes os documentos que falem acerca do papel e da utilização de palavras estrangeiras na língua Francesa. </PT-narr>
+</top>
+
+
+<top>
+<num> C139 </num>
+<PT-title> Cotas da pesca na União Europeia </PT-title>
+<PT-desc> Pesquisa de informação acerca das cotas da pesca na União Europeia.  </PT-desc>
+<PT-narr> Os documentos mencionarão números ou discutirão acerca das cotas da pesca nos países membros da União Europeia. </PT-narr>
+</top>
+
+
+<top>
+<num> C140 </num>
+<PT-title> Telemóveis </PT-title>
+<PT-desc> Expectativas acerca da utilização dos telemóveis.</PT-desc>
+<PT-narr> São relevantes os documentos que falem acerca das expectativas de uso de telemóveis e acerca do desenvolvimento desta indústria. </PT-narr>
+</top>
+

@@ -1,0 +1,420 @@
+
+<top>
+<num> C141 </num>
+<DE-title> Briefbombe für Kiesbauer </DE-title>
+<DE-desc> Finde Informationen über die Explosion einer Briefbombe im Studio der Moderatorin Arabella Kiesbauer beim Fernsehsender PRO7. </DE-desc>
+<DE-narr> Eine Briefbombe von rechtsorientierten Radikalen, die an die farbige Fernsehmoderatorin Arabella Kiesbauer gesandt wurde, explodierte am 9. Juni 1995 in einem Studio des Fernsehsenders PRO7. Eine Assistentin wurde verletzt. Alle Berichte über die Explosion und die polizeilichen Ermittlungen nach der Tat sind relevant. Andere Berichte über Briefbombenattentate sind nicht von Interesse. </DE-narr>
+</top>
+
+<top>
+<num> C142 </num>
+<DE-title> Christo verhüllt den Deutschen Reichstag </DE-title>
+<DE-desc> Finde Berichte über die Verhüllung des Deutschen Reichstages in Berlin durch den Künstler Christo. </DE-desc>
+<DE-narr> Der Verhüllungskünstler Christo benötigte im Juni 1995 zwei Wochen, um den Deutschen Reichstag in Berlin komplett mit Material zu verhüllen. Finde Berichte über dieses Kunstereignis. Jede Information über die Vorbereitung oder die Durchführung ist relevant, einschließlich der politischen Debatten und Entscheidungen sowie der technischen Vorbereitungen. </DE-narr>
+</top>
+
+<top>
+<num> C143 </num>
+<DE-title> Frauenkonferenz in Peking </DE-title>
+<DE-desc> Wegen umstrittener Positionen einiger Delegationen drohte die Frauenkonferenz in Peking zu scheitern. </DE-desc>
+<DE-narr> Relevante Dokumente diskutieren einige der vielen Probleme oder Unstimmigkeiten, die auf der Frauenkonferenz in Peking entstanden. Von besonderem Interesse sind die Positionen, die von Repräsentanten des Vatikans, muslimischer Gemeinschaften und der chinesischen kommunistischen Partei vertreten wurden. </DE-narr>
+</top>
+
+<top>
+<num> C144 </num>
+<DE-title> Rebellion und Diamanten in Sierra Leone </DE-title>
+<DE-desc> Welche Auswirkungen hatten die Aufstände und andere politische Instabilitäten auf die Diamantenindustrie von Sierra Leone? </DE-desc>
+<DE-narr> Relevante Dokumente spezifizieren die Auswirkungen der Rebellion in Sierra Leone auf die Diamantenindustrie. </DE-narr>
+</top>
+
+<top>
+<num> C145 </num>
+<DE-title> Japans Reisimporte </DE-title>
+<DE-desc> Finde Dokumente, die Gründe für und Konsequenzen der ersten Reisimporte nach Japan diskutieren. </DE-desc>
+<DE-narr> 1994 entschied Japan, den nationalen Reismarkt erstmalig für andere Länder zu öffnen. Relevante Dokumente kommentieren diese Frage. Die Berichte können die Namen der Länder, aus denen der Reis importiert wurde, die Reisarten oder die Diskussionen, die diese Entscheidung hervorbrachte, umfassen. </DE-narr>
+</top>
+
+<top>
+<num> C146 </num>
+<DE-title> Fastfood in Japan </DE-title>
+<DE-desc> Welche nordamerikanischen Fastfoodketten haben eine große Anzahl von Franchise-Restaurants in Japan? </DE-desc>
+<DE-narr> Relevante Dokumente müssen die Namen der erfolgreichsten US-Fastfoodketten in Japan nennen und können zusätzliche Informationen über die Einführung dieser Art von Essen in die japanische Gesellschaft einschließen. </DE-narr>
+</top>
+
+<top>
+<num> C147 </num>
+<DE-title> Ölunfälle und Vögel </DE-title>
+<DE-desc> Finde Dokumente, die Schäden oder Verletzungen an Vögeln beschreiben, die auf Unfälle durch auslaufendes Öl oder Umweltverschmutzung zurückzuführen sind. </DE-desc>
+<DE-narr> Alle Dokumente, die sich auf Vögel beziehen, die auf Grund von Ölunfällen leiden, sind relevant. Berichte über Schädigungen als Ergebnis von Bilgenreinigung oder Ölablassen von Schiffen sind nicht relevant. </DE-narr>
+</top>
+
+<top>
+<num> C148 </num>
+<DE-title> Schäden der Ozonschicht </DE-title>
+<DE-desc> Welche Löcher in der Ozonschicht sind nicht durch Umweltverschmutzung verursacht worden? </DE-desc>
+<DE-narr> Nicht jeder Schaden der Ozonschicht wird durch Umweltverschmutzung verursacht. Relevante Dokumente geben Information über andere Ursachen für Löcher in der Ozonschicht. </DE-narr>
+</top>
+
+<top>
+<num> C149 </num>
+<DE-title> Papstbesuch in Sri Lanka </DE-title>
+<DE-desc> Finde Berichte über die Proteste oder Probleme während des Papstbesuches in Sri Lanka, die mit seinen vorangegangenen Erklärungen über den Buddhismus zusammenhängen. </DE-desc>
+<DE-narr> Papst Johannes Paul traf auf gemischte Reaktionen, als er das im wesentlichen buddhistische Sri Lanka besuchte. Die Papstvisite in Sri Lanka erwies sich als Prüfstein für die Beziehungen zwischen der katholischen Kirche und den buddhistischen Führern, nachdem zuvor ein Buch des Papstes mit Kommentaren über den Buddhismus veröffentlicht worden war. </DE-narr>
+</top>
+
+<top>
+<num> C150 </num>
+<DE-title> AI gegen Todesstrafe </DE-title>
+<DE-desc> Finde Berichte über direkte Aktionen von Amnesty International gegen die Todesstrafe. </DE-desc>
+<DE-narr> Amnesty International widmet sich der weltweiten Abschaffung der Todesstrafe. Relevante Dokumente müssen spezifische Aktionen von AI gegen die Todesstrafe beschreiben. </DE-narr>
+</top>
+
+<top>
+<num> C151 </num>
+<DE-title> Wunder der Antike </DE-title>
+<DE-desc> Suche nach Informationen über die Existenz und/oder die Entdeckung von Überresten der Sieben Weltwunder der Antike. </DE-desc>
+<DE-narr> Relevante Dokumente sollen Hinweise auf einige der heute noch existierenden Überreste der sieben Weltwunder enthalten. Von besonderem Interesse sind Berichte über die neue Entdeckung von Überresten, von denen geglaubt wird, dass sie zu einem der Sieben Weltwunder gehören. </DE-narr>
+</top>
+
+<top>
+<num> C152 </num>
+<DE-title> Rechte des Kindes </DE-title>
+<DE-desc> Finde Informationen über die UN-Kinderrechtskonvention. </DE-desc>
+<DE-narr> Relevante Dokumente liefern Informationen über die UN-Konvention über die Rechte des Kindes, wie das Datum der Annahme durch die Vollversammlung der Vereinten Nationen, die Aufzählung der Rechte, die Staaten, die die Konvention ratifiziert haben, etc. </DE-narr>
+</top>
+
+<top>
+<num> C153 </num>
+<DE-title> Olympische Spiele und Frieden </DE-title>
+<DE-desc> Finde Dokumente, die darüber berichten, wie die Olympischen Spiele zum Weltfrieden beitragen können. </DE-desc>
+<DE-narr> Relevante Dokumente bezeichnen den Weltfrieden als ein Ziel der Olympischen Spiele. Eingeschlossen sind Dokumente, in denen Athleten oder Mitglieder des Internationalen Olympischen Komitees zur Einstellung von Feindseligkeiten während der Spiele aufrufen. </DE-narr>
+</top>
+
+<top>
+<num> C154 </num>
+<DE-title> Meinungsfreiheit im Internet </DE-title>
+<DE-desc> Finde Dokumente, die Zensur und freie Meinungsäußerung im Internet diskutieren. </DE-desc>
+<DE-narr> Dokumente, die Themen wie Pornographie oder Rassismus im Internet ohne Erwähnung von Problemen, die die Zensur oder Meinungsfreiheit betreffen, erörtern, sollen als nicht relevant betrachtet werden. </DE-narr>
+</top>
+
+<top>
+<num> C155 </num>
+<DE-title> Risiken von Mobiltelefonen </DE-title>
+<DE-desc> Welche Risiken und Gefahren gehen von der zunehmenden Benutzung von Mobiltelefonen aus? </DE-desc>
+<DE-narr> Relevante Dokumente sollen Probleme beschreiben, die mit der Benutzung von Mobiltelefonen zusammenhängen. Sowohl Gesundheitsrisiken, die mit dem Benutzen von Mobiltelefonen zu tun haben können, wie z. B. Strahlungsrisiken, als auch Gefahren, die indirekt mit Mobiltelefonen verbunden sind, wie Verkehrsunfälle durch unaufmerksame Autofahrer, sind relevant. </DE-narr>
+</top>
+
+<top>
+<num> C156 </num>
+<DE-title> Gewerkschaften in Europa </DE-title>
+<DE-desc> Welche Unterschiede gibt es hinsichtlich der Rolle und Bedeutung der Gewerkschaften in den europäischen Ländern? </DE-desc>
+<DE-narr> Relevante Dokumente müssen die Rolle, den Status oder die Bedeutung der Gewerkschaften zwischen zwei oder mehr europäischen Ländern vergleichen. Relevante Informationen sollen das Organisationsgrad, Lohnverhandlungsmechanismen und das allgemeine Klima des Arbeitsmarktes umfassen. </DE-narr>
+</top>
+
+<top>
+<num> C157 </num>
+<DE-title> Siegerinnen von Wimbledon </DE-title>
+<DE-desc> Nenne die Namen von Gewinnerinnen des Damentennisturniers von Wimbledon. </DE-desc>
+<DE-narr> Relevant sind Berichte über die Gewinnerinnen einer der Tennismeisterschaften für Frauen in Wimbledon. Die Namen der Gewinnerinnen müssen explizit genannt werden. </DE-narr>
+</top>
+
+<top>
+<num> C158 </num>
+<DE-title> Fußball-Rowdys in Dublin </DE-title>
+<DE-desc> Finde Berichte über den Abbruch des internationalen Fußballspiels zwischen Irland und England in Dublin nach Ausschreitungen. </DE-desc>
+<DE-narr> Nach Ausschreitungen von Fußball-Hooligans wurde das internationale Fußballspiel Irland-England in Dublin abgebrochen, als die Iren mit 1:0 in der 27. Spielminute in Führung gingen. </DE-narr>
+</top>
+
+<top>
+<num> C159 </num>
+<DE-title> Nordsee-Öl und Umwelt </DE-title>
+<DE-desc> Welche Schritte wurden unternommen, die Umwelt in der Nordsee angesichts der Zunahme der Ölsuche und -förderung zu schützen? </DE-desc>
+<DE-narr> Relevante Dokumente müssen Umweltprobleme im Bereich der Erdölsuche und -förderung in der Nordsee diskutieren. Die Dokumente, die das Stillegen einer Ölplattform diskutieren, sind nur relevant, wenn sie Umweltprobleme erwähnen. Dokumente, die lediglich Bohrfirmen benennen oder über die Produktionsmengen oder Öleinkünfte berichten, sind nicht von Interesse. </DE-narr>
+</top>
+
+<top>
+<num> C160 </num>
+<DE-title> Scotchproduktion und -konsum </DE-title>
+<DE-desc> Die Dokumente berichten über die Menge an Scotch, die von den Schotten konsumiert wird, im Verhältnis zur Menge Scotch, die aus Schottland exportiert wird. </DE-desc>
+<DE-narr> Relevante Dokumente müssen vom Scotchkonsum der Schotten im Verhältnis zu der Gesamtproduktion berichten. Dokumente, die vom Konsum durch andere Nationen berichten oder Gründe für Exportrückgänge analysieren, sind irrelevant. </DE-narr>
+</top>
+
+<top>
+<num> C161 </num>
+<DE-title> Diät für Sprue-Erkrankte </DE-title>
+<DE-desc> Finde Berichte, die Ernährungsprobleme von Sprue- bzw. Zöliakie-Erkrankten diskutieren. </DE-desc>
+<DE-narr> Relevante Dokumente erörtern Ernährungsprobleme von Menschen, die an Sprue bzw. Zöliakie erkrankt sind. Von besonderem Interesse sind Berichte darüber, ob diese Kranken Hafer essen dürfen. </DE-narr>
+</top>
+
+<top>
+<num> C162 </num>
+<DE-title> EU und türkische Zölle </DE-title>
+<DE-desc> Finde Dokumente über die von Griechenland aufgeworfenen Probleme bei der Aufhebung von Zollbeschränkungen zwischen der Europäischen Union und der Türkei. </DE-desc>
+<DE-narr> Relevante Dokumente müssen explizit die griechische Position bezüglich des Vorschlages zur Zollunion der EU mit der Türkei erwähnen. </DE-narr>
+</top>
+
+<top>
+<num> C163 </num>
+<DE-title> Einschränkungen für Raucher </DE-title>
+<DE-desc> Finde Dokumente über Bestimmungen oder Gesetze, die den Zweck haben, das Rauchen in Restaurants zu verbieten oder einzuschränken. </DE-desc>
+<DE-narr> Es sind alle Dokumente relevant, die über Gesetze oder Bestimmungen berichten, die ein Verbot oder eine Einschränkung des Rauchens in Restaurants betreffen, ebenso Dokumente, die Vorschläge für oder Konsequenzen aus solchen Gesetzen beschreiben. </DE-narr>
+</top>
+
+<top>
+<num> C164 </num>
+<DE-title> Europäische Strafurteile zu Drogen </DE-title>
+<DE-desc> Welche Strafen wurden in Europa für illegalen Drogenhandel verhängt? </DE-desc>
+<DE-narr> Relevante Dokumente liefern Informationen über gefällte Strafurteile in europäischen Ländern für das Handeln mit Drogen. Die Informationen sollen die Art des Urteils enthalten, die Länge der Inhaftierung oder andere Strafen. Strafen für Drogenkonsum sind nicht relevant. </DE-narr>
+</top>
+
+<top>
+<num> C165 </num>
+<DE-title> Golden Globes 1994 </DE-title>
+<DE-desc> Welcher Film gewann den 52. Golden Globe in der Kategorie Drama für die Saison 1994? </DE-desc>
+<DE-narr> Die 52. Golden Globes für die Filmsaison 1994 wurden im Januar 1995 in Los Angeles verliehen. Relevante Dokumente sollen den Namen des Films nennen, der in der Kategorie Drama gewonnen hat. </DE-narr>
+</top>
+
+<top>
+<num> C166 </num>
+<DE-title> Französischer General und Balkan-Schutzzone </DE-title>
+<DE-desc> Wer war der französische General, der für die Einrichtung der Sicherheitszone während des Balkan-Konfliktes verantwortlich war? </DE-desc>
+<DE-narr> Relevante Dokumente müssen den Namen des französischen Kommandeurs der IFOR-Truppen nennen, der die "Sicherheitszone" während des Balkan-Konfliktes einrichtete. </DE-narr>
+</top>
+
+<top>
+<num> C167 </num>
+<DE-title> Verhältnis China-Mongolei </DE-title>
+<DE-desc> Finde Informationen über das Verhältnis und Kooperationsvereinbarungen zwischen China und der Mongolei in der jüngeren Geschichte. </DE-desc>
+<DE-narr> Dokumente, die Informationen über politische und/oder wirtschaftliche Beziehungen zwischen China und der Mongolei im 20. Jahrhundert liefern, sind relevant. </DE-narr>
+</top>
+
+<top>
+<num> C168 </num>
+<DE-title> Ermordung Rabins </DE-title>
+<DE-desc> Wer erschoss Yitzhak Rabin und warum? </DE-desc>
+<DE-narr> Relevante Dokumente müssen den Namen des Mörders von Yitzhak Rabin, dem Premierminister Israels, und mindestens einen der Gründe für die Ermordung nennen. </DE-narr>
+</top>
+
+<top>
+<num> C169 </num>
+<DE-title> Aufkommen des CD-Brenners </DE-title>
+<DE-desc> Finde Dokumente über den CD-Brenner und die Reaktionen der Musikindustrie auf ihn. </DE-desc>
+<DE-narr> Dokumente, die über die Folgen der Nutzung von CD-Brennern für die Musikindustrie und über damit verbundene Fragen des geistigen Eigentums berichten, sind besonders relevant. </DE-narr>
+</top>
+
+<top>
+<num> C170 </num>
+<DE-title> Offizielle EU-Sprachen </DE-title>
+<DE-desc> Finde Dokumente über französische Pläne, die Anzahl der offiziellen Sprachen in der Europäischen Union auf fünf Sprachen zu reduzieren. </DE-desc>
+<DE-narr> Frankreich hat vorgeschlagen, die Kernsprachen in der Union auf Französisch, Englisch, Deutsch, Italienisch und Spanisch zu begrenzen. Nach starkem Widerstand wurde der Vorschlag fallen gelassen. Relevante Dokumente müssen auf diesen Vorschlag hinweisen. </DE-narr>
+</top>
+
+<top>
+<num> C171 </num>
+<DE-title> Eishockeyfinale in Lillehammer </DE-title>
+<DE-desc> Welche Mannschaften spielten im Eishockeyfinale der Olympischen Spiele von Lillehammer 1994? </DE-desc>
+<DE-narr> Relevante Dokumente berichten darüber, welche Teams im Eishockeyfinale der Olympischen Spiele von Lillehammer 1994 spielten. Dokumente, die darüber informieren, welches Team den ersten und zweiten Platz der Veranstaltung belegte, ohne speziell das Finale zu erwähnen, sind ebenfalls relevant. </DE-narr>
+</top>
+
+<top>
+<num> C172 </num>
+<DE-title> Leichtathletikweltrekorde 1995 </DE-title>
+<DE-desc> Welche neuen Weltrekorde wurden während der Leichtathletikweltmeisterschaft 1995 in Göteborg erreicht? </DE-desc>
+<DE-narr> Relevante Dokumente müssen erwähnen, welche Rekorde gebrochen wurden, die Veranstaltung und das Ergebnis erörtern und den Namen des neuen Weltrekordhalters nennen. </DE-narr>
+</top>
+
+<top>
+<num> C173 </num>
+<DE-title> Nachweis der Top-Quarks </DE-title>
+<DE-desc> Finde Berichte über den experimentellen Nachweis der Top-Quarks durch US-Forscher. </DE-desc>
+<DE-narr> Wissenschaftler eines amerikanischen Forschungszentrums berichteten, dass die Existenz der sogenannten Top-Quarks experimentell nachgewiesen werden konnte. Diese Quarks genannten Elementarteilchen sind die fundamentalen Bestandteile der Materie. Relevante Dokumente müssen diesen experimentellen Beweis behandeln, aber nicht Elementarteilchen im Allgemeinen diskutieren. </DE-narr>
+</top>
+
+<top>
+<num> C174 </num>
+<DE-title> Bayerischer Kruzifixstreit </DE-title>
+<DE-desc> Finde Berichte über den Kruzifixstreit in bayerischen Schulen. </DE-desc>
+<DE-narr> Im Kruzifixstreit bestätigte das deutsche Bundesverfassungsgericht, dass einzelne Eltern ein Recht haben, gegen das Aufhängen von Kruzifixen in Klassenzimmern bayerischer Schulen zu klagen. </DE-narr>
+</top>
+
+<top>
+<num> C175 </num>
+<DE-title> Umweltschäden in den Everglades </DE-title>
+<DE-desc> Finde Berichte über Umweltschäden in den Everglades, zum Beispiel auch solche, die auf die Zuckerindustrie Floridas zurückzuführen sind. </DE-desc>
+<DE-narr> Die Dokumente sollen über Umweltschäden in den Everglades berichten. Von besonderem Interesse sind Diskussionen über Umweltprobleme, die mit der Zuckerindustrie zusammenhängen. Berichte über Umweltschäden durch abfließende Chemikalien von Farmen im Allgemeinen sind auch relevant. </DE-narr>
+</top>
+
+<top>
+<num> C176 </num>
+<DE-title> Shoemaker-Levy und Jupiter </DE-title>
+<DE-desc> Finde Berichte über das Auseinanderbrechen des Kometen Shoemaker-Levy und seinen Einschlag auf dem Planeten Jupiter. </DE-desc>
+<DE-narr> Relevante Dokumente bringen Informationen über das Auseinanderbrechen des Kometen und die Kollision von Teilen des Kometen mit Jupiter. </DE-narr>
+</top>
+
+<top>
+<num> C177 </num>
+<DE-title> Milchkonsum in Europa </DE-title>
+<DE-desc> Liefere Statistiken oder Informationen, die den Milchverbrauch in europäischen Ländern betreffen. </DE-desc>
+<DE-narr> Relevante Dokumente müssen Statistiken oder andere Informationen über den Milchverbrauch in Europa oder in einzelnen europäischen Nationen liefern. Berichte über Milchprodukte sind nicht relevant. </DE-narr>
+</top>
+
+<top>
+<num> C178 </num>
+<DE-title> Totalverweigerung </DE-title>
+<DE-desc> Finde Berichte über Menschen, die bereit sind, eher eine Gefängnisstrafe in Kauf zu nehmen als Militärdienst zu leisten. </DE-desc>
+<DE-narr> Relevante Dokumente berichten von Menschen, die sich total weigern, Militär- oder Zivildienst zu leisten, und die bereit sind, für ihre Überzeugung eine Gefängnisstrafe zu riskieren. </DE-narr>
+</top>
+
+<top>
+<num> C179 </num>
+<DE-title> Rücktritt des NATO-Generalsekretärs </DE-title>
+<DE-desc> Warum wurde der Generalsekretär der NATO 1995 gedrängt zurückzutreten? </DE-desc>
+<DE-narr> Es gab 1995 großen politischen Druck auf den NATO-Generalsekretär zurückzutreten. Relevante Dokumente sollen mindestens einen Grund dafür erwähnen. </DE-narr>
+</top>
+
+<top>
+<num> C180 </num>
+<DE-title> Konkurs der Baring-Bank </DE-title>
+<DE-desc> Welchen Umfang hatten die Verluste im Fall des Baring-Bankrottes? </DE-desc>
+<DE-narr> Relevante Dokumente müssen in irgendeiner Weise die Verluste im Zusammenhang mit dem Zusammenbruch der ältesten Bank Großbritanniens quantifizieren. </DE-narr>
+</top>
+
+<top>
+<num> C181 </num>
+<DE-title> Französische Atomtests </DE-title>
+<DE-desc> Finde Berichte über den internationalen Druck zur Beendigung französischer Atomtests. </DE-desc>
+<DE-narr> Der von Jacques Chirac nach seiner Wahl gefasste Entschluss, das internationale Moratorium für Kernwaffentests zu brechen, ist von Greenpeace und vielen anderen ökologischen Gruppen verurteilt worden. Jeder Test löste starke weltweite Proteste, besonders in Australien und Neuseeland, aus. Sowohl Japan als auch die USA drückten ihr Bedauern über die französische Haltung aus. </DE-narr>
+</top>
+
+<top>
+<num> C182 </num>
+<DE-title> 50. Jahrestag der Landung in der Normandie </DE-title>
+<DE-desc> Finde Berichte über den Fallschirmsprung von Veteranen in Sainte-Mère-Église während der Feierlichkeiten zum 50. Jahrestag der Landung in der Normandie. </DE-desc>
+<DE-narr> Etwa 40 Veteranen sprangen mit dem Fallschirm über Sainte-Mère-Église während der Feierlichkeiten zum 50. Jahrestag der Landung in der Normandie ab, so wie sie es 50 Jahre zuvor am D-Day getan hatten. Jede Information über ihre Pläne für diese Aktion oder die Veranstaltung selbst ist relevant. </DE-narr>
+</top>
+
+<top>
+<num> C183 </num>
+<DE-title> Saurierüberreste in Asien </DE-title>
+<DE-desc> In welchen Teilen Asiens wurden Überreste von Dinosauriern gefunden? </DE-desc>
+<DE-narr> Relevante Dokumente sollen über Funde jeder Art von fossilen Überresten von Dinosauriern, einschließlich Sauriereiern, in Asien berichten. Dokumente, die lediglich das Auffinden von Saurierfußspuren erwähnen, sind nicht relevant. </DE-narr>
+</top>
+
+<top>
+<num> C184 </num>
+<DE-title> Mutterschaftsurlaub in Europa </DE-title>
+<DE-desc> Finde Dokumente, die Informationen über die Vorschriften hinsichtlich der Länge des Mutterschaftsurlaubs in Europa liefern. </DE-desc>
+<DE-narr> Die Dokumente müssen über genaue Zeiträume berichten, in denen der Mutterschaftsurlaub für arbeitende Frauen in Europa ermöglicht wird. Diskussionen, Gesetze oder Vorschläge für Gesetze bezüglich der Länge des Mutterschaftsurlaubs, zu dem Frauen in einem europäischen Land berechtigt sind, sind relevant, solange die Dauer des Mutterschaftsurlaubes beziffert wird. Vergleiche von Bestimmungen in verschiedenen Staaten sind ebenfalls von Interesse. </DE-narr>
+</top>
+
+<top>
+<num> C185 </num>
+<DE-title> Holländische Fotos von Srebrenica </DE-title>
+<DE-desc> Was geschah mit den Fotografien und den Filmen, die holländische Soldaten in Srebrenica aufnahmen und die Beweise für Menschenrechtsverletzungen zeigten? </DE-desc>
+<DE-narr> Nach dem Fall von Srebrenica verschwanden Fotos und Videos mit Beweisen für Menschenrechtsverletzungen, die vom holländischen Militär aufgenommen wurden. Der übrig gebliebene Film zeigt nur wenige erkennbare Abbildungen. Relevante Dokumente sollen jede Art von Informationen über diesen Vorfall liefern und können Details über den Inhalt der Fotos und des Films und/oder Diskussionen, was mit ihnen geschehen ist, enthalten. </DE-narr>
+</top>
+
+<top>
+<num> C186 </num>
+<DE-title> Holländische Regierungskoalition </DE-title>
+<DE-desc> Welche politischen Parteien bildeten die Regierungskoalition des sogenannten "lila Kabinetts" der Niederlande in den Jahren 1994-1995? </DE-desc>
+<DE-narr> 1994 bildete eine unwahrscheinlich erscheinende Kombination von Parteien eine Regierungskoalition in den Niederlanden. Relevante Dokumente müssen die Namen dieser drei Parteien erwähnen. </DE-narr>
+</top>
+
+<top>
+<num> C187 </num>
+<DE-title> Atomtransporte in Deutschland </DE-title>
+<DE-desc> Finde Berichte über Proteste gegen den Transport von radioaktivem Müll in Castor-Behältern in Deutschland. </DE-desc>
+<DE-narr> Relevante Dokumente berichten über Lieferungen radioaktiven Mülls mit Castor-Containern nach Gorleben in Niedersachsen und Protestaktionen dagegen. Jedes Dokument, das über Proteste gegen solche Transporte berichtet, ist relevant, auch wenn es den Ort oder den verwendeten Containertyp nicht speziell erwähnt. </DE-narr>
+</top>
+
+<top>
+<num> C188 </num>
+<DE-title> Deutsche Rechtschreibreform </DE-title>
+<DE-desc> Finde Dokumente, die über die Einführung der Rechtschreibreform im Deutschen berichten. </DE-desc>
+<DE-narr> Es wurde entschieden, dass die Rechtschreibreform in allen deutschsprachigen Ländern ab dem 1. August 1998 in Kraft tritt. Die Rechtschreib- und Zeichensetzungsregeln für die deutsche Sprache sind beträchtlich vereinfacht worden. Die Reform ist dennoch strittig. </DE-narr>
+</top>
+
+<top>
+<num> C189 </num>
+<DE-title> Hubble und Schwarze Löcher </DE-title>
+<DE-desc> Welche Rolle spielte das Hubble-Teleskop beim Nachweis der Existenz von Schwarzen Löchern? </DE-desc>
+<DE-narr> Relevante Dokumente müssen sich speziell mit den Beweisen befassen, die das Hubble-Teleskop für die Existenz von Schwarzen Löchern geliefert hat. Allgemeine Diskussionen zu Hubble oder Schwarzen Löchern sind nicht relevant. </DE-narr>
+</top>
+
+<top>
+<num> C190 </num>
+<DE-title> Kinderarbeit in Asien </DE-title>
+<DE-desc> Finde Dokumente, die Kinderarbeit in Asien diskutieren und Vorschläge zu deren Beseitigung oder zur Verbesserung der Arbeitsbedingungen für Kinder liefern. </DE-desc>
+<DE-narr> Relevante Dokumente berichten über die Kinderarbeit in einzelnen Ländern, beschreiben die Arbeitsbedingungen für Kinder oder informieren über Vorschläge für Maßnahmen zur Beseitigung der Kinderarbeit in Asien. </DE-narr>
+</top>
+
+<top>
+<num> C191 </num>
+<DE-title> Landwirtschaft im Ebrodelta </DE-title>
+<DE-desc> Was war die überwiegende landwirtschaftliche Tätigkeit im Ebrodelta in den frühen neunziger Jahren? </DE-desc>
+<DE-narr> Relevante Dokumente müssen die landwirtschaftliche Hauptaktivität im Ebrodelta in den neunziger Jahren erwähnen. Sie können auch erwartete Veränderungen im Zusammenhang mit dem GATT-Abkommen erwähnen. </DE-narr>
+</top>
+
+<top>
+<num> C192 </num>
+<DE-title> Mord an russischem Fernsehdirektor </DE-title>
+<DE-desc> Wie war der Name des Chefs einer russischen Fernsehgesellschaft, der auf der Treppe seines Hauses in Moskau erschossen wurde? </DE-desc>
+<DE-narr> Relevante Dokumente sollen über die Ermordung des russischen Fernsehdirektors und ehemaligen Journalisten in Moskau berichten und müssen den Namen des ermordeten Mannes nennen. </DE-narr>
+</top>
+
+<top>
+<num> C193 </num>
+<DE-title> EU und baltische Länder </DE-title>
+<DE-desc> Finde Dokumente, die über die Verhandlungen zwischen den baltischen Ländern (Estland, Lettland oder Litauen) und der Europäischen Union bezüglich der EU-Mitgliedschaft Aufschluss geben. </DE-desc>
+<DE-narr> Relevante Dokumente beschreiben die Verhandlungen zwischen der EU und Estland, Lettland oder Litauen. Berichte über Kooperationsvereinbarungen zwischen einzelnen europäischen Nationen und einem baltischen Land sind nicht relevant. </DE-narr>
+</top>
+
+<top>
+<num> C194 </num>
+<DE-title> Italienische Königsfamilie </DE-title>
+<DE-desc> Finde Informationen über das Exil von männlichen Mitgliedern des Königshauses Savoyen außerhalb Italiens. </DE-desc>
+<DE-narr> Relevante Dokumente sollen Informationen hinsichtlich der Bedingungen des Exils der italienischen Königsfamilie, des Hauses Savoyen, und/oder der ihm auferlegten Bedingungen liefern. Dokumente, die über Diskussionen und Meinungen hinsichtlich eines möglichen Endes der Verbannung der Erben und ihre Rückkehr nach Italien berichten, sollen gleichfalls als relevant betrachtet werden. </DE-narr>
+</top>
+
+<top>
+<num> C195 </num>
+<DE-title> Streik italienischer Flugbegleiter </DE-title>
+<DE-desc> Finde Berichte über Behinderungen oder Probleme in Italien, die durch Streiks italienischer Flugbegleiter verursacht wurden. </DE-desc>
+<DE-narr> Relevante Dokumente geben Informationen über Behinderungen, die das direkte Ergebnis von Streiks italienischer Flugbegleiter sind. Relevante Dokumente können Details über Verzögerungen und Stornierungen von Flügen und Schwierigkeiten für Passagiere irgendwo in Europa enthalten oder die Wirkung der Gewerkschaftsaktivität der Flugbegleiter in Italien beschreiben. </DE-narr>
+</top>
+
+<top>
+<num> C196 </num>
+<DE-title> Fusion japanischer Banken </DE-title>
+<DE-desc> Finde Berichte über die Fusion der japanischen Mitsubishi Bank und der Bank of Tokyo zur größten Bank der Welt. </DE-desc>
+<DE-narr> Die zwei japanischen Kreditinstitute Mitsubishi Bank und Bank of Tokyo haben vereinbart zu fusionieren. Die neue Bank ist die größte der Welt. </DE-narr>
+</top>
+
+<top>
+<num> C197 </num>
+<DE-title> Das Dayton-Friedensabkommen </DE-title>
+<DE-desc> Finde Berichte über das Friedensabkommen von Dayton zur Erhaltung des Friedens in Bosnien-Herzegowina. </DE-desc>
+<DE-narr> In Übereinstimmung mit dem Daytoner Abkommen übernahm die NATO die Verantwortung für die militärische Erhaltung des Friedens in Bosnien-Herzegowina. Relevante Dokumente berichten über die Verhandlungen, die Inhalte und den Abschluss der Vereinbarung. </DE-narr>
+</top>
+
+<top>
+<num> C198 </num>
+<DE-title> Ehren-Oscar für italienische Regisseure </DE-title>
+<DE-desc> Finde Informationen über italienische Filmemacher, denen ein Ehren-Oscar der Filmakademie für ihr Lebenswerk verliehen wurde. </DE-desc>
+<DE-narr> Relevante Dokumente sollen Informationen darüber liefern, welche italienischen Regisseure einen Ehrenpreis (Oscar) für ihr Lebenswerk bei der Preisverleihung der Filmakademie in Los Angeles erhalten haben. </DE-narr>
+</top>
+
+<top>
+<num> C199 </num>
+<DE-title> Ebola-Epidemie in Zaire </DE-title>
+<DE-desc> Finde Berichte über vorbeugende Maßnahmen, die nach Ausbruch der Ebola-Epidemie in Zaire unternommen wurden. </DE-desc>
+<DE-narr> Im Mai 1995 brach in der zairischen Stadt Kikwit eine der am meisten gefürchteten Epidemien aus: die Ebola-Seuche. Relevante Dokumente berichten über Maßnahmen, die ergriffen wurden, um die Ausbreitung dieser Krankheit zu verhindern. </DE-narr>
+</top>
+
+<top>
+<num> C200 </num>
+<DE-title> Hochwasser in Holland und Deutschland </DE-title>
+<DE-desc> Finde statistische Angaben über die Hochwasserkatastrophe in Holland und Deutschland im Jahre 1995. </DE-desc>
+<DE-narr> Relevante Dokumente sollen das Ausmaß des Schadens beziffern, der durch die Überschwemmungen entstand, die 1995 in Deutschland und den Niederlanden stattfanden. Die Dokumente sollen die Wirkung des durch Überschwemmung verursachten Schadens hinsichtlich der Anzahl von Menschen oder Tieren, die evakuiert wurden, und/oder hinsichtlich der ökonomischen Verluste beziffern. </DE-narr>
+</top>
