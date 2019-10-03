@@ -1,0 +1,300 @@
+
+<top>
+<num> C141 </num>
+<ES-title> Carta-bomba para Kiesbauer </ES-title>
+</top>
+
+<top>
+<num> C142 </num>
+<ES-title> Christo envuelve el edificio del Reichstag alemán </ES-title>
+</top>
+
+<top>
+<num> C143 </num>
+<ES-title> Conferencia de la Mujer en Pekín </ES-title>
+</top>
+
+<top>
+<num> C144 </num>
+<ES-title> Diamantes y rebelión en Sierra Leona </ES-title>
+</top>
+
+<top>
+<num> C145 </num>
+<ES-title> Importaciones de arroz en Japón </ES-title>
+</top>
+
+<top>
+<num> C146 </num>
+<ES-title> Comida rápida en Japón </ES-title>
+</top>
+
+<top>
+<num> C147 </num>
+<ES-title> Accidentes petrolíferos y aves </ES-title>
+</top>
+
+<top>
+<num> C148 </num>
+<ES-title> Destrucción de la capa de ozono </ES-title>
+</top>
+
+<top>
+<num> C149 </num>
+<ES-title> Visita del Papa a Sri Lanka </ES-title>
+</top>
+
+<top>
+<num> C150 </num>
+<ES-title> AI contra la pena de muerte </ES-title>
+</top>
+
+<top>
+<num> C151 </num>
+<ES-title> Las maravillas del Mundo Antiguo </ES-title>
+</top>
+
+<top>
+<num> C152 </num>
+<ES-title> Los derechos de la infancia </ES-title>
+</top>
+
+<top>
+<num> C153 </num>
+<ES-title> Los Juegos Olímpicos y la paz </ES-title>
+</top>
+
+<top>
+<num> C154 </num>
+<ES-title> Libertad de Expresión en Internet </ES-title>
+</top>
+
+<top>
+<num> C155 </num>
+<ES-title> Riesgos de los teléfonos móviles </ES-title>
+</top>
+
+<top>
+<num> C156 </num>
+<ES-title> Sindicatos en Europa </ES-title>
+</top>
+
+<top>
+<num> C157 </num>
+<ES-title> Ganadoras de Wimbledon </ES-title>
+</top>
+
+<top>
+<num> C158 </num>
+<ES-title> Fútbol: disturbios en Dublín </ES-title>
+</top>
+
+<top>
+<num> C159 </num>
+<ES-title> Medio ambiente y petróleo en el Mar del Norte </ES-title>
+</top>
+
+<top>
+<num> C160 </num>
+<ES-title> Consumo de whisky escocés </ES-title>
+</top>
+
+<top>
+<num> C161 </num>
+<ES-title> Dietas para celíacos </ES-title>
+</top>
+
+<top>
+<num> C162 </num>
+<ES-title> Aduanas entre la UE y Turquía </ES-title>
+</top>
+
+<top>
+<num> C163 </num>
+<ES-title> Restricciones para los fumadores </ES-title>
+</top>
+
+<top>
+<num> C164 </num>
+<ES-title> Sentencias sobre drogas en Europa </ES-title>
+</top>
+
+<top>
+<num> C165 </num>
+<ES-title> Globos de Oro 1994 </ES-title>
+</top>
+
+<top>
+<num> C166 </num>
+<ES-title> El general francés y la zona de seguridad en los Balcanes </ES-title>
+</top>
+
+<top>
+<num> C167 </num>
+<ES-title> Relaciones China-Mongolia </ES-title>
+</top>
+
+<top>
+<num> C168 </num>
+<ES-title> Asesinato de Rabin </ES-title>
+</top>
+
+<top>
+<num> C169 </num>
+<ES-title> La aparición de la grabadora de CD </ES-title>
+</top>
+
+<top>
+<num> C170 </num>
+<ES-title> Lenguas oficiales de la UE </ES-title>
+</top>
+
+<top>
+<num> C171 </num>
+<ES-title> Final de hockey sobre hielo en Lillehammer </ES-title>
+</top>
+
+<top>
+<num> C172 </num>
+<ES-title> Récords mundiales de Atletismo de 1995 </ES-title>
+</top>
+
+<top>
+<num> C173 </num>
+<ES-title> Pruebas del quark top </ES-title>
+</top>
+
+<top>
+<num> C174 </num>
+<ES-title> Polémica de crucifijos en Bavaria </ES-title>
+</top>
+
+<top>
+<num> C175 </num>
+<ES-title> Impacto medioambiental en los Everglades </ES-title>
+</top>
+
+<top>
+<num> C176 </num>
+<ES-title> El Shoemaker-Levy y Júpiter </ES-title>
+</top>
+
+<top>
+<num> C177 </num>
+<ES-title> Consumo de leche en Europa </ES-title>
+</top>
+
+<top>
+<num> C178 </num>
+<ES-title> Insumisión </ES-title>
+</top>
+
+<top>
+<num> C179 </num>
+<ES-title> Dimisión del Secretario General de la OTAN </ES-title>
+</top>
+
+<top>
+<num> C180 </num>
+<ES-title> Bancarrota del Barings </ES-title>
+</top>
+
+<top>
+<num> C181 </num>
+<ES-title> Pruebas nucleares francesas </ES-title>
+</top>
+
+<top>
+<num> C182 </num>
+<ES-title> 50 aniversario del desembarco de Normandía </ES-title>
+</top>
+
+<top>
+<num> C183 </num>
+<ES-title> Restos de dinosaurios en Asia </ES-title>
+</top>
+
+<top>
+<num> C184 </num>
+<ES-title> Permiso de maternidad en Europa </ES-title>
+</top>
+
+<top>
+<num> C185 </num>
+<ES-title> Fotos holandesas de Srebrenica </ES-title>
+</top>
+
+<top>
+<num> C186 </num>
+<ES-title> Coalición del gobierno holandés </ES-title>
+</top>
+
+<top>
+<num> C187 </num>
+<ES-title> Transporte nuclear en Alemania </ES-title>
+</top>
+
+<top>
+<num> C188 </num>
+<ES-title> Reforma de la ortografía alemana </ES-title>
+</top>
+
+<top>
+<num> C189 </num>
+<ES-title> El Hubble y los agujeros negros </ES-title>
+</top>
+
+<top>
+<num> C190 </num>
+<ES-title> Trabajo infantil en Asia </ES-title>
+</top>
+
+<top>
+<num> C191 </num>
+<ES-title> Cultivos en el Delta del Ebro </ES-title>
+</top>
+
+<top>
+<num> C192 </num>
+<ES-title> Asesinato del director de una cadena de TV en Rusia </ES-title>
+</top>
+
+<top>
+<num> C193 </num>
+<ES-title> La UE y los países bálticos </ES-title>
+</top>
+
+<top>
+<num> C194 </num>
+<ES-title> Familia real italiana </ES-title>
+</top>
+
+<top>
+<num> C195 </num>
+<ES-title> Huelga de asistentes de vuelo italianos </ES-title>
+</top>
+
+<top>
+<num> C196 </num>
+<ES-title> Fusión de bancos japoneses </ES-title>
+</top>
+
+<top>
+<num> C197 </num>
+<ES-title> Tratado de paz de Dayton </ES-title>
+</top>
+
+<top>
+<num> C198 </num>
+<ES-title> Oscar honorífico para directores italianos </ES-title>
+</top>
+
+<top>
+<num> C199 </num>
+<ES-title> Epidemia de ébola en Zaire </ES-title>
+</top>
+
+<top>
+<num> C200 </num>
+<ES-title> Inundaciones en Holanda y Alemania </ES-title>
+</top>

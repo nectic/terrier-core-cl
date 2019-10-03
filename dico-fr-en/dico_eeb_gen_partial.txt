@@ -1,0 +1,6 @@
+accidents accidents 1.0
+--
+pétroliers tankers 1.0
+--
+oiseaux birds 1.0
+--

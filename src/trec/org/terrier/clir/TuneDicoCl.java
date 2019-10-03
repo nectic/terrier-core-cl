@@ -79,12 +79,9 @@ public class TuneDicoCl {
 
 		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);
 		
-		
 		System.out.println("Initialise src & trg vectors ");
 		tlm_w2v_skipgram.initialiseW2V_cl_dico_2(src_we);;
 		System.out.println("src trg vectors initialised");
-		
-		
 		
 		tlm_w2v_skipgram.setTranslation("dico_cl");
 		tlm_w2v_skipgram.setRarethreshold(index.getCollectionStatistics().getNumberOfDocuments()/200);
@@ -93,8 +90,7 @@ public class TuneDicoCl {
 
 		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
 		
-		//double [ ]  muvalues = {10.0};
-		
+		//double [ ]  muvalues = {0.4,0.75};
 		
 		for(int i = 0; i<muvalues.length;i++) {
 			double mu = muvalues[i];

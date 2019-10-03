@@ -142,6 +142,10 @@ bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
 --aggregation
 --aggregationtf
 
+--generatedicocoherence
+
+--generatedico
+
 
 bin/trec_terrier.sh --tuneskipgramcl -Dtrec.topics=share/clef/topics/query_title_fi.trec
 

@@ -28,10 +28,10 @@ import org.terrier.utility.ArrayUtils;
  * @author zuccong
  *
  */
-public class TuneLM {
-	
-	
-	protected static final Logger logger = LoggerFactory.getLogger(TuneLM.class);
+public class GenerateDicoCoherence {
+
+
+	protected static final Logger logger = LoggerFactory.getLogger(GenerateDicoCoherence.class);
 	
 	/**
 	 * Get the query parser that is being used.
@@ -68,34 +68,37 @@ public class TuneLM {
 	}
 
 	public void processQueries() throws IOException, InterruptedException {
+		
+		int numtopterms = Integer.valueOf(ApplicationSetup.getProperty("clir.number_of_top_translation_terms","1"));
+		String src_we = ApplicationSetup.getProperty("clir.src.we","/Volumes/SDEXT/these/wiki.multi.fr.vec");
+		String trg_we = ApplicationSetup.getProperty("clir.trg.we","/Volumes/SDEXT/these/wiki.multi.en.vec");
+		
 		Index index = Index.createIndex();
-		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
-		//double [ ]  muvalues = {0.4,0.75};
-		for(int i = 0; i<muvalues.length;i++) {
-			double mu = muvalues[i];
-			TranslationLMManager tlm = new TranslationLMManager(index);
-			tlm.setTranslation("null");
-			tlm.setDirMu(mu);
-			TRECDocnoOutputFormat TRECoutput = new TRECDocnoOutputFormat(index);
-			PrintWriter pt = new PrintWriter(new File("var/results/res_dir_mu_" + String.valueOf(mu) + ".res"));
+
+		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);
+		
+		System.out.println("Initialise src & trg vectors ");
+		tlm_w2v_skipgram.initialiseW2V_cl(src_we,trg_we);;
+		System.out.println("src trg vectors initialised");
+		
+		tlm_w2v_skipgram.setNumber_of_top_translation_terms(numtopterms);
+		
 			QuerySource querySource = getQueryParser();
 			// iterating through the queries
 			while (querySource.hasNext()) {
 				String query = querySource.next();
 				String qid = querySource.getQueryId();
+				tlm_w2v_skipgram.setQid(qid);
 				qid = qid.substring(1,qid.length());
-				System.out.println("Scoring with Dir LM; mu=" + mu);
-				//scoring with LM dir
-				Request rq = new Request();
-				rq.setOriginalQuery(query);
-				rq.setIndex(index);
-				rq.setQueryID(qid);
-				rq = tlm.runMatching(rq, "null", "dir");
-				TRECoutput.printResults(pt, rq, "dir", "Q0", 1000);
+				Request rq_w2v = new Request();
+				rq_w2v.setOriginalQuery(query);
+				rq_w2v.setQueryID(qid);
+				tlm_w2v_skipgram.generateDicoCoherence(rq_w2v);
+
 			}
-			pt.flush();
-			pt.close();
-		}
+			
+			tlm_w2v_skipgram.pw_dico_eeb.close();
+			
 	}
 
 }

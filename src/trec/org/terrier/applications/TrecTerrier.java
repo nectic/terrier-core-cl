@@ -33,6 +33,7 @@ import org.terrier.clir.ClirAggregation;
 import org.terrier.clir.ClirAggregationTF;
 import org.terrier.clir.ClirQuerying;
 import org.terrier.clir.GenerateDico;
+import org.terrier.clir.GenerateDicoCoherence;
 import org.terrier.clir.TuneCbow;
 import org.terrier.clir.TuneCbowFull;
 import org.terrier.clir.TuneCbowSelf;
@@ -181,6 +182,8 @@ public class TrecTerrier {
 	protected boolean tunesdicocl;
 
 	protected boolean generatedico;
+	
+	protected boolean generatedicocoherence;
 	
 	protected boolean tuneseuilcl;
 	
@@ -397,6 +400,9 @@ public class TrecTerrier {
 			
 			else if (args[pos].equals("--generatedico"))
 				generatedico = true;
+			
+			else if (args[pos].equals("--generatedicocoherence"))
+				generatedicocoherence = true;
 			
 			else if (args[pos].equals("--tuneskipgramfullcl"))
 				tuneskipgramfullcl = true;
@@ -653,11 +659,9 @@ public class TrecTerrier {
 			Inverted2DirectIndexBuilder.main(builderCommand);
 
 		} else if (clir) {
-
 			ClirQuerying clirQuerying = new ClirQuerying();
 			clirQuerying.processQueries();
 		} else if (tuneskipgram) {
-
 			TuneSkipGram tuneskipgram = new TuneSkipGram();
 			tuneskipgram.processQueries();
 		} else if (tuneskipgramself) {
@@ -687,7 +691,6 @@ public class TrecTerrier {
 		} else if (tunecbowfull) {
 			TuneCbowFull tunecbowfull = new TuneCbowFull();
 			tunecbowfull.processQueries();
-
 		}
 
 		else if (tunelm) {
@@ -728,6 +731,12 @@ public class TrecTerrier {
 			generateDico.processQueries();
 		}
 		
+		else if (generatedicocoherence) {
+			System.out.println("Generate Dico Coherence");
+			GenerateDicoCoherence generateDicoCoherence = new GenerateDicoCoherence();
+			generateDicoCoherence.processQueries();
+		}
+		
 		else if (tuneskipgramfullcl) {
 			TuneSkipGramFullCl tuneskipgramfullcl = new TuneSkipGramFullCl();
 			tuneskipgramfullcl.processQueries();
@@ -742,8 +751,6 @@ public class TrecTerrier {
 			ClirAggregationTF clirAggregationTF = new ClirAggregationTF();
 			clirAggregationTF.processQueries();
 		}
-		
-		
 		
 		long endTime = System.currentTimeMillis();
 		System.err.println("Time elapsed: " + (endTime-startTime)/1000.0d + " seconds.");

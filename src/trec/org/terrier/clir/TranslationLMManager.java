@@ -1011,43 +1011,45 @@ public class TranslationLMManager extends Manager{
 		MetaIndex meta = index.getMetaIndex();
 		System.out.println("Number of docs in the index = " + this.index.getCollectionStatistics().getNumberOfDocuments());
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
-
 		//iterating over all query terms
 		for(int i=0; i<this.queryTerms.length;i++) {
-
 			String ti = this.queryTerms[i];
 			String tiPipelined = tpa.pipelineTerm(ti);
 			if(tiPipelined==null) {
 				//System.err.println("Term delected after pipeline: "+ti);
 				continue;
 			}
-
 			LexiconEntry lEntry = this.lex.getLexiconEntry(tiPipelined);
 			if (lEntry==null)
 			{
 				System.err.println("Term Not Found: "+tiPipelined);
 				continue;
 			}
-
 			double p_w_C = (double)lEntry.getFrequency()/this.index.getCollectionStatistics().getNumberOfTokens();
 			IterablePosting ip = this.invertedIndex.getPostings(lEntry);
-
 			//iterating over all documents in the posting of this query term
-
 			/*Note this only does best match style of Dirichlet
 			 * while this is good for single term queries, it is incorrect for multi term queries
 			 * */
 			while(ip.next() != IterablePosting.EOL) {
-
 				double tf = (double)ip.getFrequency();
 				double c = this.mu;
 				double numberOfTokens = (double) this.index.getCollectionStatistics().getNumberOfTokens();
 				double docLength = (double) ip.getDocumentLength();
 				double colltermFrequency = (double)lEntry.getFrequency();
+				
+				//BM25 matchingMethod = new BM25();
+				//TF_IDF matchingMethod = new TF_IDF();
+				DirichletLM matchingMethod = new DirichletLM();
+				matchingMethod.setParameter(c);
+				matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+				matchingMethod.setKeyFrequency(1);
+				matchingMethod.setEntryStatistics(lEntry);
+				matchingMethod.prepare();
 
-
-				double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
-
+				double score = matchingMethod.score(ip);
+				
+				//double score = WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 				/*
 				double score =	
 						WeightingModelLibrary.log( (docLength* tf/docLength + c * (colltermFrequency/numberOfTokens)) / (c + docLength)) 
@@ -1055,9 +1057,7 @@ public class TranslationLMManager extends Manager{
 						+ WeightingModelLibrary.log(c/(c + docLength))
 						;
 				 */
-
 				log_p_d_q[ip.getId()] = log_p_d_q[ip.getId()] +  score;
-
 			}
 		}
 		//now need to put the scores into the result set
@@ -1741,6 +1741,8 @@ public class TranslationLMManager extends Manager{
 			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_atquerytime(w);
 			System.out.println("\t" + top_translations_of_w.size() + " Translations for " + w + " acquired");
 
+			top_translations_of_w.put(w, 1.0);
+			
 			/*Preload the probabilities p(u|d)*/
 			HashMap<String, HashMap<Integer, Double>> p_u_d_distributions = new HashMap<String, HashMap<Integer, Double>>();
 			for(String u : top_translations_of_w.keySet()) {
@@ -1758,7 +1760,6 @@ public class TranslationLMManager extends Manager{
 					continue;
 				}
 
-
 				while(ip.next() != IterablePosting.EOL) {
 
 					double tf = (double)ip.getFrequency();
@@ -1767,7 +1768,16 @@ public class TranslationLMManager extends Manager{
 					double docLength = (double) ip.getDocumentLength();
 					double colltermFrequency = (double)lEntry.getFrequency();
 
-					double score =0.0;
+					//BM25 matchingMethod = new BM25();
+					//TF_IDF matchingMethod = new TF_IDF();
+					DirichletLM matchingMethod = new DirichletLM();
+					matchingMethod.setParameter(c);
+					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
+					matchingMethod.setKeyFrequency(1);
+					matchingMethod.setEntryStatistics(lu);
+					matchingMethod.prepare();
+					
+					double score = matchingMethod.score(ip);
 
 					if(log_p_d_q[ip.getId()]==-1000.0)
 						log_p_d_q[ip.getId()]=0.0;
@@ -2037,6 +2047,92 @@ public class TranslationLMManager extends Manager{
 
 	}
 
+	public void generateDicoCoherence(Request srq) throws IOException{
+		String query = srq.getOriginalQuery(); //this is before any pre-processing
+		System.out.println("query: " + query);
+		this.queryTerms = srq.getOriginalQuery().split(" ");
+		File stopWordsFile = new File("share/stopwords-src.txt"); 
+		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
+		List<String> stopwords = new ArrayList<String>();		
+		String st; 
+		while ((st = brStopWordsFile.readLine()) != null) {
+			stopwords.add(st);
+		}
+		brStopWordsFile.close();
+		//iterating over all query terms
+		for(int i=0; i<this.queryTerms.length;i++) {
+			String w = this.queryTerms[i];
+			if(stopwords.contains(w.toLowerCase())) {
+				continue;
+			}
+			if(fullw2vmatrix_src.get(w)==null)
+				continue;
+
+			HashMap<String, Double> top_translations_of_w = getTopW2VTranslationsNotnormalised_cl(w);
+
+			double tot_sum_sim_u = 0.0;
+			HashMap<String, Double> tab_sim = new HashMap<String, Double>();
+			
+			for(String u : top_translations_of_w.keySet()) {
+				
+				double sum_sim_u = 0;
+				
+				for(int j=0; j<this.queryTerms.length;j++) {
+					String w2 = this.queryTerms[j];
+					if(stopwords.contains(w2.toLowerCase()))
+						continue;
+				
+					if(fullw2vmatrix_src.get(w2)==null)
+						continue;
+					
+					if(w.equals(w2))
+						continue;
+					
+					HashMap<String, Double> top_translations_of_w2 = getTopW2VTranslationsNotnormalised_cl(w2);
+					
+					for(String u2 : top_translations_of_w2.keySet()) {
+						double sim_u_u2 = computeSim(fullw2vmatrix_trg.get(u),fullw2vmatrix_trg.get(u2));
+						
+						sum_sim_u += sim_u_u2;
+						
+					}
+				}
+				
+				tab_sim.put(u,sum_sim_u);
+				tot_sum_sim_u += sum_sim_u;
+								
+				//pw_dico_eeb.println(w+" "+u+" "+top_translations_of_w.get(u));
+				
+			}
+			
+			for (Map.Entry<String, Double> entry : tab_sim.entrySet()) {
+			    String u = entry.getKey();
+			    Double u_sim = entry.getValue();
+			    pw_dico_eeb.println(w+" "+u+" "+u_sim/tot_sum_sim_u);
+			}
+			
+			pw_dico_eeb.println("--");
+		}
+	}
+	
+	private double computeSim(double[] vector_w, double[] vector_u) {
+		double cosine_w_u=0.0;
+		double sum_w=0.0;
+		double sum_u=0.0;
+		for(int i=0; i<vector_w.length;i++) {
+			cosine_w_u=cosine_w_u + vector_w[i]*vector_u[i];
+			sum_w=sum_w + Math.pow(vector_w[i],2);
+			sum_u=sum_u + Math.pow(vector_u[i],2);
+		}
+		//normalisation step
+		cosine_w_u = cosine_w_u / (Math.sqrt(sum_w) * Math.sqrt(sum_u));
+		//System.out.println("normalised cosine: " + cosine_w_u);
+		//tmp_w.put(u, cosine_w_u);
+		//sum_cosines = sum_cosines+ cosine_w_u;
+		
+		return cosine_w_u;
+	}
+
 	public void dir_t_w2v_seuil_cl() throws IOException, InterruptedException {
 
 		MetaIndex meta = index.getMetaIndex();
@@ -2277,7 +2373,6 @@ public class TranslationLMManager extends Manager{
 
 					//double score = matchingMethod.score(ip);
 
-					//double score = matchingMethod.score(ip);
 					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
 					if(log_p_d_q[ip.getId()]==-1000.0)
@@ -5005,6 +5100,7 @@ public class TranslationLMManager extends Manager{
 		// TODO Auto-generated method stub
 		System.out.println("test");
 	}
+
 
 
 

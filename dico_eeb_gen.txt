@@ -1,0 +1,18 @@
+accidents derailments 3.054097434806206E-5
+accidents fatalities 3.317384582519236E-5
+accidents incidents 3.0390797554197393E-5
+accidents accidents 4.042731020308981E-5
+accidents accident 3.415834138573901E-5
+--
+pétroliers petrochemicals 3.268722759164144E-5
+pétroliers tankers 3.2895048676396826E-5
+pétroliers refineries 3.224090806482602E-5
+pétroliers petroleum 3.500389859996596E-5
+pétroliers petrochemical 3.14596107404551E-5
+--
+oiseaux songbirds 3.499840330977454E-5
+oiseaux seabirds 3.362472393736466E-5
+oiseaux bird 3.366335746324705E-5
+oiseaux birds 3.897162370208506E-5
+oiseaux waterbirds 3.384243448572417E-5
+--
