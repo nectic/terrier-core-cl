@@ -57,8 +57,9 @@ bin/trec_terrier.sh -e -Dtrec.qrels=share/clef/qrels
 --aggregation
 --aggregationtf
 
---generatedico
+--generatedicocoherence
 
+--generatedico
 
 git add .
 git commit -m "clir"

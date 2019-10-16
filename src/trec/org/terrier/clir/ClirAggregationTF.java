@@ -72,9 +72,13 @@ public class ClirAggregationTF {
 
 		Index index = Index.createIndex();
 		TranslationLMManager tlm_w2v_skipgram = new TranslationLMManager(index);
+		
+		String src_we = ApplicationSetup.getProperty("clir.src.we","/Volumes/SDEXT/these/wiki.multi.fr.vec");
+		String trg_we = ApplicationSetup.getProperty("clir.trg.we","/Volumes/SDEXT/these/wiki.multi.en.vec");
 
 		System.out.println("Initialise src & trg vectors ");
-		tlm_w2v_skipgram.initialiseW2Vdico_cl();;
+		tlm_w2v_skipgram.initialiseW2V_cl_dico_2(src_we);
+		//tlm_w2v_skipgram.initialiseW2Vdico_cl();
 		System.out.println("src trg vectors initialised");
 
 		tlm_w2v_skipgram.setTranslation("w2v_cl");

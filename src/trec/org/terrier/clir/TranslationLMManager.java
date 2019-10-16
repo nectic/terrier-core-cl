@@ -2369,9 +2369,9 @@ public class TranslationLMManager extends Manager{
 					matchingMethod.setEntryStatistics(lu);
 					matchingMethod.prepare();
 
-					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+					//double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
 
-					//double score = matchingMethod.score(ip);
+					double score = matchingMethod.score(ip);
 
 					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
@@ -2484,7 +2484,7 @@ public class TranslationLMManager extends Manager{
 		fichier_a_analyse.close();
 	}
 
-	public void clir_aggregation() throws IOException, InterruptedException {
+	public void clir_aggregation_() throws IOException, InterruptedException {
 
 		MetaIndex meta = index.getMetaIndex();
 
@@ -2497,7 +2497,7 @@ public class TranslationLMManager extends Manager{
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
-		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		File stopWordsFile = new File("share/stopwords-src.txt"); 
 		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 		List<String> stopwords = new ArrayList<String>();		
 		String st; 
@@ -2517,7 +2517,10 @@ public class TranslationLMManager extends Manager{
 			while (docPostings.next() != IterablePosting.EOL) {
 				Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(docPostings.getId());
 				String u = lee.getKey();
+				
+				System.out.println(u);
 
+				/*
 				double[] vector_u = fullw2vmatrix_trg.get(u);
 
 				if(vector_u==null)
@@ -2527,12 +2530,16 @@ public class TranslationLMManager extends Manager{
 					vector_doc[i]+=vector_u[i];
 					//vector_doc[i]+=WeightingModelLibrary.log(index.getCollectionStatistics().getNumberOfDocuments()/lee.getValue().getDocumentFrequency())*vector_u[i];
 				}
+				
+				*/
 
 			} // end u iteration
 
 
+			/*
+			
 			double[] vector_query = new double[w2v_dimension];
-
+			
 			//iterating over all query terms
 			for(int i=0; i<this.queryTerms.length;i++) {
 				String w = this.queryTerms[i];
@@ -2571,13 +2578,29 @@ public class TranslationLMManager extends Manager{
 				log_p_d_q[docid]=0.0;
 
 
-
 			log_p_d_q[docid] = cosine_q_d;
+			
+			*/
 
 		}
 		//now need to put the scores into the result set
 		this.rs.initialise(log_p_d_q);
 
+	}
+	
+	
+	public void clir_aggregation() throws IOException, InterruptedException {
+	
+		PostingIndex<Pointer> di = (PostingIndex<Pointer>) index.getDirectIndex();
+		DocumentIndex doi = index.getDocumentIndex();
+		Lexicon<String> lex = index.getLexicon();
+		int docid = 0; //docids are 0-based
+		IterablePosting postings = di.getPostings(doi.getDocumentEntry(docid));
+		while (postings.next() != IterablePosting.EOL) {
+		    Map.Entry<String,LexiconEntry> lee = lex.getLexiconEntry(postings.getId());
+		    System.out.println(lee.getKey() + " with frequency " + postings.getFrequency());
+		}
+		
 	}
 
 	public void clir_aggregation_tf() throws IOException, InterruptedException {
@@ -2593,7 +2616,7 @@ public class TranslationLMManager extends Manager{
 		double[] log_p_d_q = new double[this.index.getCollectionStatistics().getNumberOfDocuments()];
 		Arrays.fill(log_p_d_q, -1000.0);
 
-		File stopWordsFile = new File("share/stopwords-fr.txt"); 
+		File stopWordsFile = new File("share/stopwords-src.txt"); 
 		BufferedReader brStopWordsFile = new BufferedReader(new FileReader(stopWordsFile)); 
 		List<String> stopwords = new ArrayList<String>();		
 		String st; 
