@@ -1,0 +1,520 @@
+christo hristo 3.5078947583296495E-5
+christo cristo 3.561519736650942E-5
+christo christo 4.175862057380018E-5
+--
+verhüllt drapes 4.0870972261652806E-5
+verhüllt veil 4.3617643958767406E-5
+verhüllt veils 4.036963038198336E-5
+--
+deutschen german 6.27375666267838E-5
+deutschen austrian 4.6004300220891464E-5
+deutschen hungarian 4.52890498664363E-5
+--
+reichstag sejm 4.397152717415879E-5
+reichstag bundesrat 4.464702386331362E-5
+reichstag reichstag 5.323266403323827E-5
+--
+peking shanghai 5.107897502956731E-5
+peking guangzhou 5.0437735650992114E-5
+peking beijing 6.104687540852471E-5
+--
+rebellion rebellion 4.672498439523815E-5
+rebellion rebellions 4.33299483715194E-5
+rebellion revolt 4.4134777263218246E-5
+--
+diamanten diamonds 4.7467720591841694E-5
+diamanten gemstones 4.420626099250673E-5
+diamanten rubies 4.363576243709309E-5
+--
+sierra leonean 4.0311096860926554E-5
+sierra sierra 5.634342851180084E-5
+sierra leone 4.051181883014734E-5
+--
+leone sierra 3.859700535626476E-5
+leone liberia 3.7471312002834295E-5
+leone leone 4.875642087972871E-5
+--
+japans japanese 5.3321873170624035E-5
+japans japan 5.912364885274178E-5
+japans meiji 4.808097514946907E-5
+--
+fastfood starbucks 4.466139121989373E-5
+fastfood pizza 4.243938745285991E-5
+fastfood supermarkets 4.2661628256449025E-5
+--
+japan taiwan 4.9403418905130095E-5
+japan korea 4.770378965889241E-5
+japan japan 6.408780301732691E-5
+--
+vögel songbirds 4.984874202993356E-5
+vögel birds 5.917765474389265E-5
+vögel insects 4.953244462299657E-5
+--
+schäden damage 7.830007367208993E-5
+schäden damages 6.225508335723304E-5
+schäden severe 5.885888918356677E-5
+--
+ozonschicht aerosols 4.720973898710284E-5
+ozonschicht chlorofluorocarbons 4.801979940775634E-5
+ozonschicht ozone 4.842964089584565E-5
+--
+papstbesuch pope 4.373012261695139E-5
+papstbesuch ratzinger 4.323969723508402E-5
+papstbesuch vatican 4.311313989102037E-5
+--
+sri lanka 5.4356398178554086E-5
+sri lankan 4.700488226897261E-5
+sri sri 5.537418156325828E-5
+--
+lanka lanka 5.3141171475119245E-5
+lanka sri 5.0245403306202485E-5
+lanka india 4.447570283236114E-5
+--
+ai nei 3.456338168499865E-5
+ai ai 4.516760002788613E-5
+ai gei 3.483130452225404E-5
+--
+todesstrafe treason 4.793846411464463E-5
+todesstrafe torture 4.641125078198607E-5
+todesstrafe executions 4.669369289855726E-5
+--
+wunder wonders 3.7784047796950916E-5
+wunder miracle 4.892552509858912E-5
+wunder miracles 4.607113013937122E-5
+--
+antike phoenicians 4.719262039991466E-5
+antike graeco 4.717237847300999E-5
+antike ancient 5.3540312561434084E-5
+--
+rechte liberties 5.235385871786857E-5
+rechte rights 6.705383274627382E-5
+rechte right 5.632982130300936E-5
+--
+kindes newborn 4.498033697660233E-5
+kindes infant 4.633871233307794E-5
+kindes child 5.050281210888641E-5
+--
+olympische medalist 4.697809881812588E-5
+olympische olympic 6.15462935857004E-5
+olympische pentathlon 4.91232702468567E-5
+--
+spiele game 4.740312981014205E-5
+spiele games 5.990979627167422E-5
+spiele matches 4.1413433276815574E-5
+--
+frieden truce 4.967967771045232E-5
+frieden peace 6.362588444221084E-5
+frieden armistice 4.571661607675237E-5
+--
+meinungsfreiheit freedom 4.4087653612809194E-5
+meinungsfreiheit liberties 4.379404059465022E-5
+meinungsfreiheit censorship 4.6277663470681394E-5
+--
+internet online 4.964367446499269E-5
+internet websites 4.616656936128502E-5
+internet internet 5.988772074954261E-5
+--
+risiken risks 6.315239638529528E-5
+risiken insurers 4.6991402551741986E-5
+risiken risk 5.583737732646311E-5
+--
+mobiltelefonen handsets 5.284181593362065E-5
+mobiltelefonen cellphones 5.140751283532454E-5
+mobiltelefonen phones 5.282578797234684E-5
+--
+gewerkschaften unions 5.903340113095554E-5
+gewerkschaften unionists 5.2175930491917364E-5
+gewerkschaften syndicalists 5.215540331573673E-5
+--
+europa asia 5.140047169145428E-5
+europa european 4.9850571928592334E-5
+europa europe 6.654063182057806E-5
+--
+siegerinnen quarterfinalists 4.206952219952796E-5
+siegerinnen semifinalists 4.3387275135623475E-5
+siegerinnen finalists 4.0524878294590567E-5
+--
+wimbledon henman 3.809048897420566E-5
+wimbledon isner 3.552156382953255E-5
+wimbledon wimbledon 4.399054044084596E-5
+--
+fußball fifa 4.95751878805617E-5
+fußball volleyball 4.807509613778496E-5
+fußball sport 4.440174517422673E-5
+--
+dublin dublin 5.310508463039529E-5
+dublin limerick 4.5314218744842417E-5
+dublin belfast 4.521714550774752E-5
+--
+nordsee skagerrak 5.066702071458371E-5
+nordsee barents 4.569459875701772E-5
+nordsee sea 4.560703041654783E-5
+--
+öl oil 6.823966660004916E-5
+öl oils 6.0899159149879406E-5
+öl petroleum 5.1590306558702115E-5
+--
+umwelt environment 6.499992873338161E-5
+umwelt ecosystems 4.8699070497462776E-5
+umwelt ecologies 4.870173485905638E-5
+--
+konsum alcohol 4.7373949653718065E-5
+konsum caffeine 4.645739129799628E-5
+konsum cigarettes 4.5713226918608985E-5
+--
+diät nutritionists 4.610725678151839E-5
+diät calorie 4.590653976681589E-5
+diät regimen 4.557090625009819E-5
+--
+erkrankte pneumonia 4.720749598156405E-5
+erkrankte typhoid 4.76243617005936E-5
+erkrankte ailment 4.8951169614172716E-5
+--
+eu eu 6.618013840355559E-5
+eu eea 5.2905057132551364E-5
+eu oecd 5.0059449959295805E-5
+--
+türkische cypriot 4.734070466113938E-5
+türkische kurdish 4.696397427272689E-5
+türkische turkish 6.242650468235567E-5
+--
+zölle taxes 5.335998153087101E-5
+zölle monopolies 5.4608085974643864E-5
+zölle tariffs 5.658886810787366E-5
+--
+einschränkungen restricts 5.6714351659317015E-5
+einschränkungen restrict 5.7268008701329914E-5
+einschränkungen constraints 5.3081508690032767E-5
+--
+raucher cigarette 3.950623720092905E-5
+raucher drinkers 3.9667382852861215E-5
+raucher cigarettes 4.00885638285728E-5
+--
+europäische eu 5.150125021777478E-5
+europäische european 7.084063664593656E-5
+europäische europe 5.335325091551991E-5
+--
+strafurteile verdicts 4.392203750710622E-5
+strafurteile offences 4.4469635870095785E-5
+strafurteile criminal 4.321463131496091E-5
+--
+drogen drugs 5.323768110143993E-5
+drogen cocaine 4.7922467813413814E-5
+drogen drug 4.788746527603095E-5
+--
+golden award 3.165683663067946E-5
+golden golden 4.712280956632346E-5
+golden silver 3.166759202153115E-5
+--
+globes globe 3.5704219029757895E-5
+globes globes 3.6907491702109534E-5
+globes oscars 3.402674658798248E-5
+--
+französischer antoine 4.109425436670857E-5
+französischer christophe 4.271741528081304E-5
+französischer french 4.8962445241061586E-5
+--
+general commander 4.6232908703997195E-5
+general brigadier 4.5471916244529506E-5
+general colonel 4.547410980331315E-5
+--
+balkan balkans 6.420800030849182E-5
+balkan macedonia 5.1535914774165875E-5
+balkan balkan 6.13023571930325E-5
+--
+schutzzone refuges 4.687446464769407E-5
+schutzzone protection 4.710895720752273E-5
+schutzzone wildlife 4.7224486819694806E-5
+--
+verhältnis difference 4.689544302071438E-5
+verhältnis relationship 5.679258579662073E-5
+verhältnis relative 4.9995109670775884E-5
+--
+china taiwan 5.313023703907051E-5
+china china 6.42366066408679E-5
+china guangdong 5.011284728466479E-5
+--
+mongolei china 5.162384827669413E-5
+mongolei mongolia 5.92986464922236E-5
+mongolei kazakhstan 5.117063892985247E-5
+--
+ermordung murderers 4.458541137501957E-5
+ermordung arrest 4.5414234568060284E-5
+ermordung killings 4.812862974522904E-5
+--
+aufkommen upsurge 4.926599401243577E-5
+aufkommen advent 5.822117541633752E-5
+aufkommen decline 5.053554105154806E-5
+--
+cd cd 5.696466373850137E-5
+cd reissue 4.656990714203381E-5
+cd cassette 4.667009731441989E-5
+--
+brenners cooker 3.657032816271048E-5
+brenners igniter 3.4395742508837725E-5
+brenners cookers 3.408525639838356E-5
+--
+offizielle website 5.9886807180548105E-5
+offizielle official 7.107333569486038E-5
+offizielle homepage 5.3092308760283955E-5
+--
+eu eu 6.618013840355559E-5
+eu eea 5.2905057132551364E-5
+eu oecd 5.0059449959295805E-5
+--
+sprachen languages 6.698794017876628E-5
+sprachen dialects 5.1907913598480955E-5
+sprachen language 5.524855636564523E-5
+--
+lillehammer oslo 3.650130717074087E-5
+lillehammer storhamar 3.580724987031944E-5
+lillehammer lillehammer 4.6917506110608465E-5
+--
+nachweis confirm 5.600444220122872E-5
+nachweis evidence 5.7279246181972585E-5
+nachweis disproven 5.218979134410117E-5
+--
+top top 4.991002971413902E-5
+top billboard 4.015851502592023E-5
+top heatseekers 4.13776607657566E-5
+--
+quarks nucleons 4.217250588231454E-5
+quarks hadrons 4.3291869115259907E-5
+quarks quarks 4.275561969502223E-5
+--
+bayerischer bavaria 4.894971797186628E-5
+bayerischer bayerischer 4.819971548862657E-5
+bayerischer bavarian 5.293440471623919E-5
+--
+umweltschäden environmentalists 5.484425223651594E-5
+umweltschäden impacts 5.430193142655683E-5
+umweltschäden polluters 5.326920503543777E-5
+--
+everglades everglades 3.7567220141671366E-5
+everglades assateague 3.3413994686795184E-5
+everglades okaloosa 3.352250076022037E-5
+--
+shoemaker gladman 2.8450927957390894E-5
+shoemaker mccraw 2.7351343728327068E-5
+shoemaker landers 2.770214820969839E-5
+--
+levy cohen 3.483822985175266E-5
+levy goldstein 3.4412812838592985E-5
+levy rosenblum 3.437798530186797E-5
+--
+jupiter venus 4.4464317811861124E-5
+jupiter neptune 4.4022322709748565E-5
+jupiter jupiter 5.2705684800709294E-5
+--
+europa asia 5.140047169145428E-5
+europa european 4.9850571928592334E-5
+europa europe 6.654063182057806E-5
+--
+rücktritt reshuffle 4.514319204535738E-5
+rücktritt resigns 5.055547601202645E-5
+rücktritt resign 5.397746245243638E-5
+--
+nato usafe 4.1905259571025765E-5
+nato unprofor 4.3743856003728266E-5
+nato nato 6.060658954776501E-5
+--
+generalsekretärs secretaryship 4.43614348231198E-5
+generalsekretärs chairmanship 4.44622163587082E-5
+generalsekretärs president 4.063668960775039E-5
+--
+konkurs receivership 5.122507156259768E-5
+konkurs bought 4.426593119700132E-5
+konkurs bankrupt 5.633435753323256E-5
+--
+baring trenchard 3.212405832567341E-5
+baring chaloner 3.172696874228815E-5
+baring waldegrave 3.112555544849678E-5
+--
+bank bank 6.0184523364898984E-5
+bank citibank 5.3823122546094904E-5
+bank hsbc 4.816084492908575E-5
+--
+französische france 4.5727517611367916E-5
+französische castillon 4.0460620965420653E-5
+französische french 6.0209833261843516E-5
+--
+atomtests thermonuclear 4.304283365725537E-5
+atomtests nuclear 4.3216356705180964E-5
+atomtests plutonium 4.1834097709833706E-5
+--
+jahrestag occasion 4.626116428776125E-5
+jahrestag seventieth 4.392351748806085E-5
+jahrestag fiftieth 5.3984473368456856E-5
+--
+landung flight 4.795394263705927E-5
+landung takeoff 5.066984774929276E-5
+landung takeoffs 4.945856664217345E-5
+--
+normandie cotentin 4.236310440917703E-5
+normandie normandie 4.172711337823353E-5
+normandie poitou 4.039048966946608E-5
+--
+asien asia 6.510450091670143E-5
+asien eurasia 5.251008007865369E-5
+asien europe 5.5488069783633266E-5
+--
+europa asia 5.140047169145428E-5
+europa european 4.9850571928592334E-5
+europa europe 6.654063182057806E-5
+--
+holländische dutch 5.749165430912105E-5
+holländische netherland 4.69740849277736E-5
+holländische netherlandish 4.324329989009904E-5
+--
+fotos photograph 5.784152810992149E-5
+fotos photographs 6.473986373964325E-5
+fotos photo 5.9455445403279565E-5
+--
+srebrenica kosovo 4.57018491687957E-5
+srebrenica srebrenica 5.267609999309482E-5
+srebrenica serbs 4.557266150115888E-5
+--
+holländische dutch 5.749165430912105E-5
+holländische netherland 4.69740849277736E-5
+holländische netherlandish 4.324329989009904E-5
+--
+regierungskoalition opposition 4.470129856068261E-5
+regierungskoalition centrist 4.396930101494392E-5
+regierungskoalition cabinet 4.328354367790978E-5
+--
+deutschland switzerland 4.851638535665356E-5
+deutschland europe 5.081319339255479E-5
+deutschland belgium 4.883433148708643E-5
+--
+deutsche german 5.520006407629514E-5
+deutsche deutschland 4.1400840296947066E-5
+deutsche germann 4.174819105494322E-5
+--
+rechtschreibreform langauge 3.990653940633585E-5
+rechtschreibreform orthographies 4.5022508176118566E-5
+rechtschreibreform umlauts 3.9769807892016054E-5
+--
+hubble hubble 4.516422928381676E-5
+hubble galaxies 3.930760724522041E-5
+hubble nebulae 3.862128000967736E-5
+--
+schwarze white 5.478222011227081E-5
+schwarze black 5.7102587847654434E-5
+schwarze yellow 4.8812430831980144E-5
+--
+löcher hole 4.288782753394828E-5
+löcher holes 5.036432022137431E-5
+löcher cavities 4.158684517500936E-5
+--
+kinderarbeit sweatshop 4.3586768588383E-5
+kinderarbeit childcare 4.152712781316852E-5
+kinderarbeit welfare 4.3269610765509364E-5
+--
+asien asia 6.510450091670143E-5
+asien eurasia 5.251008007865369E-5
+asien europe 5.5488069783633266E-5
+--
+landwirtschaft agriculture 7.085630691404911E-5
+landwirtschaft agriculturalist 5.594519782245404E-5
+landwirtschaft agriculturalists 5.635221074368123E-5
+--
+mord accomplices 4.522463667308547E-5
+mord killings 4.682056891978877E-5
+mord suspects 4.512087486529725E-5
+--
+russischem russian 6.491771105776688E-5
+russischem russia 5.643705901396023E-5
+russischem belarussian 5.352520764771126E-5
+--
+eu eu 6.618013840355559E-5
+eu eea 5.2905057132551364E-5
+eu oecd 5.0059449959295805E-5
+--
+baltische estonians 4.787140647891542E-5
+baltische estonian 4.904024625431672E-5
+baltische baltic 5.7409176380016074E-5
+--
+länder länder 5.012523352633435E-5
+länder countries 7.00371728601549E-5
+länder nations 5.140978562864603E-5
+--
+italienische italiane 4.541341480283586E-5
+italienische italian 5.97636154535204E-5
+italienische milanese 4.466665672721499E-5
+--
+königsfamilie king 4.2481656558514135E-5
+königsfamilie princesses 4.309155593810498E-5
+königsfamilie monarch 4.276612221363176E-5
+--
+streik dockworkers 4.934117179132347E-5
+streik walkout 5.163329264179177E-5
+streik strikebreakers 4.874172143899853E-5
+--
+italienischer giuseppe 4.413548287172662E-5
+italienischer italian 5.103980934062501E-5
+italienischer francesco 4.657980122405879E-5
+--
+flugbegleiter flight 3.989324660165024E-5
+flugbegleiter aircrew 4.0697985385544815E-5
+flugbegleiter airline 4.0210252155690624E-5
+--
+fusion demerger 5.686612919686224E-5
+fusion merger 6.982466825802827E-5
+fusion mergers 5.4346842624887364E-5
+--
+japanischer japanese 5.391861329647826E-5
+japanischer yanagawa 4.8548991050466495E-5
+japanischer yoshio 4.920514203399411E-5
+--
+banken lenders 5.723570340754465E-5
+banken depositors 5.566697237928139E-5
+banken brokerages 5.4151080501316906E-5
+--
+dayton dayton 4.31035858702988E-5
+dayton decatur 3.445534983872001E-5
+dayton muncie 3.5575293331395067E-5
+--
+friedensabkommen ceasefire 5.2275999173634595E-5
+friedensabkommen truce 4.9597041804434676E-5
+friedensabkommen ceasefires 4.9436494880862844E-5
+--
+ehren namesake 4.400489759926156E-5
+ehren honour 6.115867975546005E-5
+ehren honor 5.831505694518535E-5
+--
+oscar oscar 4.615102053067772E-5
+oscar hugo 3.271781960763731E-5
+oscar oscars 3.563928799835405E-5
+--
+italienische italiane 4.541341480283586E-5
+italienische italian 5.97636154535204E-5
+italienische milanese 4.466665672721499E-5
+--
+regisseure films 4.479131057355228E-5
+regisseure filmmakers 5.1641938707677896E-5
+regisseure screenwriters 4.713926732839428E-5
+--
+ebola hiv 4.0482795098671476E-5
+ebola ebola 4.8881456728348347E-5
+ebola dengue 4.1733675166708323E-5
+--
+epidemie outbreaks 5.436069980304966E-5
+epidemie smallpox 5.345123622947164E-5
+epidemie cholera 5.709643918571489E-5
+--
+zaire zaire 5.131607562241146E-5
+zaire congo 4.863137336478849E-5
+zaire gabon 4.50912537657047E-5
+--
+hochwasser floods 6.535233303062504E-5
+hochwasser floodwaters 5.968282826345371E-5
+hochwasser floodwater 6.005179336408998E-5
+--
+holland holland 4.491042725772757E-5
+holland zeeland 3.9065975648554385E-5
+holland netherlands 4.150139802728283E-5
+--
+deutschland switzerland 4.851638535665356E-5
+deutschland europe 5.081319339255479E-5
+deutschland belgium 4.883433148708643E-5
+--
