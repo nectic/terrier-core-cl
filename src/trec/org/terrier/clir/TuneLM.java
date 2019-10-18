@@ -69,8 +69,8 @@ public class TuneLM {
 
 	public void processQueries() throws IOException, InterruptedException {
 		Index index = Index.createIndex();
-		double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
-		//double [ ]  muvalues = {0.4,0.75};
+		//double [ ]  muvalues = { 10.0, 20.0, 40.0, 50.0, 100.0, 200.0, 300.0, 500.0, 1000.0, 2000.0, 2500.0, 3000.0};
+		double [ ]  muvalues = { 0.4, 0.75, 100.0, 200.0, 300.0, 500.0};
 		for(int i = 0; i<muvalues.length;i++) {
 			double mu = muvalues[i];
 			TranslationLMManager tlm = new TranslationLMManager(index);

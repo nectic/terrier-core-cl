@@ -78,5 +78,6 @@ bin/trec_terrier.sh --tunesdicocl -Dtrec.topics=share/clef/query_fr_title.trec -
 
 bin/trec_terrier.sh --tunesdicocl -Dtrec.topics=share/clef/query_fr_title.trec -Dclir.number_of_top_translation_terms=2 -Dclir.dico.path=dico_eeb_gen_2.txt
 
+bin/trec_terrier.sh --generatedico -Dtrec.topics=share/clef/query_es_title.trec -Dclir.number_of_top_translation_terms=1 -Dclir.dico.path=dico_eeb.txt
 
 

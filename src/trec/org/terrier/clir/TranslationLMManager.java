@@ -2325,17 +2325,13 @@ public class TranslationLMManager extends Manager{
 		//iterating over all query terms
 		for(int i=0; i<this.queryTerms.length;i++) {
 			String w = this.queryTerms[i];
-
 			if(stopwords.contains(w.toLowerCase())) {
 				//System.err.println("Source Term exist in stop words : " + w);
 				continue;
 			}
-
 			//if(fullw2vmatrix_src.get(w)==null)
 			//	continue;
-
 			HashMap<String, Double> top_translations_of_w = getTopW2VTranslations_cl(w);
-
 			for(String u : top_translations_of_w.keySet()) {
 				String uPipelined = tpa.pipelineTerm(u);
 				if(uPipelined==null) {
@@ -2348,7 +2344,6 @@ public class TranslationLMManager extends Manager{
 					System.err.println("Term not found in corpora : "+u);
 					continue;
 				}
-
 				//fichier_a_analyse.println(w+" "+u+" "+top_translations_of_w.get(u));
 
 				IterablePosting ip = this.invertedIndex.getPostings((BitIndexPointer) lu);
@@ -2361,17 +2356,17 @@ public class TranslationLMManager extends Manager{
 					double colltermFrequency = (double)lu.getFrequency();
 
 					//BM25 matchingMethod = new BM25();
-					//TF_IDF matchingMethod = new TF_IDF();
-					DirichletLM matchingMethod = new DirichletLM();
+					TF_IDF matchingMethod = new TF_IDF();
+					//DirichletLM matchingMethod = new DirichletLM();
 					matchingMethod.setParameter(c);
 					matchingMethod.setCollectionStatistics(this.index.getCollectionStatistics());
 					matchingMethod.setKeyFrequency(1);
 					matchingMethod.setEntryStatistics(lu);
 					matchingMethod.prepare();
 
-					//double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
+					double score = top_translations_of_w.get(u)*matchingMethod.score(ip);
 
-					double score = matchingMethod.score(ip);
+					//double score = matchingMethod.score(ip);
 
 					//double score = top_translations_of_w.get(u)*WeightingModelLibrary.log(1 + (tf/(c * (colltermFrequency / numberOfTokens))) ) + WeightingModelLibrary.log(c/(docLength+c));
 
@@ -4470,18 +4465,14 @@ public class TranslationLMManager extends Manager{
 		System.out.println("\tWord2Vec translations " + w);
 		TreeMultimap<Double, String> inverted_translation_w = w2v_inverted_translation.get(w);
 		HashMap<String, Double> w_top_cooccurence = new HashMap<String, Double>();
-
 		if(!w2v_inverted_translation.containsKey(w)) {
 			System.err.println("No translations recorded for term " + w);
 			w_top_cooccurence.put(w, 1.0);
 			return w_top_cooccurence;
 		}
-
 		System.out.println("\tTranslations for " + w);
-
 		int count =0;
 		double sums_u=0.0;
-
 		for (Double p_w_u : inverted_translation_w.keySet()) {
 			if(count<this.number_of_top_translation_terms) {
 				NavigableSet<String> terms = inverted_translation_w.get(p_w_u);

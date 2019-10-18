@@ -1,0 +1,390 @@
+carta letter 3.557587986092724E-5
+--
+bomba bomb 4.010956922804316E-5
+--
+christo christo 2.8447837194792997E-5
+--
+envuelve envelops 3.367119389124151E-5
+--
+edificio building 4.303530593043389E-5
+--
+reichstag reichstag 3.8431139839596376E-5
+--
+alem corrientes 2.5271920903463345E-5
+--
+n born 2.671726248847561E-5
+--
+conferencia conference 4.71431711886013E-5
+--
+mujer woman 3.896593552862075E-5
+--
+pek juk 3.0345646759508998E-5
+--
+n born 2.671726248847561E-5
+--
+diamantes diamonds 3.699950704997874E-5
+--
+n born 2.671726248847561E-5
+--
+sierra sierra 3.823630202229949E-5
+--
+leona botswana 3.240523686383207E-5
+--
+importaciones exports 3.910145710626291E-5
+--
+arroz vegetables 3.900584279923206E-5
+--
+jap yanagawa 2.9437330885298127E-5
+--
+n born 2.671726248847561E-5
+--
+comida food 3.865193345685891E-5
+--
+r rt 2.4709079281734833E-5
+--
+pida wants 2.9522968916268754E-5
+--
+jap yanagawa 2.9437330885298127E-5
+--
+n born 2.671726248847561E-5
+--
+accidentes accidents 4.5837330275306014E-5
+--
+petrol petroleum 3.919593336981463E-5
+--
+aves birds 4.3841946810668356E-5
+--
+n born 2.671726248847561E-5
+--
+capa layer 4.031301899583396E-5
+--
+ozono ozone 3.754638052304022E-5
+--
+visita visit 3.954062021046531E-5
+--
+papa pope 3.906193244425422E-5
+--
+sri sri 4.732770262654891E-5
+--
+lanka lanka 4.502999541417958E-5
+--
+ai ai 4.317488311167473E-5
+--
+pena punishment 3.371511617467125E-5
+--
+muerte death 4.174889137892162E-5
+--
+maravillas wonders 3.251267040811054E-5
+--
+mundo world 3.4615134268206626E-5
+--
+antiguo ancient 3.3530030128865215E-5
+--
+derechos rights 4.9472806076113366E-5
+--
+infancia childhood 4.404030999539093E-5
+--
+juegos games 4.370337649365911E-5
+--
+ol ol 2.9806597260694676E-5
+--
+paz peace 4.611024659713826E-5
+--
+libertad freedom 4.07497868981982E-5
+--
+n born 2.671726248847561E-5
+--
+internet internet 4.432600048737762E-5
+--
+riesgos risks 3.975728737457575E-5
+--
+tel tel 4.38427800099141E-5
+--
+m ft 3.290381985532617E-5
+--
+viles detestable 2.6177888699845275E-5
+--
+sindicatos unions 3.656978859159555E-5
+--
+europa europe 4.6646678875355874E-5
+--
+ganadoras winners 3.604937328234127E-5
+--
+wimbledon wimbledon 3.587094704134564E-5
+--
+f ret 2.6509094598808536E-5
+--
+disturbios rioting 4.0938170366187846E-5
+--
+n born 2.671726248847561E-5
+--
+medio intervening 2.173239115236353E-5
+--
+ambiente environment 4.251325310136334E-5
+--
+petr petr 3.206579853104954E-5
+--
+leo leo 2.7752842998777454E-5
+--
+mar sea 3.8524527386134105E-5
+--
+norte north 4.680438322224919E-5
+--
+consumo consumption 4.3930540391057614E-5
+--
+whisky whisky 3.568702630249212E-5
+--
+s harrap 2.2476018311830574E-5
+--
+dietas diets 3.860800749548681E-5
+--
+cel cel 4.094244088168086E-5
+--
+acos acos 2.8627103739706413E-5
+--
+aduanas customs 3.2591690144631724E-5
+--
+ue eu 4.5461456471304736E-5
+--
+restricciones restrictions 4.0655562169885556E-5
+--
+fumadores smokers 3.3469325722266556E-5
+--
+sentencias verdicts 3.880438572087735E-5
+--
+drogas drugs 3.9345392814924004E-5
+--
+europa europe 4.6646678875355874E-5
+--
+globos balloons 3.1148464202356364E-5
+--
+oro gold 5.0548949171831164E-5
+--
+general general 3.990858774962408E-5
+--
+franc blancs 2.8263173420805274E-5
+--
+s harrap 2.2476018311830574E-5
+--
+zona area 3.960325010367632E-5
+--
+seguridad security 3.9925704722951864E-5
+--
+balcanes balkans 4.3431548965937735E-5
+--
+relaciones relations 4.5429920818434884E-5
+--
+china china 4.896389144180804E-5
+--
+mongolia mongolia 4.8445494159920565E-5
+--
+asesinato murder 4.151903617240581E-5
+--
+rabin rabin 3.060362340819746E-5
+--
+aparici catalani 2.578728225658868E-5
+--
+n born 2.671726248847561E-5
+--
+grabadora dictaphone 2.9143478480977955E-5
+--
+cd cd 4.77122908312929E-5
+--
+lenguas languages 4.528195684367973E-5
+--
+oficiales officers 3.6771323113674465E-5
+--
+ue eu 4.5461456471304736E-5
+--
+final final 3.907377425543365E-5
+--
+hockey hockey 4.0003866500678145E-5
+--
+hielo ice 4.3420195834258573E-5
+--
+lillehammer lillehammer 3.6326626495973945E-5
+--
+r rt 2.4709079281734833E-5
+--
+mundiales world 3.683196645599995E-5
+--
+atletismo athletics 3.850155838429704E-5
+--
+pruebas testing 3.7137770125284454E-5
+--
+quark quark 3.662713553667547E-5
+--
+top top 3.576859149241806E-5
+--
+pol pol 3.2308700403823186E-5
+--
+mica mica 3.322004712079612E-5
+--
+crucifijos crucifixes 3.6994259977892016E-5
+--
+bavaria bavaria 3.183528405990561E-5
+--
+impacto impact 4.187501971706126E-5
+--
+medioambiental environmental 4.111656351699705E-5
+--
+everglades everglades 2.7815128215241217E-5
+--
+shoemaker gehrels 2.3063223333039307E-5
+--
+levy cohen 2.8972920939073946E-5
+--
+j fleurian 2.608984443146183E-5
+--
+piter jans 2.3316062263755592E-5
+--
+consumo consumption 4.3930540391057614E-5
+--
+leche milk 4.1646318765557536E-5
+--
+europa europe 4.6646678875355874E-5
+--
+n born 2.671726248847561E-5
+--
+n born 2.671726248847561E-5
+--
+secretario secretary 4.479206687824586E-5
+--
+general general 3.990858774962408E-5
+--
+otan nato 4.1868870017984976E-5
+--
+bancarrota bankrupt 3.7666030476915033E-5
+--
+pruebas testing 3.7137770125284454E-5
+--
+nucleares nuclear 4.653583602235547E-5
+--
+francesas french 3.235436318108849E-5
+--
+aniversario anniversary 5.233465472994604E-5
+--
+desembarco beachheads 3.442730544187489E-5
+--
+normand normand 2.9518725137695818E-5
+--
+restos remains 3.498937618700748E-5
+--
+dinosaurios dinosaurs 4.397242548474824E-5
+--
+asia asia 4.971384249393734E-5
+--
+permiso permission 4.716670898009745E-5
+--
+maternidad maternity 3.326004242184838E-5
+--
+europa europe 4.6646678875355874E-5
+--
+fotos photos 4.749288530376529E-5
+--
+holandesas dutch 3.479678552752388E-5
+--
+srebrenica srebrenica 3.486554978082319E-5
+--
+n born 2.671726248847561E-5
+--
+gobierno government 4.3857675486219894E-5
+--
+s harrap 2.2476018311830574E-5
+--
+transporte transport 4.691091717821983E-5
+--
+nuclear nuclear 5.022104565848506E-5
+--
+alemania germany 4.7175725313134004E-5
+--
+reforma reforms 3.932006921466168E-5
+--
+alemana german 4.2243675149088344E-5
+--
+hubble hubble 3.549614379065153E-5
+--
+agujeros holes 3.598894325691571E-5
+--
+negros blacks 3.32178887100608E-5
+--
+trabajo work 3.496369326207149E-5
+--
+infantil childrens 3.449047598169308E-5
+--
+asia asia 4.971384249393734E-5
+--
+cultivos crops 4.179360797381897E-5
+--
+delta delta 4.591532007008321E-5
+--
+ebro ebro 3.4623874124082705E-5
+--
+asesinato murder 4.151903617240581E-5
+--
+director director 4.518019524364201E-5
+--
+cadena chain 3.910407215110285E-5
+--
+tv tv 4.341410622722085E-5
+--
+rusia russia 5.164564215706185E-5
+--
+ue eu 4.5461456471304736E-5
+--
+pa pa 4.319899638519482E-5
+--
+ses ses 3.3634085757860906E-5
+--
+b cb 2.5504837043568605E-5
+--
+familia family 5.44469928637378E-5
+--
+real royal 3.945467993055913E-5
+--
+italiana italian 4.330685003713933E-5
+--
+huelga walkout 3.51548511559524E-5
+--
+asistentes attendees 3.559632171085829E-5
+--
+vuelo flight 4.588757732158435E-5
+--
+italianos italians 4.0522846963864524E-5
+--
+fusi fusi 2.843283480799544E-5
+--
+n born 2.671726248847561E-5
+--
+bancos banks 3.865599264184845E-5
+--
+japoneses japanese 4.044780400524629E-5
+--
+tratado treaty 4.7267162842133854E-5
+--
+paz peace 4.611024659713826E-5
+--
+dayton dayton 3.0928664915700894E-5
+--
+oscar oscar 3.228270758465464E-5
+--
+honor honour 4.793634454334481E-5
+--
+fico prodi 2.438617106509368E-5
+--
+directores directors 4.2148702188749465E-5
+--
+italianos italians 4.0522846963864524E-5
+--
+epidemia epidemic 4.311007428563215E-5
+--
+bola ball 3.3733309902658064E-5
+--
+zaire zaire 4.033664007927007E-5
+--
+inundaciones flooding 4.376582821326012E-5
+--
+holanda netherlands 4.340674205681814E-5
+--
+alemania germany 4.7175725313134004E-5
+--
