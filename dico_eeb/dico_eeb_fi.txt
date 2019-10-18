@@ -1,0 +1,536 @@
+christo christof 2.266004314894783E-5
+christo stephan 2.1660826980677655E-5
+christo christoff 2.2158332677161264E-5
+--
+saksan german 3.8330354654708894E-5
+saksan nazi 3.149595280957928E-5
+saksan germany 3.605867039311531E-5
+--
+valtiopäivätalon chancellery 2.5932079466416376E-5
+valtiopäivätalon kristallnacht 2.5455914013018994E-5
+valtiopäivätalon reichstag 2.9687386389654585E-5
+--
+naisten men 3.2115689226160844E-5
+naisten womens 3.244560761525521E-5
+naisten women 4.047109803757449E-5
+--
+konferenssi conference 3.450795824729787E-5
+konferenssi meetings 3.0082057168150128E-5
+konferenssi conferences 3.3001530065533104E-5
+--
+pekingissä nanjing 3.0072419038270008E-5
+pekingissä guangzhou 2.9292857481667533E-5
+pekingissä beijing 3.721006900755992E-5
+--
+sierra sierra 4.030262271210994E-5
+sierra leone 3.1865772317076165E-5
+sierra sierras 2.9687902440001693E-5
+--
+leonen liberian 2.716943556377433E-5
+leonen liberia 2.692395877805365E-5
+leonen leone 3.0019359749828802E-5
+--
+kapina rebellion 3.969808224083013E-5
+kapina revolt 3.870838378206934E-5
+kapina insurrection 3.7441082712253384E-5
+--
+timantit diamonds 2.633963065518055E-5
+timantit sapphires 2.836049166421255E-5
+timantit rubies 2.6971652804542244E-5
+--
+riisin cloves 3.025315840858029E-5
+riisin vegetable 3.1964455503485314E-5
+riisin vegetables 3.2418606719427954E-5
+--
+maahantuonti manufacture 3.234430629328367E-5
+maahantuonti importers 3.135850748271448E-5
+maahantuonti importation 3.369008197082074E-5
+--
+japaniin japan 3.7701833591266276E-5
+japaniin okinawa 3.12729102182036E-5
+japaniin kyushu 3.1220085769373614E-5
+--
+pikaruoka snack 2.8477872988252995E-5
+pikaruoka milkshakes 2.8353686746238592E-5
+pikaruoka hamburgers 2.837648818836596E-5
+--
+japanissa japanese 3.476180657169784E-5
+japanissa japan 4.26228740181387E-5
+japanissa yanagawa 3.42929008366384E-5
+--
+linnut songbirds 3.199610101788579E-5
+linnut finches 3.212404169257396E-5
+linnut birds 3.535664132898404E-5
+--
+otsonikerroksen atmospheric 2.735028683107079E-5
+otsonikerroksen stratospheric 2.7918101526636496E-5
+otsonikerroksen denaturation 2.762750317408851E-5
+--
+tuhoutuminen destructing 3.221286039870876E-5
+tuhoutuminen destructions 3.611579806626987E-5
+tuhoutuminen destruction 3.9230806354342024E-5
+--
+paavin pope 3.701844590976344E-5
+paavin papal 4.025721717104052E-5
+paavin papacy 3.751115204775133E-5
+--
+vierailu visits 3.4463672855487336E-5
+vierailu visiting 3.146564389755684E-5
+vierailu visit 3.626842702381585E-5
+--
+sri lanka 3.8855836891176876E-5
+sri sri 3.887403195228482E-5
+sri india 3.6437006852662735E-5
+--
+lankassa lanka 3.103414271704083E-5
+lankassa sri 3.046275177043398E-5
+lankassa india 2.9701572526503327E-5
+--
+ihmisoikeusjärjestö nongovernmental 3.070289866034224E-5
+ihmisoikeusjärjestö ngos 2.8348088255678133E-5
+ihmisoikeusjärjestö amnesty 2.8175780933668664E-5
+--
+kuolemanrangaistusta criminalized 3.155961657809719E-5
+kuolemanrangaistusta clemency 3.134056164598741E-5
+kuolemanrangaistusta prosecuted 3.055814419862619E-5
+--
+vastaan defend 3.2784147105328024E-5
+vastaan agains 3.132030006163987E-5
+vastaan attacking 3.2798321062381644E-5
+--
+antiikin antiquity 3.8146792294374954E-5
+antiikin hellenistic 3.7085541114292034E-5
+antiikin greeks 3.39896515367149E-5
+--
+maailman largest 3.133558201707274E-5
+maailman world 4.3123219226260714E-5
+maailman worldwide 3.1755195125550087E-5
+--
+ihmeet prophets 2.582106107365528E-5
+ihmeet messiahs 2.688672902324304E-5
+ihmeet heavens 2.572055360711819E-5
+--
+lasten toddlers 3.1069617562417434E-5
+lasten children 3.5421290315101466E-5
+lasten childrens 3.334116589250143E-5
+--
+oikeudet privileges 3.402370513238134E-5
+oikeudet copyrights 3.3650060815787964E-5
+oikeudet rights 3.79508393807245E-5
+--
+olympialaiset olympic 3.475341065702402E-5
+olympialaiset paralympics 3.462013825345811E-5
+olympialaiset olympics 3.802986184953605E-5
+--
+rauha truce 3.58957725170247E-5
+rauha peace 4.4655883551792865E-5
+rauha peaceful 3.443099610653829E-5
+--
+sananvapaus freedom 3.121770371981998E-5
+sananvapaus liberties 3.0508141844568185E-5
+sananvapaus censorship 3.1088852174145734E-5
+--
+internetissä online 3.2283225573782136E-5
+internetissä websites 3.277147521366675E-5
+internetissä internet 3.5501567821225976E-5
+--
+matkapuhelimien handsets 3.508859890121064E-5
+matkapuhelimien cellphones 3.387227077624952E-5
+matkapuhelimien phones 3.507965516142314E-5
+--
+riskit risks 3.65181641690123E-5
+riskit exacerbations 3.140311349678347E-5
+riskit risk 3.5532146130360394E-5
+--
+ammattiliitot unions 2.9630448002191215E-5
+ammattiliitot syndicalists 2.9409149436633114E-5
+ammattiliitot unionists 2.7665809685185026E-5
+--
+euroopassa scandinavia 3.422435114605377E-5
+euroopassa worldwide 3.3116852792219755E-5
+euroopassa europe 4.511007641299198E-5
+--
+wimbledonin mauresmo 2.5598930752249027E-5
+wimbledonin matchplay 2.6078212417745614E-5
+wimbledonin wimbledon 2.983857119962078E-5
+--
+dublinissa castlebar 2.7196957242074078E-5
+dublinissa dublin 3.022570558322287E-5
+dublinissa belfast 2.7249356629196842E-5
+--
+pohjanmeri skagerrak 3.0627690285099944E-5
+pohjanmeri wadden 2.9373261582482856E-5
+pohjanmeri estuaries 2.9211280647625116E-5
+--
+öljy oil 4.545748071864292E-5
+öljy oils 3.845139436073728E-5
+öljy petroleum 4.224164746262352E-5
+--
+ympäristö environment 3.996199283090008E-5
+ympäristö ecologically 3.3428688793877836E-5
+ympäristö environmentally 3.3562217936856734E-5
+--
+tuotanto manufacture 3.405634311121414E-5
+tuotanto producing 3.581094326300166E-5
+tuotanto production 4.791560604413511E-5
+--
+kulutus productivity 2.7369829785292068E-5
+kulutus consumption 3.374877884324886E-5
+kulutus economy 2.8919177099795375E-5
+--
+ruokavalio dietary 3.2770888814751406E-5
+ruokavalio nutritional 3.236630779096329E-5
+ruokavalio diets 3.2860956554364696E-5
+--
+eu eu 4.4274986298184736E-5
+eu eea 3.526694834161386E-5
+eu efta 3.5843496758428706E-5
+--
+turkin turkoman 3.499696851102023E-5
+turkin turkey 4.0860703691354866E-5
+turkin turkish 3.935537718077788E-5
+--
+tulli surcharge 2.569003513062077E-5
+tulli excise 2.6138740935090954E-5
+tulli enforcement 2.4485429824882474E-5
+--
+tupakoinnin stimulants 2.7225752528477193E-5
+tupakoinnin medications 2.651420947796949E-5
+tupakoinnin overeating 2.633194741636006E-5
+--
+rajoittaminen limitation 3.3025880346902456E-5
+rajoittaminen curtailing 3.350622996695076E-5
+rajoittaminen curtailment 3.4159006184023355E-5
+--
+eurooppalaiset colonisers 3.207345769650666E-5
+eurooppalaiset europeans 3.64485552009811E-5
+eurooppalaiset colonizers 3.191318937584874E-5
+--
+golden razzie 2.4416959206618825E-5
+golden awards 2.447802413478522E-5
+golden golden 2.91226692905521E-5
+--
+globe bafta 2.546448647872595E-5
+globe emmy 2.643707549638014E-5
+globe baftas 2.5366103361762618E-5
+--
+palkinnot award 4.251672394405083E-5
+palkinnot awards 4.482206949331178E-5
+palkinnot accolades 3.519477584337944E-5
+--
+ranskalainen tellier 2.9649014009571417E-5
+ranskalainen belgian 3.1219798380900515E-5
+ranskalainen french 3.982457008814947E-5
+--
+kenraali commander 3.4665703189025666E-5
+kenraali brigadier 3.204056538850062E-5
+kenraali colonel 3.4182994553714265E-5
+--
+balkanin balkans 4.094353647937497E-5
+balkanin danubian 3.469961214855481E-5
+balkanin balkan 4.137796911847777E-5
+--
+kiina taiwan 3.597745475068598E-5
+kiina korea 3.3744116874934434E-5
+kiina china 4.380385192258795E-5
+--
+mongolia china 3.661314480281849E-5
+mongolia mongolia 3.708945835317327E-5
+mongolia kazakhstan 3.2851947786073116E-5
+--
+suhteet relationships 3.2685498754710224E-5
+suhteet alliances 3.269705919505492E-5
+suhteet relations 3.952636193043011E-5
+--
+rabinin arafat 2.2102892336384295E-5
+rabinin issam 2.1645294277563404E-5
+rabinin fadlallah 2.238191551197915E-5
+--
+salamurha assassinating 3.531661428396677E-5
+salamurha assassination 3.7096969968344365E-5
+salamurha assassinations 3.40580826418049E-5
+--
+kirjoittavan writing 3.204676988834693E-5
+kirjoittavan wrote 3.127828759124503E-5
+kirjoittavan write 3.3401250582283656E-5
+--
+cd cd 4.3771921590942555E-5
+cd reissue 3.8301053186183096E-5
+cd cassette 3.767051595189127E-5
+--
+rom rom 3.337011066984272E-5
+rom roms 3.064688984243807E-5
+rom minidisc 2.918387565456807E-5
+--
+aseman station 3.334229108750856E-5
+aseman unstaffed 2.6962891412144813E-5
+aseman stationmaster 2.7054096149416945E-5
+--
+keksiminen inventing 3.0205904962815716E-5
+keksiminen popularisation 2.983668903902199E-5
+keksiminen invention 3.215089305423837E-5
+--
+viralliset website 3.741313575591672E-5
+viralliset official 4.208805751842895E-5
+viralliset homepage 3.264674637485774E-5
+--
+eu eu 4.4274986298184736E-5
+eu eea 3.526694834161386E-5
+eu efta 3.5843496758428706E-5
+--
+kielet languages 4.611607216912594E-5
+kielet dialects 3.79371561236111E-5
+kielet language 3.943626781627102E-5
+--
+lillehammerin holmenkollen 2.8660237556481935E-5
+lillehammerin garmisch 2.7595741891206894E-5
+lillehammerin lillehammer 3.150130768636125E-5
+--
+yleisurheilun weightlifting 3.17094894138784E-5
+yleisurheilun heptathlon 3.1811997275587E-5
+yleisurheilun athletics 3.7696380755992646E-5
+--
+maailmanennätykset heptathlon 2.910615648218996E-5
+maailmanennätykset bests 2.91974452550742E-5
+maailmanennätykset hurdles 2.7880178358651555E-5
+--
+todiste evidence 3.626468019089554E-5
+todiste corroboration 3.548264884237637E-5
+todiste corroborating 3.407185582859116E-5
+--
+top top 3.060241300906994E-5
+top cashbox 2.7224390713888545E-5
+top billboard 2.6726927698246437E-5
+--
+kvarkeista diatomic 2.645821835476376E-5
+kvarkeista nucleons 2.7670159260588157E-5
+kvarkeista atoms 2.5942753372553042E-5
+--
+baijerin bavaria 3.402568043994689E-5
+baijerin carinthia 3.129655363517334E-5
+baijerin bavarian 3.49007553627203E-5
+--
+shoemaker goddard 1.900183875682089E-5
+shoemaker orbited 1.9081808815516267E-5
+shoemaker landers 1.9813008914303372E-5
+--
+levy emi 2.984186779306552E-5
+levy albums 3.0160684021813115E-5
+levy album 3.1992970639167784E-5
+--
+jupiter jupiters 3.1556169990094755E-5
+jupiter orbiting 3.172034779944309E-5
+jupiter jupiter 3.560725252113968E-5
+--
+maidon poultry 3.205825329681867E-5
+maidon meats 3.089926818252986E-5
+maidon vegetables 3.108632305938414E-5
+--
+kulutus productivity 2.7369829785292068E-5
+kulutus consumption 3.374877884324886E-5
+kulutus economy 2.8919177099795375E-5
+--
+euroopassa scandinavia 3.422435114605377E-5
+euroopassa worldwide 3.3116852792219755E-5
+euroopassa europe 4.511007641299198E-5
+--
+nato eu 2.741163906056241E-5
+nato unprofor 2.8863486777259947E-5
+nato nato 4.164800818879753E-5
+--
+n ccir 2.2001311821557993E-5
+n apx 2.1590224524752236E-5
+n iv 2.163038895589769E-5
+--
+pääsihteerin secretary 3.399883293278845E-5
+pääsihteerin undersecretary 3.08258437762259E-5
+pääsihteerin chairmanship 3.0903398740823534E-5
+--
+konkurssi insolvent 3.352585337460938E-5
+konkurssi receivership 3.4169060161891254E-5
+konkurssi bankrupt 3.3723297034821885E-5
+--
+ranskan algerian 2.9254017762836955E-5
+ranskan france 3.363683667522491E-5
+ranskan french 3.6620099734054665E-5
+--
+ydinkokeet thermonuclear 2.758565188238801E-5
+ydinkokeet detonations 2.713282985012302E-5
+ydinkokeet nuclear 2.80708285934364E-5
+--
+normandian normandy 3.2422091596563405E-5
+normandian cotentin 2.9509688929501105E-5
+normandian harfleur 2.840051915257184E-5
+--
+maihinnousun beachheads 3.534876497407054E-5
+maihinnousun sortied 3.3448333695990655E-5
+maihinnousun beachhead 3.45061556956787E-5
+--
+vuosipäivä celebration 3.85567253793229E-5
+vuosipäivä celebrations 3.8409212271924353E-5
+vuosipäivä commemoration 3.8276718059996944E-5
+--
+aasialaiset asians 3.280593132550473E-5
+aasialaiset eurasians 3.166847532507973E-5
+aasialaiset indonesians 3.0232838185061798E-5
+--
+dinosauruksen dinosaurs 2.891785121559302E-5
+dinosauruksen megafauna 2.8923760706602738E-5
+dinosauruksen tyrannosaurs 2.9681711152513064E-5
+--
+jäännökset ossuaries 3.0975567885599115E-5
+jäännökset skeletons 3.034168582486901E-5
+jäännökset mummified 3.054882226176622E-5
+--
+euroopassa scandinavia 3.422435114605377E-5
+euroopassa worldwide 3.3116852792219755E-5
+euroopassa europe 4.511007641299198E-5
+--
+hollantilaisten dutch 3.2727741005954364E-5
+hollantilaisten netherland 3.0224337925858554E-5
+hollantilaisten batavian 2.896435982518738E-5
+--
+valokuvat photographies 3.776612953552572E-5
+valokuvat photographs 3.951261055268955E-5
+valokuvat photography 3.6877508217098226E-5
+--
+hollannin dutch 3.934841114601109E-5
+hollannin netherlands 3.502311859445062E-5
+hollannin hollandic 3.464290358057869E-5
+--
+hallituskoalitio democratically 2.9363297563194554E-5
+hallituskoalitio parliamentarism 2.9096115276701305E-5
+hallituskoalitio coalition 2.895388147847309E-5
+--
+saksan german 3.8330354654708894E-5
+saksan nazi 3.149595280957928E-5
+saksan germany 3.605867039311531E-5
+--
+saksan german 3.8330354654708894E-5
+saksan nazi 3.149595280957928E-5
+saksan germany 3.605867039311531E-5
+--
+hubble hubble 2.5836738371107147E-5
+hubble flybys 2.542009092245029E-5
+hubble imager 2.5634896576420774E-5
+--
+mustat stripes 3.415407608912169E-5
+mustat white 3.339301113252282E-5
+mustat coloured 3.3501147226145056E-5
+--
+aukot shutters 2.9314284171621944E-5
+aukot passageways 2.914843914624956E-5
+aukot skylights 2.838721348701898E-5
+--
+aasiassa subcontinent 3.419010549436922E-5
+aasiassa asia 3.928342523794862E-5
+aasiassa europe 3.233682557704383E-5
+--
+maanviljely agriculture 3.411937581845898E-5
+maanviljely farming 3.6024779876197644E-5
+maanviljely agriculturally 3.3091538527240866E-5
+--
+ebro ebro 2.3414004651215634E-5
+ebro valle 2.3358978800969047E-5
+ebro guadiana 2.331659979049817E-5
+--
+venäläisen russian 4.1323142774890574E-5
+venäläisen vasilievich 3.609588040991675E-5
+venäläisen vasily 3.624040329024795E-5
+--
+tv broadcast 3.284233893799082E-5
+tv tv 4.020961064063839E-5
+tv television 3.6924634177745556E-5
+--
+johtajan leader 3.152911615269666E-5
+johtajan deputy 2.9277208554371402E-5
+johtajan leadership 3.0263933291427774E-5
+--
+murha murder 4.23443604681992E-5
+murha murderer 3.8177260344921474E-5
+murha murders 3.829938456292477E-5
+--
+eu eu 4.4274986298184736E-5
+eu eea 3.526694834161386E-5
+eu efta 3.5843496758428706E-5
+--
+baltian baltics 3.929150153688751E-5
+baltian baltic 3.978496350713123E-5
+baltian latvia 3.6989964950999755E-5
+--
+maat treaties 2.7204869970521965E-5
+maat countries 3.660563612809072E-5
+maat nations 3.084673547778869E-5
+--
+italian italian 3.788959373062441E-5
+italian italy 3.7093497449103453E-5
+italian veneto 3.362133097966329E-5
+--
+kuningasperhe king 2.7563045735251757E-5
+kuningasperhe queen 2.6518044871324713E-5
+kuningasperhe royal 2.5559668605895397E-5
+--
+italialaisen giorgio 3.1824997696231626E-5
+italialaisen italian 3.6937994062985466E-5
+italialaisen milanese 3.3073658995056305E-5
+--
+lakot sympathizers 2.713971891829486E-5
+lakot agitators 2.7650704628324853E-5
+lakot leaders 2.678062227527626E-5
+--
+japanilaisten japanese 3.667726610036674E-5
+japanilaisten tsushima 3.277164055894235E-5
+japanilaisten koreans 3.272287909390782E-5
+--
+pankkien lenders 3.184531314242127E-5
+pankkien liquidity 3.193234233029183E-5
+pankkien interbank 3.24690541969833E-5
+--
+fuusio demerger 3.19954168942362E-5
+fuusio merger 3.34104873600977E-5
+fuusio mergers 3.068721707778345E-5
+--
+daytonin dayton 2.4521172057082694E-5
+daytonin tennessee 2.457765345925648E-5
+daytonin washington 2.5433521593996078E-5
+--
+rauhansopimus treaty 3.600504897855498E-5
+rauhansopimus armistice 3.4307418163345735E-5
+rauhansopimus hostilities 3.345379797168123E-5
+--
+kunnia honour 3.3479584889508715E-5
+kunnia honoured 3.1289777554507846E-5
+kunnia honor 3.199195385858976E-5
+--
+oscar oscar 3.3234030409747834E-5
+oscar emmy 2.6555856328963538E-5
+oscar oscars 2.7605266208118294E-5
+--
+italialaisille italians 3.229565104403525E-5
+italialaisille italian 3.395414833494937E-5
+italialaisille italy 3.096314278056805E-5
+--
+ebola infection 2.59977434534682E-5
+ebola infections 2.6189072235450494E-5
+ebola ebola 2.7781804981636206E-5
+--
+epidemia epidemics 3.130994031377717E-5
+epidemia epidemic 3.423643634776267E-5
+epidemia outbreaks 3.063312545897341E-5
+--
+zairessa zaire 2.6103273273822852E-5
+zairessa cameroon 2.5838218762651202E-5
+zairessa kinshasa 2.562727113498286E-5
+--
+saksan german 3.8330354654708894E-5
+saksan nazi 3.149595280957928E-5
+saksan germany 3.605867039311531E-5
+--
+hollannin dutch 3.934841114601109E-5
+hollannin netherlands 3.502311859445062E-5
+hollannin hollandic 3.464290358057869E-5
+--
+tulvat floods 3.695834052524708E-5
+tulvat flooding 3.557380952312714E-5
+tulvat floodwaters 3.354304235560917E-5
+--
